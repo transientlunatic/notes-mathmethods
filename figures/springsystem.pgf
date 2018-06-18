@@ -1,0 +1,20 @@
+\usetikzlibrary{calc,patterns, positioning,
+                 decorations.pathmorphing,
+                 decorations.markings}
+ \tikzstyle{spring}=[thick,decorate,decoration={zigzag,pre length=0.1cm,post
+ length=0.1cm,segment length=5}]
+\begin{tikzpicture}[node distance=2cm]
+	\node [fill] (wall) {};
+
+	\node [draw, circle, right of=wall ] (mass1) {$m$};
+	\node [draw, circle, right of=mass1] (mass2) {$m$};
+
+	\node [fill, right of=mass2] (wall2) {};
+
+	\draw [spring] (wall)  -- (mass1) node [midway, above] {$k$};
+	\draw [spring]	(mass1) -- (mass2) node [midway, above] {$k$};
+    \draw [spring] (mass2) -- (wall2) node [midway, above] {$k$};
+ 	
+	\node [below =.25cm of mass1] {$x$};
+	\node [below =.25cm of mass2] {$y$};
+\end{tikzpicture}

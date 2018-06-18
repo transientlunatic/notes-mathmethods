@@ -1,0 +1,304 @@
+% \documentclass{dwnotes}
+% \usepackage{danielphysics}
+%\begin{document}
+
+Complex analysis is the study of functions of complex variables.
+
+\section{Complex Functions}
+\label{sec:complex-functions}
+
+\begin{definition}[Complex Function]
+  A complex function is a function which maps a complex number to
+  another complex number.
+\end{definition}
+Any complex function, like a complex number, can be split into real
+and imaginary components, so, a function $w: \mathbb{C} \to
+\mathbb{C}$ can be composed of two functions, $u: \mathbb{R} \to
+\mathbb{R}$, and $v: \mathbb{R} \to \mathbb{R}$, so
+\[ w(z) = u(x,y) + i v(x,y) \]
+
+\begin{definition}[Multi-valued Function]
+  A multi-valued function is a left-total relation, such that each
+  member in the domain of the relation corresponds to at least one
+  member in the co-domain.
+\end{definition}
+The name ``function'' for these objects is a misnomer, and they are in
+fact relations, since functions must always map to only a single
+value.
+\begin{example}
+  The relation $w^2 = z$ is multi-valued, because, for example, both
+  $w=\pm 1$ map to the same value; in fact every output value greater
+  than 0 is mapped to by two numbers.
+\end{example}
+Dealing with multi-valued functions requires a new framework compared
+to normal functions. One approach is to consider the \emph{branching}
+of a function.
+\begin{definition}[Branch Point]
+  The branch points of a multi-valued function are the points in the
+  complex plane where the complex argument can be mapped from a single
+  point in the domain to multiple points in the range of the relation.
+\end{definition}
+\begin{definition}[Winding Number]
+  The winding number for a closed curve on a plane around a point is
+  an integer which represents the number of closed circuits the curve
+  makes around the point.
+\end{definition}
+\begin{example}
+  Let $w(\theta) = z(\theta)^{\half}$, with $z \in \mathbb{C}$, such
+  that $z = e^{i \theta}$. Taking the value of $w$ at two points, $0$,
+  and $2 \pi$, we find
+  \[ w(0) = e^0 = 1 \] and \[ w(2\pi) = e^{2 \pi i} ( \neq 1) \] each
+  corresponds to the same point in the domain, but to different points
+  in the range.
+  \[ w(4 \pi) = 1 \] so the function returns to its original value
+  after two circuits about the complex plane, so this point has a
+  winding number of two.
+\end{example}
+The existence of branch points splits multi-valued functions into
+``sheets'' in which the function is single valued. It can be useful,
+in order to work with these functions, to consider a multi-valued
+function as the ``glueing together'' of such single value
+functions. These gluings happen along ``branch cuts.''
+\begin{definition}[Branch Cut]
+  A branch cut is a curve in the complex plane, such that a
+  multi-valued function could be represented as a single valued
+  function as a branch minus the curve.
+\end{definition}
+\begin{example}
+  Returning to the example of $w = z^{\half}$, a branch cut would
+  exist as the line where $\theta = 2 \pi$. All the values on the
+  branch below this are single valued.
+\end{example}
+There is an alternative way of considering multi-valued functions, and
+one which is easier to visualise. The different ``sheets'' of a
+multivalued function can be considered as being superimposed ontop of
+each other. If we were able to seperate the two superimposed sheets,
+we would need to leave them somehow connected along the branch
+cuts. The resulting surface is a Riemann Surface.
+\begin{example}
+  Again, in the case $w = z^{\half}$, the Riemann surface consists of
+  two surfaces. The lower surface is joined to the upper surface at
+  $\theta=2 \pi$, and the upper surface is joined back to the lower
+  surface along $\theta=4 \pi$ and $\theta=0$.
+\end{example}
+
+\section{Limits and Continuity}
+\label{sec:limits}
+
+\begin{definition}[Limit (Complex)]
+  Let $f$ be a function of a complex variable, $z$, which is defined
+  and single-valued in a neighbourhood about a point $z=z_0$ in the
+  complex plane, with the possible exception of $z = z_0$, thus a
+  deleted neighbourhood of $z_0$. The number $l$ is the limit of
+  $f(z)$ as $z$ approaches $z_0$, if, for any small positive number
+  $\epsilon$ there exists a $\delta$, such that \[ | f(z) - l | <
+  \epsilon \qquad \text{when} \qquad 0 < |z - z_0 | <
+  \delta \] Then \[ \lim_{z \to z_0} f(z) = l \]
+\end{definition}
+\begin{definition}[Continuity]
+  Let $f$ be a function of a complex variable, $z$, which is
+  single-valued in the neighbourhood of $z=z_0$ and at the point
+  $z=z_0$. The function $f$ is continuous at $z=z_0$ if $\lim_{z \to
+    z_0} f(z) = f(z_0)$. This implies three conditions,
+  \begin{itemize}
+  \item $\lim_{z \to z_0} f(z) = l$ must exist
+  \item $f(z_0)$ must exist
+  \item $l = f(z_0)$
+  \end{itemize}
+\end{definition}
+\begin{definition}[Continuity over a region]
+  A function is said to be continuous over a region if it is
+  continuous at all points in that region. 
+\end{definition}
+\begin{definition}[Uniform Continuity]
+  Let $f$ be a function of a complex variable which is continuous in a
+  region. At each point, $z_0$ of the region, and for any $\epsilon
+  >0$ there is a $\delta >0$ such that $|f(z) - f(z_0)| < \epsilon$
+  when $|z - z_0| < \delta$. If there is a $\delta$ depending on
+  $\epsilon$ but not on $z_0$ $f(z)$ is uniformly continuous in the
+  region.
+\end{definition}
+
+\section{Complex Differentiation}
+\label{sec:complexdiff}
+
+\begin{definition}[Differentiation]
+  Let $f$ be a function of a complex variable, $z$, which is
+  single-valued over some region ${\cal R}$ of the $z$ plane, then the
+  derivative of $f$ is
+  \[ \dv{f}{z} = \lim_{\Delta z \to 0} \frac{f(z + \Delta z) -
+    f(z)}{\Delta z} \] provided that the limit exists independent of
+  the way in which $\Delta z \to 0$. In such a case $f$ is
+  differentiable at $z$.
+\end{definition}
+
+\begin{definition}[Holomorphic Function]
+  Let $f$ be a function of a complex variable $z$ which has a
+  derivative, $f^{\prime}$, which exists at every point in a region
+  ${\cal R}$, the $f$ is a holomorphic function in ${\cal R}$.
+\end{definition}
+\begin{example}
+  The function $f(z) = \bar{z}$ is not holomorphic, because
+  approaching $0$ from different directions, the limit in the
+  definition of the complex derivative is different.
+\end{example}
+The condition that a function is holomorphic is given by the
+Cauchy-Riemann equations.
+\begin{theorem}[Cauchy-Riemann Equations]
+  Consider a function, $f$ of a complex variable, $z$, such that
+  \[ w = f(z) = u(x,y) + i v(x,y) \] for $x,y \in \mathbb{R}$. If the
+  function satisfies the relations
+  \[ \pdv{u}{x} = \pdv{u}{y} \] and \[ \pdv{u}{y} = - \pdv{v}{x} \]
+  which are the \emph{Cauchy-Riemann equations}, the function is
+  holomorphic.
+\end{theorem}
+An important property of holomorphic functions relates to the
+existence of higher derivatives.
+\begin{theorem}[Higher Derivatives]
+  Suppose $f$ is a holomorphic function over a region ${\cal R}$. The
+  derivatives $f^{\prime}, f^{\prime \prime}, \dots$ are all holomorphic
+  over ${\cal R}$.
+\end{theorem}
+
+It is possible for functions to have points where they fail to be analytic.
+\begin{definition}[Singularity]
+  A singularity is a point where a function on the complex plane
+  ceases to be analytic.\\
+  \textbf{Isolated singularities} exist at a point $z=z_0$ where it is
+  possible to find a circle $|z-z_0|=\delta$ for $\delta>0$ encloses
+  no singular point other than $z_0$. If no such $\delta$ exists the
+  singularity is non-isolated. \\
+  \textbf{Poles} are isolated singularities where there exists an
+  integer $n$ such that $\lim_{z \to z_0} (z -z_0)^n f(z) = A \neq 0$;
+  such a pole is of order $n$. If $n=1$ the pole is a simple pole.\\
+  \textbf{Branch Points} are non-isolated singular points since a
+  multi-valued function is not continuous, and thus is not holomorphic
+  in the deleted neighbourhood of the branch point.\\
+  \textbf{Removable Singularities} are isolated singular points, $z_0$
+  where $\lim_{z \to z_0} f(z)$ exists. Defining $z_0 = \lim_{z \to
+    z_0} f(z)$ the function becomes continuous and holomorphic at
+  $z_0$.  \\ \textbf{Essential Singularities} are singularities which
+  are neither poles nor removable singularities.
+\end{definition}
+
+\section{Complex Integration}
+\label{sec:complexint}
+
+\begin{definition}[Complex Line Integral]
+  Let $f(z)$ be a function of a complex variable which is continuous
+  at all points of a curve, $C$, which has a finite length. The line
+  integral along the curve can be found by dividing the curve into $n$
+  sections by means of the points $z_1, z_2, \dots, z_{n-1}$ which are
+  chosen arbitrarily. Let $a = z_0$ and $b=z_n$ be the beginning and
+  end points respectively of the curve. On each arc joining points
+  $z_{k-1}$ to $z_k$, for $k = 1, 2, \dots, n$, choose a point
+  $\xi_k$. A sum can then be formed, letting $\Delta z_k = z_k - z_{k-1}$,
+  \[S_n = \Delta z_1 f(\xi_1) + \Delta z_2 f(\xi_2) + \cdots + \Delta
+  z_n f(\xi_n) \] As $|\Delta z_k| \to 0$, we have the integral,
+  \[ \int_a^b f(z) \dd{z} = \int_C f(z) \]
+\end{definition}
+
+\begin{definition}[Simply and Mulitply Connected Regions]
+  A region ${\cal R}$ can be described as simply connected if any
+  closed curve which lies in ${\cal R}$ can be shrunk to a point
+  without leaving ${\cal R}$. Otherwise the region is multiply
+  connected.
+\end{definition}
+
+\begin{definition}[Jordan Curve]
+  A curve $C$ is a Jordan curve if it is continuous, closed, and does
+  not intersect itself.
+\end{definition}
+
+\begin{theorem}[Jordan Curve Theorem]
+  A Jordan curve on the complex plane divides the plane into two
+  regions, having the curve as a common boundary.  The region which is
+  bounded (where points do not lie on the boundary) is the interior of
+  the curve, while the other region os the exterior of the curve.
+\end{theorem}
+
+\section{Infinite, Taylor, and Laurent Series}
+\label{sec:infin-tayl-laur}
+
+It is possible to extend the concept of sequences and series of
+constants to functions. The concepts of limits can then be extended to
+them as well.
+
+\begin{definition}[Convergence of a sequence of functions]
+  Let $u_1(z), u_2(z), \dots, u_n(z)$, in short, $\{ u_n(z) \}$ be a
+  sequence of functions of $z \in \mathbb{C}$, which are all defined
+  and single-valued in some region of the $z$-plane. Let $U(z)$ be the
+  limit of $u_n(z)$ as $u \to \infty$, such that, $\lim_{n \to \infty}
+  u_n(z) = U(z)$. If, given any positive number $\epsilon$, there exists
+  an $N$ (which in general depends on $\epsilon$ and $z$) such that
+  \[ | u_n (z) - U(z) | < \epsilon \qquad \forall n > N \] In such a
+  case the sequence converges to $U(z)$.  \\ If such a sequnce
+  converges for all the points in a region, ${\cal R}$, then ${\cal
+    R}$ is a region of convergence of the sequence. \\ If the sequence
+  is not convergent at a point, $z$, it is described as being
+  divergent at that point.
+\end{definition}
+
+\begin{definition}[Series of Functions]
+  Let $\{ u_n(z) \}$ be a sequence of functions of $z \in \mathbb{C}$.
+  Let $\{ S_n(z) \}$ be a new sequence which is defined by
+  \[ S_n(z) = \sum_{k=1}^n u_n(z) \] Then $S_n(z)$ is the $n$th
+  partial sum. The sequence $\{ S_n(z) \}$ is an infinite series.  If
+  $\lim_{n \to \infty} S_n(z) = S(z)$ the series is convergent, and
+  $S(z)$ is the sum of the series. Otherwise it is divergent.
+\end{definition}
+
+\subsection{Laurent's Theorem}
+\label{sec:laurents-theorem}
+
+\begin{theorem}[Laurent's Theorem]
+  Let $C_1$ and $C_2$ be concentric circles of radii $R_1$ and $R_2$
+  respectively, which are centred on a point $a$. Suppose $f(z)$ is
+  single-valued and analytic on both circles, and in the annulus,
+  ${\cal R}$, bounded by each.  Let $a+h$ be any point in ${\cal R}$,
+  then
+  \[ f(a+h) = a_0 + a_1 h + a_2 h^2 + \cdots + \frac{a_{-1}}{h} +
+  \frac{a_{-2}}{h^2} + \cdots \] with \[ a_n = \frac{1}{2 \pi i}
+  \oint_{C_1} \frac{f(z)}{(z-a)^{n+1}} \dd{z} \quad n=0,1,2, \dots\]
+  \[ a_{-n} = \frac{1}{2 \pi i} \oint_{C_1} (z-a)^{n-1} f(z) \dd{z}
+  \quad n = 1,2, 3,\dots \]
+
+  If circles $C_1$ and $C_2$ represent the same circle, $C$, we can
+  write
+  \[ a_n = \frac{1}{2 \pi i} \oint_C \frac{f(z)}{(z-a)^{n+1}} \dd{z}
+  \quad n = 0, \pm 1, \pm 2,\dots \]
+
+  With a change of notation,
+  \[ f(z) = a_0 + a_1(z-a) + a_2 (z-a)^2 + \cdots + \frac{a_{-1}}{z-a}
+  + \frac{a_{-2}}{(z-a)^2} + \cdots \] where
+  \[ a_n = \frac{1}{2 \pi i} \oint_C \frac{f(\zeta)}{(\zeta -
+    a)^{n+1}} \dd{\zeta} \quad n = 0, \pm 1, \pm 2, \dots \] This is
+  Laurent's theorem, and the sequence $\{ a_n \}$ is a Laurent series
+  expansion of $f$.\\
+  The positive subscript components of the series form the analytic
+  part of the series, while the rest is the principle part.
+\end{theorem}
+
+
+
+%%%%% By rights there's plenty more which should go in here, but it
+%%%%% wasn't covered in the course, so I'll hold off on putting it in
+%%%%% for now.
+
+\section{Residues}
+\label{sec:residues}
+
+\begin{definition}[Residue]
+  Let $f(z)$ be a single-valued function of $z \in \mathbb{C}$ which
+  is analytic in and on a circle, $C$, except at the point $z=a$ at
+  the centre of $C$. Then, the Laurent series of $f(z)$ is
+  \[ f(z) = \sum_{n= - \infty}^{\infty} a_n (z-a)^n \] with \[ a_n =
+  \frac{1}{2 \pi i} \oint_C \frac{f(z)}{(z-a)^{n+1}} \dd{z} \quad n =
+  0, \pm 1, \pm 2, \dots \] In the case $n=-1$,
+  \[ \oint_C f(z) \dd{z} = 2 \pi i a_{-1} \] This can be obtained by
+  integrating the Laurent series term by term. In the case of $n=-1$
+  only $a_1$ is involved, so $a_1$ is called the residue of $f(z)$ at
+  $z=a$.
+\end{definition}
+
+%\end{document}

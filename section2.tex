@@ -1,0 +1,60 @@
+\documentclass{mn2e}
+\usepackage{danielphysics}
+\begin{document}
+
+\section{Lagrangian Mechanics}
+\label{sec:lagrangemex}
+
+\begin{definition}[Position]
+  The position of a particle in space can be defined by a
+  \emph{radius} vector, $\vec{r}$, which describes its location in
+  space in reference to a specific, defined point.
+\end{definition}
+\begin{definition}[Velocity]
+  The velocity, $\vec{v}$, of a particle is the time rate of change of its radius vector,
+\[ \vec{v} = \dv{\vec{r}}{t} = \dot{\vec{r}} \]
+\end{definition}
+\begin{definition}[Acceleration]
+  The acceleration, $\vec{a}$, of a particle is the time rate of change of its velocity,
+\[ \vec{a} = \dv{\vec{v}}{t} = \dv[2]{\vec{r}}{t} = \ddot{\vec{r}}\]
+\end{definition}
+
+When presented with a system of $N$ particles in space we need $N$
+radius vectors to fully describe the system, and, in 3-space, this
+results in needing $3N$ numbers to fully describe the system.
+
+\begin{definition}[Degrees of Freedom]
+  The number of degrees of freedom of a system describes the number of
+  independent parameters which define the system.
+\end{definition}
+
+Thus, we can say that a system of $N$ particles will have $3N$ degrees
+of freedom. There is no fundamental requirement to use Cartesian
+coordinates in describing a system.
+
+\begin{definition}[Generalised Coordinates]
+  For any system with $s$ degrees of freedom, the sequence of quantities
+  \[ q_1 + q_2 + \cdots + q_s \] are the generalised coordinates of
+  the system, and their derivatives, $\dot{q_i}$, are the generalised
+  velocities.
+\end{definition}
+
+If a system's coordinates and velocities are fully defined at a given
+instant the accelerations are uniquely defined, and it is possible to
+predict the future state of the system through equations of motion.
+
+\begin{definition}[Equation of Motion]
+  The positions, velocities, and accelerations of a system are related
+  through second-order differential equations for the functions $q(t)$.
+\end{definition}
+The most general equation of motion is the \emph{principle of least
+  action}, in which every system is characterised by a definite
+function $L(q, \dot{q},t)$.
+
+\begin{definition}[Principle of Least Action]
+  Consider a system at two instants, $t_1$ and $t_2$, described by
+  coordinates $q^{(1)}$, $q^{(2)}$, and velocities $\dot{q}^{(1)}$,
+  $\dot{q}^{(2)}$ respectively.
+\end{definition}
+
+\end{document}

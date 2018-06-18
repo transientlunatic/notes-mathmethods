@@ -1,0 +1,17 @@
+\definecolor{accent-pink}{HTML}{C3325F}
+\definecolor{accent-red}{HTML}{9d261d}
+\definecolor{accent-purple}{HTML}{7a43b6}
+\definecolor{muted-blue}{HTML}{195073}
+\definecolor{muted-green}{HTML}{7F8C1F}
+\definecolor{muted-orange}{HTML}{EE913F}
+\begin{tikzpicture}
+  \draw [->, thick, accent-red] (0,0) -- (0,2.5);
+  \draw [->, thick, accent-red] (0,0) -- (-1, -1.5);
+  \draw [->, thick, accent-red] (0,0) -- (3,0);
+ 
+  \draw [->>, ultra thick, accent-purple] (0,2) -- (2,1.5);
+  \draw [dashed, muted-orange] (2,1.5) -- (2, -1);
+  \draw [<->] (0,0) -- (2,-1) node [below,] {$r$};
+  \draw [<->] (-.1,0) -- (-.1,2) node [left] {$z$};
+  \draw [<->] (.5, -.3) arc (300:255:1) node [yshift=-2pt, below] {$\phi$};
+\end{tikzpicture}

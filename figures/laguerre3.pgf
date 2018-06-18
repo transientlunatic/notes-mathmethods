@@ -1,0 +1,11 @@
+\begin{tikzpicture}
+  \begin{axis}[
+    width=\linewidth, height=\linewidth
+    ]
+    \addplot3[raw gnuplot, surf, samples=100]{
+      set xrange[-1:5];	
+      lag(n,x) = (n==0) ? 1 : (n==1) ? -x+1 : ( (2*(n-1)+1-x) * lag(n-1,x) - (n-1) * lag(n-2, x) ) / (n);
+      splot lag(y,x);
+    } 
+  \end{axis}
+\end{tikzpicture}

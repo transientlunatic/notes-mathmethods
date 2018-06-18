@@ -1,0 +1,12 @@
+\begin{centering}
+\begin{tikzpicture}[scale=1.0]
+%\draw[help lines] (0,0) grid (8,3);
+\begin{axis}[width=\linewidth, height=2in, xmin=-1, xmax=1, samples=50]%[hide axis, axis on top]
+    \addplot gnuplot[raw gnuplot, id=leg1, mark=none, domain=-1:1, muted-blue, ultra thick]{
+    	     set xrange [-1:1];
+    	     step(x) = (x>0) ? 1 : 0;
+	     plot step(x);
+    };
+\end{axis}
+\end{tikzpicture}
+\end{centering}

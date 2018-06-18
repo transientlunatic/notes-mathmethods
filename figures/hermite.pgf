@@ -1,0 +1,40 @@
+\begin{tikzpicture}
+    \begin{axis} [
+    width=\linewidth, height=2in,
+    xmin=-3, xmax=3,
+    ymin=-60, ymax=50,
+%   xtick={7700,7725,...,7800},
+%   ymin=0.009, ymax=0.05,
+    ]
+    \addplot gnuplot[raw gnuplot, id=bess, mark=none, muted-blue, ultra thick]{
+      set xrange[-3:3];
+      set yrange[-40:50];	
+      herm(n,x) = (n==0) ? 1 : (n==1) ? 2*x : 2*x*herm(n-1,x)-2*n*herm(n-2,x);
+      plot herm(0,x);
+    };
+    \addplot gnuplot[raw gnuplot, id=bess2, mark=none, muted-green, ultra thick]{
+      set xrange[-3:3];
+      set yrange[-40:50];	
+      herm(n,x) = (n==0) ? 1 : (n==1) ? 2*x : 2*x*herm(n-1,x)-2*n*herm(n-2,x);
+      plot herm(1,x);
+    };
+    \addplot gnuplot[raw gnuplot, id=bess3, mark=none, muted-orange, ultra thick]{
+      set xrange[-3:3];
+      set yrange[-40:50];	
+      herm(n,x) = (n==0) ? 1 : (n==1) ? 2*x : 2*x*herm(n-1,x)-2*n*herm(n-2,x);
+      plot herm(2,x);
+    };
+    \addplot gnuplot[raw gnuplot, id=bess4, mark=none, accent-purple, ultra thick]{
+      set xrange[-3:3];
+      set yrange[-40:50];	
+      herm(n,x) = (n==0) ? 1 : (n==1) ? 2*x : 2*x*herm(n-1,x)-2*n*herm(n-2,x);
+      plot herm(3,x);
+    };
+    \addplot gnuplot[raw gnuplot, id=bess5, mark=none, accent-red, ultra thick]{
+      set xrange[-3:3];
+      set yrange[-40:50];	
+      herm(n,x) = (n==0) ? 1 : (n==1) ? 2*x : 2*x*herm(n-1,x)-2*n*herm(n-2,x);
+      plot herm(4,x);
+    };
+    \end{axis}
+\end{tikzpicture}
