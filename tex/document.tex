@@ -1,0 +1,94 @@
+\documentclass{momento}
+\usepackage{physicsplus}
+%\usepackage{danielgroups}
+%\usepackage{tikz-3dplot}
+
+\usepackage{gnuplot-lua-tikz}
+\newcommand{\python}[2]{ python scripts/legendre.py -n #1 -m #2}
+
+\renewcommand{\dyad}[1]{\boldsymbol{\rm #1}}
+\usepgfplotslibrary{polar}
+\title{Mathematical Methods for Physics}
+\author{Daniel Williams}
+%\pubyear{2014}
+\setcounter{section}{-1}
+
+\begin{document} \maketitle
+
+\begin{tikzpicture}[overlay]
+   \coordinate (A) at (-3,5.5);
+   \begin{axis} [opacity=0.7,hide axis,width=10in, height=3in,xmin=0, xmax=20, at=(A)]
+    \addplot gnuplot[fill, raw gnuplot, id=bess, mark=none, muted-blue, ultra thick]{
+      set xrange[0:20];
+      plot besj0(x);
+    } \closedcycle;
+     \addplot gnuplot[opacity=0.7,fill,raw gnuplot, id=bess2, mark=none, muted-green, ultra thick]{
+      set xrange[0:20];
+      plot besj1(x);
+    } \closedcycle;
+    \addplot gnuplot[opacity=0.7,fill,raw gnuplot, id=bess3, mark=none, muted-orange, ultra thick]{
+      set xrange[0:20];
+      fac(n) = (int(n)==0) ? 1.0 : int(n) * fac(int(n)-1.0);
+      besj_eps = 0.1;
+      besj(n,x) = (n==0) ? besj0(x) : (n==1) ? besj1(x) : (abs(x)<besj_eps*(n+1)) ? (x/2.0)**n/fac(n) : 2*(n-1)/x*besj(n-1,x) - besj(n-2,x);
+      plot besj(2,x);
+    } \closedcycle;
+    \addplot gnuplot[opacity=0.7,fill,raw gnuplot, id=bess4, mark=none, accent-purple, ultra thick]{
+      set xrange[0:20];
+      fac(n) = (int(n)==0) ? 1.0 : int(n) * fac(int(n)-1.0);
+      besj_eps = 0.1;
+      besj(n,x) = (n==0) ? besj0(x) : (n==1) ? besj1(x) : (abs(x)<besj_eps*(n+1)) ? (x/2.0)**n/fac(n) : 2*(n-1)/x*besj(n-1,x) - besj(n-2,x);
+      plot besj(3,x);
+    }\closedcycle;
+    \addplot gnuplot[opacity=0.7,fill,raw gnuplot, id=bess5, mark=none, accent-red, ultra thick]{
+      set xrange[0:20];
+      fac(n) = (int(n)==0) ? 1.0 : int(n) * fac(int(n)-1.0);
+      besj_eps = 0.1;
+      besj(n,x) = (n==0) ? besj0(x) : (n==1) ? besj1(x) : (abs(x)<besj_eps*(n+1)) ? (x/2.0)**n/fac(n) : 2*(n-1)/x*besj(n-1,x) - besj(n-2,x);
+      plot besj(4,x);
+    }\closedcycle;
+  \end{axis}
+\end{tikzpicture}
+
+% \begin{abstract}
+%   These notes are based on a lecture course taught by Professor C
+%   Davies and Dr Douglas MacGregor during the winter term of the 2013 session.
+% \end{abstract}
+\tableofcontents
+
+\chapter{Partial Differential Equations}
+\label{cha:part-diff-equat}
+
+\input{pdes}
+
+\chapter{Special Functions}
+\label{cha:special-functions}
+
+\input{special}
+
+\chapter{Linear Algebra}
+\label{cha:linear-algebra}
+
+\input{notes2}
+
+\section{Sturm-Liouville Problems}
+\label{sec:sturm-liouv-probl}
+
+\input{sturm}
+
+\chapter{Multilinear Algebra}
+\label{cha:multilinear-algebra}
+
+\input{multilinear}
+
+\chapter{Complex Analysis}
+\label{cha:complex-analysis}
+
+\input{complex}
+
+\chapter{Group Theory}
+\label{cha:group-theory}
+
+\input{groups}
+
+\end{document}
