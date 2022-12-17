@@ -41,7 +41,9 @@ Mathematics
    :maxdepth: 1
    :caption: Abstract algebra
 
-   groups
+   abstract/sets
+   abstract/operations
+   abstract/groups
 
 .. toctree::
    :maxdepth: 1

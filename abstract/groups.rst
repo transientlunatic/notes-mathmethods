@@ -4,48 +4,53 @@ Group Theory
 Basic Concepts
 --------------
 
-[Group] A group is an abstract mathematical entity which is composed of
-a set, :math:`G`, with an associated binary operation, :math:`*`. In
-order to be a group, the pair :math:`(G, *)` must satisfy the follwing
-axioms,
+.. prf:definition:: Group
+   :label: def:group
+		    A group is an abstract mathematical entity which is composed of a set, :math:`G`, with an associated binary operation, :math:`*`.
+		    In order to be a group, the pair :math:`(G, *)` must satisfy the follwing axioms,
 
-#. For all :math:`a,b \in G`, :math:`a*b \in G` (closure).
-   [itm:groupclosure]
+   .. prf:axiom:: Closure
+      :label: ax:group:closure
+	      
+	      For all :math:`a,b \in G`, :math:`a*b \in G`.
 
-#. For all :math:`a,b,c, \in G`, :math:`(a*b)*c = a*(b*c)`
-   (associativity). [itm:groupassoc]
+   .. prf:axiom:: Assosciativity
+      :label: ax:group:assosciativity
+	      
+	      For all :math:`a,b,c, \in G`, :math:`(a*b)*c = a*(b*c)`. [itm:groupassoc]
 
-#. There exists :math:`e \in G`, such that, for every :math:`a \in G`,
-   :math:`a*e = e*a = a` holds (identity). [itm:groupidentity]
+   .. prf:axiom:: Identity
+      :label: ax:group:identity
+	      
+	      There exists :math:`e \in G`, such that, for every :math:`a \in G`, :math:`a*e = e*a = a` holds.
 
-#. For each :math:`a \in G` there exists a :math:`b \in G` such that
-   :math:`a*b = b*a = e` (inverse). [itm:groupinverse]
+   .. prf:axiom:: Inverse
+      :label: ax:group:inverse
+	      
+	      For each :math:`a \in G` there exists a :math:`b \in G` such that :math:`a*b = b*a = e`.
 
-[Group Order] The order of a group is the number of elements it
-contains. If the group has finite order the group is described as a
-finite group; if it has an infinite number of elements it is an infinite
-group.
+.. prf:definition:: Group Order
 
-The hours on a clock represent a group, with a set :math:`H =
-  \{1,2,3,4,5,6,7,8,9,10,11,12\}`, and an operation, addition
-:math:`\mod
-  12`. The order of this group is 12, as it contains 12 elements.
+		    The order of a group is the number of elements it contains.
+		    If the group has finite order the group is described as a finite group; if it has an infinite number of elements it is an infinite group.
 
-[Homomorphism] Given two groups, :math:`(G,*)` and :math:`(H, \cdot)`, a
-group homomorphism grom :math:`(G,*)` to :math:`(H, \cdot)` is a
-function :math:`h|G \to H`, such that, for all :math:`u` and :math:`v`
-in :math:`G` it holds
+.. prf:example:: A Clock Face
+		 
+		 The hours on a clock represent a group, with a set :math:`H =   \{1,2,3,4,5,6,7,8,9,10,11,12\}`,
+		 and an operation, addition :math:`\mod 12`.
+		 The order of this group is 12, as it contains 12 elements.
 
-.. math:: h(u * v) = h(u)\cdot h(v)
+.. prf:definition:: Homomorphism
+		    
+		    Given two groups, :math:`(G,*)` and :math:`(H, \cdot)`, a group homomorphism from :math:`(G,*)` to :math:`(H, \cdot)` is a function :math:`h|G \to H`, such that, for all :math:`u` and :math:`v` in :math:`G` it holds
 
-| [Isomophism] A group isomorphism is a function between two groups
-  which sets up a bijection between the elements of the groups in a way
-  which respects the given group operations.
-| Given two groups, :math:`(G,*)` and :math:`(H, \cdot)`, a group
-  isomorphism from :math:`(G,*)` to :math:`(H,\cdot)` is a bijective
-  group homomorphism from :math:`G` to :math:`H`, that is, an
-  isomorphism is a bijective function :math:`f : G \to H`, such that,
-  for all :math:`u,v \in G`, it holds
+		    .. math:: h(u * v) = h(u)\cdot h(v)
+
+.. prf:definition:: Isomophism
+
+		    A group isomorphism is a function between two groups which sets up a bijection between the elements of the groups in a way which respects the given group operations.
+		    
+Given two groups, :math:`(G,*)` and :math:`(H, \cdot)`, a group   isomorphism from :math:`(G,*)` to :math:`(H,\cdot)` is a bijective group homomorphism from :math:`G` to :math:`H`, that is, an isomorphism is a bijective function :math:`f : G \to H`, such that, for all :math:`u,v \in G`, it holds
 
   .. math::
 
