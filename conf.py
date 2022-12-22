@@ -19,8 +19,8 @@ import kentigern
 
 # -- Project information -----------------------------------------------------
 
-project = 'Mathematics for Physics'
-copyright = '2020, Daniel Williams'
+project = "Daniel's notes on mathematics"
+copyright = '2020-2022, Daniel Williams'
 author = 'Daniel Williams'
 
 # The full version, including alpha/beta/rc tags
@@ -33,9 +33,12 @@ release = 'v0.1'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = ['sphinx.ext.imgconverter',
+              'matplotlib.sphinxext.plot_directive',
 #              'sphinxcontrib.bibtex',
               'sphinxcontrib.tikz',
-              'sphinx_proof']
+              'sphinx_proof',
+              'sphinx.ext.mathjax',
+              'sphinx-mathjax-offline']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -59,6 +62,11 @@ html_theme = 'kentigern'
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 #html_static_path = ['_static']
+
+
+plot_html_show_source_link = False
+plot_html_show_formats = False
+plot_rcparams = {"figure.dpi": 300, "figure.figsize":(8,4)}
 
 mathjax_path = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
 mathjax_config = {

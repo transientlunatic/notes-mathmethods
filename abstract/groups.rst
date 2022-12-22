@@ -4,10 +4,14 @@ Group Theory
 Basic Concepts
 --------------
 
+A Group is a structure consisting of a :prf:ref:`set<def:set>` extended with an :prf:ref:`operation<def:operation>` which together satisfy four axioms.
+
 .. prf:definition:: Group
    :label: def:group
-		    A group is an abstract mathematical entity which is composed of a set, :math:`G`, with an associated binary operation, :math:`*`.
-		    In order to be a group, the pair :math:`(G, *)` must satisfy the follwing axioms,
+
+   A group is an abstract mathematical entity which is composed of a set, :math:`G`, with an associated binary operation, :math:`*`.
+
+   In order to be a group, the pair :math:`(G, *)` must satisfy the following axioms,
 
    .. prf:axiom:: Closure
       :label: ax:group:closure
@@ -17,7 +21,7 @@ Basic Concepts
    .. prf:axiom:: Assosciativity
       :label: ax:group:assosciativity
 	      
-	      For all :math:`a,b,c, \in G`, :math:`(a*b)*c = a*(b*c)`. [itm:groupassoc]
+	      For all :math:`a,b,c, \in G`, :math:`(a*b)*c = a*(b*c)`.
 
    .. prf:axiom:: Identity
       :label: ax:group:identity
@@ -29,6 +33,9 @@ Basic Concepts
 	      
 	      For each :math:`a \in G` there exists a :math:`b \in G` such that :math:`a*b = b*a = e`.
 
+   A group is normally denoted by specifying the set and the operation together in the form :math:`<G, +>` for the group consisting of set :math:`G` and operation :math:`+` for example.
+
+	      
 .. prf:definition:: Group Order
 
 		    The order of a group is the number of elements it contains.

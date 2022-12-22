@@ -22,7 +22,11 @@ Mathematics
    :maxdepth: 1
    :caption: Special functions
 
-   special
+   special/legendre
+   special/spherical-harmonics
+   special/laguerre
+   special/bessel
+   special/hermite
 
 .. toctree::
    :maxdepth: 1
@@ -43,6 +47,7 @@ Mathematics
 
    abstract/sets
    abstract/operations
+   abstract/functions
    abstract/groups
 
 .. toctree::
