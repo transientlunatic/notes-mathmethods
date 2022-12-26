@@ -1,5 +1,6 @@
+===============
 Operator theory
-================
+===============
 
 Linear operators can be further generalised to a wider class of
 *differential operators*, :math:`{\cal L}` which act on eigenfunctions

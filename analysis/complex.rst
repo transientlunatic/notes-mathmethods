@@ -3,43 +3,38 @@ Complex analysis is the study of functions of complex variables.
 Complex Functions
 =================
 
-[Complex Function] A complex function is a function which maps a complex
-number to another complex number.
+.. prf:definition:: Complex function
 
-Any complex function, like a complex number, can be split into real and
-imaginary components, so, a function :math:`w: \mathbb{C} \to
-\mathbb{C}` can be composed of two functions, :math:`u: \mathbb{R} \to
-\mathbb{R}`, and :math:`v: \mathbb{R} \to \mathbb{R}`, so
+		    A complex function is a function which maps a complex number to another complex number.
 
-.. math:: w(z) = u(x,y) + i v(x,y)
+Any complex function, like a complex number, can be split into real and imaginary components, so, a function :math:`w: \mathbb{C} \to
+\mathbb{C}` can be composed of two functions, :math:`u: \mathbb{R} \to \mathbb{R}`, and :math:`v: \mathbb{R} \to \mathbb{R}`, so
 
-[Multi-valued Function] A multi-valued function is a left-total
-relation, such that each member in the domain of the relation
-corresponds to at least one member in the co-domain.
+.. math::
+   \require{physics}
+   w(z) = u(x,y) + i v(x,y)
 
-The name “function” for these objects is a misnomer, and they are in
-fact relations, since functions must always map to only a single value.
+.. prf:definition:: Multi-valued Function
 
-The relation :math:`w^2 = z` is multi-valued, because, for example, both
-:math:`w=\pm 1` map to the same value; in fact every output value
-greater than 0 is mapped to by two numbers.
+		    A multi-valued function is a left-total relation, such that each member in the domain of the relation corresponds to at least one member in the co-domain.
 
-Dealing with multi-valued functions requires a new framework compared to
-normal functions. One approach is to consider the *branching* of a
-function.
+The name “function” for these objects is a misnomer, and they are in fact relations, since functions must always map to only a single value.
 
-[Branch Point] The branch points of a multi-valued function are the
-points in the complex plane where the complex argument can be mapped
-from a single point in the domain to multiple points in the range of the
-relation.
+The relation :math:`w^2 = z` is multi-valued, because, for example, both :math:`w=\pm 1` map to the same value; in fact every output value greater than 0 is mapped to by two numbers.
 
-[Winding Number] The winding number for a closed curve on a plane around
-a point is an integer which represents the number of closed circuits the
-curve makes around the point.
+Dealing with multi-valued functions requires a new framework compared to normal functions.
+One approach is to consider the *branching* of a function.
 
-Let :math:`w(\theta) = z(\theta)^{\half}`, with
-:math:`z \in \mathbb{C}`, such that :math:`z = e^{i \theta}`. Taking the
-value of :math:`w` at two points, :math:`0`, and :math:`2 \pi`, we find
+.. prf:definition:: Branch Point
+
+		    The branch points of a multi-valued function are the points in the complex plane where the complex argument can be mapped from a single point in the domain to multiple points in the range of the relation.
+
+.. prf:definition:: Winding Number
+
+		    The winding number for a closed curve on a plane around a point is an integer which represents the number of closed circuits the curve makes around the point.
+
+Let :math:`w(\theta) = z(\theta)^{\half}`, with :math:`z \in \mathbb{C}`, such that :math:`z = e^{i \theta}`.
+Taking the value of :math:`w` at two points, :math:`0`, and :math:`2 \pi`, we find
 
 .. math:: w(0) = e^0 = 1
 
@@ -277,78 +272,75 @@ Then :math:`S_n(z)` is the :math:`n`\ th partial sum. The sequence
 Laurent’s Theorem
 -----------------
 
-[Laurent’s Theorem] Let :math:`C_1` and :math:`C_2` be concentric
-circles of radii :math:`R_1` and :math:`R_2` respectively, which are
-centred on a point :math:`a`. Suppose :math:`f(z)` is single-valued and
-analytic on both circles, and in the annulus, :math:`{\cal R}`, bounded
-by each. Let :math:`a+h` be any point in :math:`{\cal R}`, then
+.. prf:theorem:: Laurent's Theorem
+		 
+		 Let :math:`C_1` and :math:`C_2` be concentric circles of radii :math:`R_1` and :math:`R_2` respectively, which are centred on a point :math:`a`.
+		 Suppose :math:`f(z)` is single-valued and analytic on both circles, and in the annulus, :math:`{\cal R}`, bounded by each.
+		 Let :math:`a+h` be any point in :math:`{\cal R}`, then
 
-.. math::
+		 .. math::
+		    
+		    f(a+h) = a_0 + a_1 h + a_2 h^2 + \cdots + \frac{a_{-1}}{h} +
+		    \frac{a_{-2}}{h^2} + \cdots
 
-   f(a+h) = a_0 + a_1 h + a_2 h^2 + \cdots + \frac{a_{-1}}{h} +
-     \frac{a_{-2}}{h^2} + \cdots
+		 with
 
-with
+		 .. math::
 
-.. math::
+		    a_n = \frac{1}{2 \pi i}
+		    \oint_{C_1} \frac{f(z)}{(z-a)^{n+1}} \dd{z} \quad n=0,1,2, \dots
 
-   a_n = \frac{1}{2 \pi i}
-     \oint_{C_1} \frac{f(z)}{(z-a)^{n+1}} \dd{z} \quad n=0,1,2, \dots
+		 .. math::
 
-.. math::
+		    a_{-n} = \frac{1}{2 \pi i} \oint_{C_1} (z-a)^{n-1} f(z) \dd{z}
+		    \quad n = 1,2, 3,\dots
 
-   a_{-n} = \frac{1}{2 \pi i} \oint_{C_1} (z-a)^{n-1} f(z) \dd{z}
-     \quad n = 1,2, 3,\dots
+		 If circles :math:`C_1` and :math:`C_2` represent the same circle, :math:`C`, we can write
 
-If circles :math:`C_1` and :math:`C_2` represent the same circle,
-:math:`C`, we can write
+		 .. math::
 
-.. math::
+		    a_n = \frac{1}{2 \pi i} \oint_C \frac{f(z)}{(z-a)^{n+1}} \dd{z}
+		    \quad n = 0, \pm 1, \pm 2,\dots
 
-   a_n = \frac{1}{2 \pi i} \oint_C \frac{f(z)}{(z-a)^{n+1}} \dd{z}
-     \quad n = 0, \pm 1, \pm 2,\dots
+		 With a change of notation,
 
-| With a change of notation,
+		 .. math::
 
-  .. math::
+		    f(z) = a_0 + a_1(z-a) + a_2 (z-a)^2 + \cdots + \frac{a_{-1}}{z-a}
+		    + \frac{a_{-2}}{(z-a)^2} + \cdots
 
-     f(z) = a_0 + a_1(z-a) + a_2 (z-a)^2 + \cdots + \frac{a_{-1}}{z-a}
-       + \frac{a_{-2}}{(z-a)^2} + \cdots
+		 where
 
-  where
+		 .. math::
 
-  .. math::
+		    a_n = \frac{1}{2 \pi i} \oint_C \frac{f(\zeta)}{(\zeta -
+		    a)^{n+1}} \dd{\zeta} \quad n = 0, \pm 1, \pm 2, \dots
 
-     a_n = \frac{1}{2 \pi i} \oint_C \frac{f(\zeta)}{(\zeta -
-         a)^{n+1}} \dd{\zeta} \quad n = 0, \pm 1, \pm 2, \dots
-
-   This is Laurent’s theorem, and the sequence :math:`\{ a_n \}` is a
-  Laurent series expansion of :math:`f`.
-| The positive subscript components of the series form the analytic part
-  of the series, while the rest is the principle part.
+		 This is Laurent’s theorem, and the sequence :math:`\{ a_n \}` is a Laurent series expansion of :math:`f`.
+		 
+		 The positive subscript components of the series form the analytic part of the series, while the rest is the principle part.
 
 Residues
 ========
 
-[Residue] Let :math:`f(z)` be a single-valued function of
-:math:`z \in \mathbb{C}` which is analytic in and on a circle,
-:math:`C`, except at the point :math:`z=a` at the centre of :math:`C`.
-Then, the Laurent series of :math:`f(z)` is
+.. prf:definition:: Residue
 
-.. math:: f(z) = \sum_{n= - \infty}^{\infty} a_n (z-a)^n
+		    Let :math:`f(z)` be a single-valued function of :math:`z \in \mathbb{C}` which is analytic in and on a circle, :math:`C`, except at the point :math:`z=a` at the centre of :math:`C`.
+		    Then, the Laurent series of :math:`f(z)` is
 
-with
+		    .. math:: f(z) = \sum_{n= - \infty}^{\infty} a_n (z-a)^n
 
-.. math::
+		    with
 
-   a_n =
-     \frac{1}{2 \pi i} \oint_C \frac{f(z)}{(z-a)^{n+1}} \dd{z} \quad n =
-     0, \pm 1, \pm 2, \dots
+		    .. math::
 
- In the case :math:`n=-1`,
+		       a_n =
+			 \frac{1}{2 \pi i} \oint_C \frac{f(z)}{(z-a)^{n+1}} \dd{z} \quad n =
+			 0, \pm 1, \pm 2, \dots
 
-.. math:: \oint_C f(z) \dd{z} = 2 \pi i a_{-1}
+		    In the case :math:`n=-1`,
 
- This can be obtained by integrating the Laurent series term by term. In
-the case of :math:`n=-1` only :math:`a_1` is involved, so :math:`a_1` is
-called the residue of :math:`f(z)` at :math:`z=a`.
+		    .. math:: \oint_C f(z) \dd{z} = 2 \pi i a_{-1}
+
+		    This can be obtained by integrating the Laurent series term by term.
+		    In the case of :math:`n=-1` only :math:`a_1` is involved, so :math:`a_1` is called the residue of :math:`f(z)` at :math:`z=a`.

@@ -2,3 +2,6 @@ sphinx
 sphinxcontrib-bibtex
 sphinxcontrib-tikz
 sphinxcontrib-thm
+sphinx-proof
+sphinx-mathjax-offline
+matplotlib

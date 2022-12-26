@@ -13,13 +13,6 @@ Mathematics
 
 .. toctree::
    :maxdepth: 1
-   :caption: Linear algebra
-
-   linear
-   multilinear
-
-.. toctree::
-   :maxdepth: 1
    :caption: Special functions
 
    special/legendre
@@ -32,14 +25,25 @@ Mathematics
    :maxdepth: 1
    :caption: Analysis
 
-   complex
+   analysis/real
+   analysis/complex
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Calculus
+
+   calculus/coordinates
+   calculus/vector
+   calculus/stirling
+   calculus/sturm
 
 .. toctree::
    :maxdepth: 1
    :caption: Differential equations
 
-   sturm
-   pdes
+   calculus/odes
+   calculus/pdes
+   calculus/solving-pdes
 
 .. toctree::
    :maxdepth: 1
@@ -49,18 +53,40 @@ Mathematics
    abstract/operations
    abstract/functions
    abstract/groups
+   abstract/fields
 
 .. toctree::
    :maxdepth: 1
    :caption: Discrete maths
 
-   graph
+   discrete/graph
 
+.. toctree::
+   :maxdepth: 1
+   :caption: Linear algebra
+
+   linear
+   linear/inner-product-spaces
+   linear/coordinates
+   linear/matrices
+   linear/transformations
+   multilinear
+   linear/one-forms
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Geometry
+
+   geometry/manifolds
+   geometry/differential-forms
+   
 .. toctree::
    :maxdepth: 1
    :caption: Probability
 
    probability
+   prob-distributions/index
+
    
 .. toctree::
    :caption: Extras

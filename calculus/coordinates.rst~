@@ -1,0 +1,25 @@
+Spherical Polar Coordinates
+---------------------------
+
+They are related to Cartesian coordinates by the transformations:
+
+.. math::
+
+   \begin{aligned}
+         x &= r \sin \theta \cos \phi \label{eq:sph1}\\
+         y &= r \sin \theta \sin \phi \label{eq:sph2}\\
+         z &= r \cos \theta \label{eq:sph3}
+       \end{aligned}
+
+Cylindrical Polar Coordinates
+-----------------------------
+
+They are related to Cartesian coordinates by the transformations:
+
+.. math::
+
+   \begin{aligned}
+         x &= r \cos \theta \label{eq:cyl1}\\
+         y &= r \sin \theta \label{eq:cyl2}\\
+         z &= z \label{eq:cyl3}
+       \end{aligned}

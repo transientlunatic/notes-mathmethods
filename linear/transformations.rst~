@@ -1,0 +1,166 @@
+Linear Mappings
+===============
+
+Let :math:`X,Y,Z` denote sets.
+
+.. prf:definition:: Mapping
+
+		    A mapping :math:`f:X \to Y` is a rule associating every element in :math:`X` with a unique member of :math:`Y`.
+		    :math:`X` is the domain, and :math:`Y` is the codomain of the mapping.
+
+[Function Composition] Given two mappings :math:`f:X \to Y` and
+:math:`g:Y \to Z`, the composition, :math:`g
+  \circ f: X \to Z` is the mapping
+
+.. math:: (g \circ f)(x) = g(f(x)) \qquad \forall x \in X
+
+[Identity Mapping] The identity mapping
+
+.. math:: \idmap_X : X \to X
+
+is defined by
+
+.. math:: \idmap_X(x) = x \quad \forall x \in X
+
+[Zero Mapping] Provided :math:`Y` contains a zero element :math:`0`, the
+zero mapping, :math:`0_x:X
+  \to Y` is defined
+
+.. math:: 0_x(x) = 0 \quad \forall x \in X
+
+| [Injective, surjective, and bijective mappings] A mapping
+  :math:`f:X \to Y` is injective if for all :math:`x_1, x_2 \in X`,
+
+  .. math:: f(x_1) = f(x_2) \implies x_1 = x_2
+
+  A mapping :math:`f: X \to Y` is called surjective if, for every
+  :math:`y \in Y` there exists at least one :math:`x \in X` for which
+  :math:`y = f(x)`.
+| A mapping is bijective if it is both injective and surjective.
+
+A mapping :math:`f:X \to Y` is bijective iff there is an inverse mapping
+
+.. math:: h: Y \to X
+
+such that
+
+.. math::
+
+   h \circ f = \idmap_X \quad
+     \text{and} \quad f \circ h = \idmap_Y
+
+[Linear Mapping] Let :math:`\vs{V}, \vs{W}` be vector spaces over a
+field :math:`F`. A linear mapping (or linear transformation) from
+:math:`\vs{V}` to :math:`\vs{W}` is a mapping
+
+.. math:: f: \vs{V} \to \vs{W}
+
+such that
+
+.. math:: f(\alpha \vec{u} + \beta \vec{v}) = \alpha f(\vec{u}) + \beta f(\vec{v})
+
+ :math:`\forall \alpha, \beta \in F` and
+:math:`\vec{u}, \vec{v} \in \vs{V}`.
+
+Examples of linear mappings are linear functions, and the linear
+differential operator.
+
+[Matrix of a linear mapping with respect to a given basis] Let
+:math:`f:\vs{V} \to \vs{W}` be a mapping between two vector spaces
+:math:`\vs{V}` and :math:`\vs{W}` over :math:`F`. Suppose
+:math:`S_1: \vec{v}_1, \vec{v}_2,
+  \dots, \vec{v}_n` is a basis for :math:`\vs{V}`, and
+:math:`S_2: \vec{w}_1,
+  \vec{w}_2, \cdots \vec{w}_m` is a basis for :math:`\vs{W}`. Then, for
+:math:`j
+  = 1,2, \dots, n`,
+
+.. math::
+
+   f(\vec{v}_j) = a_{1j} \vec{w}_1 + a_{2j} \vec{w}_2 + \cdots +
+     a_{mj} \vec{w}_m
+
+for scalars :math:`a_{ij}`, with :math:`i = 1,2, \dots, m`,
+:math:`j=1,2, \dots, n`, then the matrix
+
+.. math:: A = \qty[a_{ij}]
+
+ is the matrix of :math:`f` with respect to the bases :math:`S_1` and
+:math:`S_2`.
+
+Let :math:`f:\vs{V} \to \vs{W}` and :math:`g:\vs{V}\to \vs{W}` be linear
+mappings of vector spaces over :math:`F`, and let
+:math:`\gamma , \delta \in
+  F`. Then the mapping :math:`\gamma f + \delta g : \vs{V} \to \vs{W}`
+defined by the rule
+
+.. math::
+
+   (\gamma f + \delta g)(\vec{v}) = \gamma f(\vec{v}) + \delta
+     g(\vec{v}) \qquad (\vec{v} \in \vs{V})
+
+is a linear mapping.
+
+[Kernel of a linear mapping] Let :math:`f:\vs{V} \to \vs{W}` be a linear
+mapping between the vecotr spaces :math:`\vs{V}` and :math:`\vs{W}` over
+:math:`F`. The kernel of :math:`f` is the set of vectors from the domain
+of :math:`f` which are mapped to the zero vector of the codomain
+:math:`\vs{W}`. That is,
+
+.. math::
+
+   \ker(f) = \{ \vec{v}
+     \in \vs{V} : f(\vec{v}) = \vec{0} \}
+
+[Image of a linear mapping] Let :math:`f:\vs{v} \to \vs{W}` be a linear
+mapping of vector spaces over :math:`F`. The image is
+
+.. math::
+
+   \img(f) = \{ f(\vec{v}) : \vec{v} \in \vs{V}
+     \}
+
+the set of vectors in the codomain, :math:`\vs{W}`, which are mapped to
+by at least one vector from :math:`\vs{V}`.
+
+Let :math:`f: \vs{V} \to \vs{W}` be a linear mapping of vector spaces
+over :math:`F`, then
+
+-  :math:`\ker(f)` is a subspace of :math:`\vs{V}`.
+
+-  :math:`\img(f)` is a subspace of :math:`\vs{W}`.
+
+Let :math:`f: \vs{V} \to \vs{W}` be a linear mapping of vector spaces
+then,
+
+#. :math:`f` is injective iff :math:`\ker(f) = \{ \emptyset \}`
+
+#. :math:`f` is surjective iff :math:`\img(f) = \vs{W}`
+
+#. :math:`f` is bijective iff :math:`\ker(f) = \{ \emptyset \}` and
+   :math:`\img(f) = \vs{W}`
+
+| [Rank and Nullity] Let :math:`f: \vs{V} \to \vs{W}` be a linear
+  mapping of vector spaces over :math:`F`.
+| The rank of :math:`f`, denoted :math:`\rank(f)` is defined
+
+  .. math::
+
+     \rank(f) =
+       \dim(\img(f))
+
+  and the nullity of :math:`f` is denoted :math:`\nullity(n)`, and is
+  defined
+
+  .. math:: \nullity(f) = \dim(\ker(f))
+
+Let :math:`f: \vs{V} \to \vs{W}` be a linear mapping between finite
+dimensional vector spaces over :math:`F`, then
+
+#. :math:`f` is injective iff :math:`\nullity(f)=0`
+
+#. :math:`f` is surjective iff :math:`\rank(f) = \dim(\vs{W})`
+
+#. :math:`f` is bijective iff :math:`\nullity(f) = 0` and
+   :math:`\rank(f) =
+       \dim(\vs{W})`
