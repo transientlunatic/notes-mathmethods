@@ -8,33 +8,35 @@
    Many of them were taken at some speed, so please be cautious while using them.
    I'm working to revise them, but this is slow work, and taken-on mostly in spare time.
 
+===========
 Mathematics
---------------------------
+===========
+
+Numbers
+-------
 
 .. toctree::
    :maxdepth: 1
-   :caption: Special functions
+   :caption: Number Systems
 
-   special/legendre
-   special/spherical-harmonics
-   special/laguerre
-   special/bessel
-   special/hermite
+   numbers/reals
 
+Analysis & Calculus
+-------------------
+   
 .. toctree::
    :maxdepth: 1
    :caption: Analysis
 
    analysis/real
    analysis/complex
-
+   
 .. toctree::
    :maxdepth: 1
    :caption: Calculus
 
    calculus/coordinates
    calculus/vector
-   calculus/stirling
    calculus/sturm
 
 .. toctree::
@@ -45,6 +47,24 @@ Mathematics
    calculus/pdes
    calculus/solving-pdes
 
+
+Special Functions
+-----------------
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Special functions
+
+   special/legendre
+   special/spherical-harmonics
+   special/laguerre
+   special/bessel
+   special/hermite
+   calculus/stirling
+   
+Algebra
+-------
+   
 .. toctree::
    :maxdepth: 1
    :caption: Abstract algebra
@@ -55,12 +75,18 @@ Mathematics
    abstract/groups
    abstract/fields
 
+Discrete Mathematics
+--------------------
+   
 .. toctree::
    :maxdepth: 1
-   :caption: Discrete maths
+   :caption: Discrete mathematics
 
    discrete/graph
 
+Linear Algebra
+--------------
+   
 .. toctree::
    :maxdepth: 1
    :caption: Linear algebra
