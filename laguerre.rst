@@ -45,10 +45,10 @@ Laguerre polynomials,
    import numpy as np
    from scipy.special import genlaguerre
 
-   x = np.arange(-1, 5, 0.01)
+   x = np.linspace(-1, 5, 601)
 
    for n in [0, 1, 2, 3, 4]:
-      plt.plot(x, genlaguerre(n, 0)(x), label=n)
+      plt.plot(x, genlaguerre(n, 0)(x), label=f'$L_{n}(x)$')
    plt.ylim([-4, 4])
    plt.legend()
    plt.tight_layout()

@@ -106,10 +106,10 @@ polynomials, so
    import numpy as np
    from scipy.special import hermite
 
-   x = np.arange(-3, 3, 0.01)
+   x = np.linspace(-3, 3, 601)
 
    for n in [0, 1, 2, 3, 4]:
-      plt.plot(x, hermite(n)(x), label=n)
+      plt.plot(x, hermite(n)(x), label=f'$H_{n}(x)$')
    plt.ylim([-40, 50])
    plt.legend()
    plt.tight_layout()
