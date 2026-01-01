@@ -5,3 +5,4 @@ sphinxcontrib-thm
 sphinx-proof
 sphinx-mathjax-offline
 matplotlib
+scipy

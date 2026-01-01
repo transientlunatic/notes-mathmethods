@@ -1,0 +1,157 @@
+/* The code below is based on the bootstrap website sidebar */
+
+.bs-sidenav.affix {
+  position: static;
+}
+
+/* First level of nav */
+.bs-sidenav {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding-top:    10px;
+  padding-bottom: 10px;
+  text-shadow: 0 1px 0 #fff;
+  background-color: #f7f5fa;
+  border-radius: 5px;
+}
+
+/* All levels of nav */
+.bs-sidenav .nav > li > a {
+  display: block;
+  color: #716b7a;
+  padding: 5px 20px;
+}
+.bs-sidenav .nav > li > a:hover,
+.bs-sidenav .nav > li > a:focus {
+  text-decoration: none;
+  background-color: #e5e3e9;
+  border-right: 1px solid #dbd8e0;
+}
+.bs-sidenav .nav > .active > a,
+.bs-sidenav .nav > .active:hover > a,
+.bs-sidenav .nav > .active:focus > a {
+  font-weight: bold;
+  color: #563d7c;
+  background-color: transparent;
+  border-right: 1px solid #563d7c;
+}
+
+.bs-sidenav .nav .nav > li > a {
+  padding-top:    3px;
+  padding-bottom: 3px;
+  padding-left: 30px;
+  font-size: 90%;
+}
+
+.bs-sidenav .nav .nav .nav > li > a {
+  padding-top:    3px;
+  padding-bottom: 3px;
+  padding-left: 40px;
+  font-size: 90%;
+}
+
+.bs-sidenav .nav .nav .nav .nav > li > a {
+  padding-top:    3px;
+  padding-bottom: 3px;
+  padding-left: 50px;
+  font-size: 90%;
+}
+
+/* Show and affix the side nav when space allows it */
+@media screen and (min-width: 992px) {
+  .bs-sidenav .nav > .active > ul {
+    display: block;
+  }
+  /* Widen the fixed sidenav */
+  .bs-sidenav.affix,
+  .bs-sidenav.affix-bottom {
+    width: 213px;
+  }
+  .bs-sidenav.affix {
+    position: fixed; /* Undo the static from mobile first approach */
+  }
+  .bs-sidenav.affix-bottom {
+    position: absolute; /* Undo the static from mobile first approach */
+  }
+  .bs-sidenav.affix-bottom .bs-sidenav,
+  .bs-sidenav.affix .bs-sidenav {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+@media screen and (min-width: 1200px) {
+  /* Widen the fixed sidenav again */
+  .bs-sidenav.affix-bottom,
+  .bs-sidenav.affix {
+    width: 263px;
+  }
+}
+
+
+
+/* Left TOC */
+.toc-left {
+    border: none;
+    /* border-right: 1px solid #eee; */
+    background-color: white;
+    margin-top: 4rem; 
+    padding-right: 0.0rem !important;
+    font-size: 85%;
+    padding-top: 1rem;
+}
+
+.globaltoc-wrapper {
+   padding-top: 1rem;   
+}
+
+.toc-left li {
+    display: block;
+    line-height: 18pt;
+}
+.toc-left h2 {
+    color: #aaa;
+    font-size: 1.1rem;
+}
+.toc-left a {
+    color: gray;
+    font-size: 0.875 rem;
+}
+
+.toc-left ul {
+    padding-left: 1em;
+}
+
+
+/* Right TOC */
+.toc-right {
+    /* margin-top: 2rem; */
+    border: none;
+    /* border-left: 1px solid #eee; */
+    background-color: white;
+    font-size: 85%;
+}
+.toc-right ul {
+    padding-left: 0.2rem;
+}
+.toc-right li {
+    display: block;
+}
+.toc-right a {
+    color: gray;
+    font-size: 0.875 rem;
+}
+.toc-title {
+    display: none;
+}
+.toctitle {
+    text-size: 1.4 rem;
+}
+
+
+.globaltoc-wrapper > li a{
+    text-decoration: None;
+}
+
+.toc-left a {
+    text-decoration: none;
+}

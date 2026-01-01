@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Hermite Polynomials &#8212; Daniel&#39;s notes on mathematics v0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=7254e0c9" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=29da98fa" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <script src="../_static/documentation_options.js?v=34cd777e"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"loader": {"load": ["[tex]/physics", "[siunitx]/siunitx.js"], "paths": {"siunitx": "http://rawgit.com/burnpanck/MathJax-siunitx/master/"}}, "tex": {"packages": {"[+]": ["physics", "siuntix"]}, "macros": {"div": "\\nabla", "ld": ["\\unicode{xA3}_{#1}{#2}", 2], "rn": "\\mathbb{R}", "dinf": "\\mathrm{d}", "dd": ["\\,\\dinf #1", 1], "of": ["\\tilde{#1}", 1], "ten": ["\\mathsf{{#1}}", 1], "RR": "{\\bf R}", "bold": ["{\\bf #1}", 1]}}})</script>
+    <script async="async" src="../_static/mathjax/tex-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Stirling’s Approximation" href="../calculus/stirling.html" />
+    <link rel="prev" title="Bessel Functions" href="bessel.html" />
+<meta charset='utf-8'>
+
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script src="../_static/darkmode.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="../_static/kentigern.js"></script>
+
+  </head>
+  <body data-spy="scroll" data-target="#localtoc" data-offset="100">
+
+<nav class="navbar navbar-expand-lg navbar-dark kentigern-navbar kentigern-main-navbar">
+  <div class="container-fluid">
+    <!-- Navbar brand -->
+    <a class="navbar-brand" href="../index.html">
+      Daniel&#39;s notes on mathematics</a>
+    <!-- End navbar brand -->
+    <!-- Navbar toggler -->
+    <button class="navbar-toggler"
+	    type="button"
+	    data-toggle="collapse"
+	    data-target="#navbarSupportedContent"
+	    aria-controls="navbarSupportedContent"
+	    aria-expanded="false"
+	    aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>    
+    <!-- End navbar toggler -->
+    
+    <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+  
+  
+  
+  
+</ul>
+      
+<form class="d-flex" role="search" action="../search.html" method="get">
+  <div class="input-group">
+    <input class="form-control" name="q" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-light" type="submit">Search</button>
+  </div>
+</form>
+      
+<ul class="navbar-nav">v0.1</ul>
+
+      <!--  -->
+    </div>
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="arrow-right-short" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
+  </symbol>
+  <symbol id="book-half" viewBox="0 0 16 16">
+    <path d="M8.5 2.687c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"/>
+  </symbol>
+  <symbol id="box-seam" viewBox="0 0 16 16">
+    <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z"/>
+  </symbol>
+  <symbol id="braces" viewBox="0 0 16 16">
+    <path d="M2.114 8.063V7.9c1.005-.102 1.497-.615 1.497-1.6V4.503c0-1.094.39-1.538 1.354-1.538h.273V2h-.376C3.25 2 2.49 2.759 2.49 4.352v1.524c0 1.094-.376 1.456-1.49 1.456v1.299c1.114 0 1.49.362 1.49 1.456v1.524c0 1.593.759 2.352 2.372 2.352h.376v-.964h-.273c-.964 0-1.354-.444-1.354-1.538V9.663c0-.984-.492-1.497-1.497-1.6zM13.886 7.9v.163c-1.005.103-1.497.616-1.497 1.6v1.798c0 1.094-.39 1.538-1.354 1.538h-.273v.964h.376c1.613 0 2.372-.759 2.372-2.352v-1.524c0-1.094.376-1.456 1.49-1.456V7.332c-1.114 0-1.49-.362-1.49-1.456V4.352C13.51 2.759 12.75 2 11.138 2h-.376v.964h.273c.964 0 1.354.444 1.354 1.538V6.3c0 .984.492 1.497 1.497 1.6z"/>
+  </symbol>
+  <symbol id="braces-asterisk" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M1.114 8.063V7.9c1.005-.102 1.497-.615 1.497-1.6V4.503c0-1.094.39-1.538 1.354-1.538h.273V2h-.376C2.25 2 1.49 2.759 1.49 4.352v1.524c0 1.094-.376 1.456-1.49 1.456v1.299c1.114 0 1.49.362 1.49 1.456v1.524c0 1.593.759 2.352 2.372 2.352h.376v-.964h-.273c-.964 0-1.354-.444-1.354-1.538V9.663c0-.984-.492-1.497-1.497-1.6ZM14.886 7.9v.164c-1.005.103-1.497.616-1.497 1.6v1.798c0 1.094-.39 1.538-1.354 1.538h-.273v.964h.376c1.613 0 2.372-.759 2.372-2.352v-1.524c0-1.094.376-1.456 1.49-1.456v-1.3c-1.114 0-1.49-.362-1.49-1.456V4.352C14.51 2.759 13.75 2 12.138 2h-.376v.964h.273c.964 0 1.354.444 1.354 1.538V6.3c0 .984.492 1.497 1.497 1.6ZM7.5 11.5V9.207l-1.621 1.621-.707-.707L6.792 8.5H4.5v-1h2.293L5.172 5.879l.707-.707L7.5 6.792V4.5h1v2.293l1.621-1.621.707.707L9.208 7.5H11.5v1H9.207l1.621 1.621-.707.707L8.5 9.208V11.5h-1Z"/>
+  </symbol>
+  <symbol id="check2" viewBox="0 0 16 16">
+    <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+  </symbol>
+  <symbol id="chevron-expand" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M3.646 9.146a.5.5 0 0 1 .708 0L8 12.793l3.646-3.647a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 0-.708zm0-2.292a.5.5 0 0 0 .708 0L8 3.207l3.646 3.647a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 0 0 0 .708z"/>
+  </symbol>
+  <symbol id="circle-half" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+  </symbol>
+  <symbol id="clipboard" viewBox="0 0 16 16">
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+    <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+  </symbol>
+  <symbol id="code" viewBox="0 0 16 16">
+    <path d="M5.854 4.854a.5.5 0 1 0-.708-.708l-3.5 3.5a.5.5 0 0 0 0 .708l3.5 3.5a.5.5 0 0 0 .708-.708L2.707 8l3.147-3.146zm4.292 0a.5.5 0 0 1 .708-.708l3.5 3.5a.5.5 0 0 1 0 .708l-3.5 3.5a.5.5 0 0 1-.708-.708L13.293 8l-3.147-3.146z"/>
+  </symbol>
+  <symbol id="file-earmark-richtext" viewBox="0 0 16 16">
+    <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
+    <path d="M4.5 12.5A.5.5 0 0 1 5 12h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm0-2A.5.5 0 0 1 5 10h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm1.639-3.708 1.33.886 1.854-1.855a.25.25 0 0 1 .289-.047l1.888.974V8.5a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V8s1.54-1.274 1.639-1.208zM6.25 6a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5z"/>
+  </symbol>
+  <symbol id="globe2" viewBox="0 0 16 16">
+    <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855-.143.268-.276.56-.395.872.705.157 1.472.257 2.282.287V1.077zM4.249 3.539c.142-.384.304-.744.481-1.078a6.7 6.7 0 0 1 .597-.933A7.01 7.01 0 0 0 3.051 3.05c.362.184.763.349 1.198.49zM3.509 7.5c.036-1.07.188-2.087.436-3.008a9.124 9.124 0 0 1-1.565-.667A6.964 6.964 0 0 0 1.018 7.5h2.49zm1.4-2.741a12.344 12.344 0 0 0-.4 2.741H7.5V5.091c-.91-.03-1.783-.145-2.591-.332zM8.5 5.09V7.5h2.99a12.342 12.342 0 0 0-.399-2.741c-.808.187-1.681.301-2.591.332zM4.51 8.5c.035.987.176 1.914.399 2.741A13.612 13.612 0 0 1 7.5 10.91V8.5H4.51zm3.99 0v2.409c.91.03 1.783.145 2.591.332.223-.827.364-1.754.4-2.741H8.5zm-3.282 3.696c.12.312.252.604.395.872.552 1.035 1.218 1.65 1.887 1.855V11.91c-.81.03-1.577.13-2.282.287zm.11 2.276a6.696 6.696 0 0 1-.598-.933 8.853 8.853 0 0 1-.481-1.079 8.38 8.38 0 0 0-1.198.49 7.01 7.01 0 0 0 2.276 1.522zm-1.383-2.964A13.36 13.36 0 0 1 3.508 8.5h-2.49a6.963 6.963 0 0 0 1.362 3.675c.47-.258.995-.482 1.565-.667zm6.728 2.964a7.009 7.009 0 0 0 2.275-1.521 8.376 8.376 0 0 0-1.197-.49 8.853 8.853 0 0 1-.481 1.078 6.688 6.688 0 0 1-.597.933zM8.5 11.909v3.014c.67-.204 1.335-.82 1.887-1.855.143-.268.276-.56.395-.872A12.63 12.63 0 0 0 8.5 11.91zm3.555-.401c.57.185 1.095.409 1.565.667A6.963 6.963 0 0 0 14.982 8.5h-2.49a13.36 13.36 0 0 1-.437 3.008zM14.982 7.5a6.963 6.963 0 0 0-1.362-3.675c-.47.258-.995.482-1.565.667.248.92.4 1.938.437 3.008h2.49zM11.27 2.461c.177.334.339.694.482 1.078a8.368 8.368 0 0 0 1.196-.49 7.01 7.01 0 0 0-2.275-1.52c.218.283.418.597.597.932zm-.488 1.343a7.765 7.765 0 0 0-.395-.872C9.835 1.897 9.17 1.282 8.5 1.077V4.09c.81-.03 1.577-.13 2.282-.287z"/>
+  </symbol>
+  <symbol id="grid-fill" viewBox="0 0 16 16">
+    <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zm8 0A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm-8 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm8 0A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3z"/>
+  </symbol>
+  <symbol id="lightning-charge-fill" viewBox="0 0 16 16">
+    <path d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.09z"/>
+  </symbol>
+  <symbol id="list" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+  </symbol>
+  <symbol id="magic" viewBox="0 0 16 16">
+    <path d="M9.5 2.672a.5.5 0 1 0 1 0V.843a.5.5 0 0 0-1 0v1.829Zm4.5.035A.5.5 0 0 0 13.293 2L12 3.293a.5.5 0 1 0 .707.707L14 2.707ZM7.293 4A.5.5 0 1 0 8 3.293L6.707 2A.5.5 0 0 0 6 2.707L7.293 4Zm-.621 2.5a.5.5 0 1 0 0-1H4.843a.5.5 0 1 0 0 1h1.829Zm8.485 0a.5.5 0 1 0 0-1h-1.829a.5.5 0 0 0 0 1h1.829ZM13.293 10A.5.5 0 1 0 14 9.293L12.707 8a.5.5 0 1 0-.707.707L13.293 10ZM9.5 11.157a.5.5 0 0 0 1 0V9.328a.5.5 0 0 0-1 0v1.829Zm1.854-5.097a.5.5 0 0 0 0-.706l-.708-.708a.5.5 0 0 0-.707 0L8.646 5.94a.5.5 0 0 0 0 .707l.708.708a.5.5 0 0 0 .707 0l1.293-1.293Zm-3 3a.5.5 0 0 0 0-.706l-.708-.708a.5.5 0 0 0-.707 0L.646 13.94a.5.5 0 0 0 0 .707l.708.708a.5.5 0 0 0 .707 0L8.354 9.06Z"/>
+  </symbol>
+  <symbol id="menu-button-wide-fill" viewBox="0 0 16 16">
+    <path d="M1.5 0A1.5 1.5 0 0 0 0 1.5v2A1.5 1.5 0 0 0 1.5 5h13A1.5 1.5 0 0 0 16 3.5v-2A1.5 1.5 0 0 0 14.5 0h-13zm1 2h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1 0-1zm9.927.427A.25.25 0 0 1 12.604 2h.792a.25.25 0 0 1 .177.427l-.396.396a.25.25 0 0 1-.354 0l-.396-.396zM0 8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V8zm1 3v2a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2H1zm14-1V8a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2h14zM2 8.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0 4a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5z"/>
+  </symbol>
+  <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+    <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+    <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+  </symbol>
+  <symbol id="palette2" viewBox="0 0 16 16">
+    <path d="M0 .5A.5.5 0 0 1 .5 0h5a.5.5 0 0 1 .5.5v5.277l4.147-4.131a.5.5 0 0 1 .707 0l3.535 3.536a.5.5 0 0 1 0 .708L10.261 10H15.5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-.5.5H3a2.99 2.99 0 0 1-2.121-.879A2.99 2.99 0 0 1 0 13.044m6-.21 7.328-7.3-2.829-2.828L6 7.188v5.647zM4.5 13a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0zM15 15v-4H9.258l-4.015 4H15zM0 .5v12.495V.5z"/>
+    <path d="M0 12.995V13a3.07 3.07 0 0 0 0-.005z"/>
+  </symbol>
+  <symbol id="plugin" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M1 8a7 7 0 1 1 2.898 5.673c-.167-.121-.216-.406-.002-.62l1.8-1.8a3.5 3.5 0 0 0 4.572-.328l1.414-1.415a.5.5 0 0 0 0-.707l-.707-.707 1.559-1.563a.5.5 0 1 0-.708-.706l-1.559 1.562-1.414-1.414 1.56-1.562a.5.5 0 1 0-.707-.706l-1.56 1.56-.707-.706a.5.5 0 0 0-.707 0L5.318 5.975a3.5 3.5 0 0 0-.328 4.571l-1.8 1.8c-.58.58-.62 1.6.121 2.137A8 8 0 1 0 0 8a.5.5 0 0 0 1 0Z"/>
+  </symbol>
+  <symbol id="plus" viewBox="0 0 16 16">
+    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+  </symbol>
+  <symbol id="sun-fill" viewBox="0 0 16 16">
+    <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+  </symbol>
+  <symbol id="three-dots" viewBox="0 0 16 16">
+    <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+  </symbol>
+  <symbol id="tools" viewBox="0 0 16 16">
+    <path d="M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.356 3.356a1 1 0 0 0 1.414 0l1.586-1.586a1 1 0 0 0 0-1.414l-3.356-3.356a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3c0-.269-.035-.53-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814L1 0zm9.646 10.646a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708zM3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026L3 11z"/>
+  </symbol>
+  <symbol id="ui-radios" viewBox="0 0 16 16">
+    <path d="M7 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1zM0 12a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm7-1.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1zm0-5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 8a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zM3 1a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm0 4.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+  </symbol>
+</svg>
+<ul class="navbar-nav">
+<li class="nav-item dropdown">
+  <button class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle d-flex align-items-center"
+          id="bd-theme"
+          type="button"
+          aria-expanded="false"
+          data-bs-toggle="dropdown"
+          data-bs-display="static">
+    <svg class="bi my-1 theme-icon-active"><use href="#circle-half"></use></svg>
+    <span class="d-lg-none ms-2">Toggle theme</span>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme" style="--bs-dropdown-min-width: 8rem;">
+    <li>
+      <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light">
+        <svg class="bi me-2 opacity-50 theme-icon"><use href="#sun-fill"></use></svg>
+        Light
+        <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+      </button>
+    </li>
+    <li>
+      <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark">
+        <svg class="bi me-2 opacity-50 theme-icon"><use href="#moon-stars-fill"></use></svg>
+        Dark
+        <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+      </button>
+    </li>
+    <li>
+      <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto">
+        <svg class="bi me-2 opacity-50 theme-icon"><use href="#circle-half"></use></svg>
+        Auto
+        <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+      </button>
+    </li>
+  </ul>
+</li>
+</ul>
+    
+</nav>
+
+
+
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+  
+  
+
+<ul class="navbar-nav mr-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="bessel.html" title="Previous Chapter: Bessel Functions">
+      <span class="glyphicon glyphicon-chevron-left visible-sm"></span>
+      <span class="hidden-sm hidden-tablet">&laquo; Bessel Functions</span>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../calculus/stirling.html" title="Next Chapter: Stirling’s Approximation">
+      <span class="glyphicon glyphicon-chevron-right visible-sm"></span>
+      <span class="hidden-sm hidden-tablet">Stirling’s Approximation &raquo;</span>
+    </a>
+  </li>
+</ul>
+  
+  
+  
+<div id="sourcelink navbar-nav mr-auto hidden-sm">
+  <a href="../_sources/special/hermite.rst.txt"
+     class="nav-link"
+     rel="nofollow"><i class="bi bi-file-binary-fill"></i>Source</a>
+</div>
+
+  
+  </div>
+</nav>
+
+
+<div class="container-fluid" id="docs-container">
+  
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-2 order-3 order-xl-1 toc-left">
+      <!-- 
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form> -->
+      <div id="globaltoc-wrapper" class="pt-3">
+
+<p class="caption" role="heading"><span class="caption-text">Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/real.html">Real Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/complex.html">Complex Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/complex.html#limits-and-continuity">Limits and Continuity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/complex.html#complex-differentiation">Complex Differentiation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/complex.html#complex-integration">Complex Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/complex.html#infinite-taylor-and-laurent-series">Infinite, Taylor, and Laurent Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/complex.html#residues">Residues</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Calculus</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../calculus/coordinates.html">Coordinate Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../calculus/vector.html">Vector Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../calculus/sturm.html">Operator theory</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Differential equations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../calculus/odes.html">Ordinary Differential Equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../calculus/pdes.html">Partial Differential Equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../calculus/solving-pdes.html">Solving Partial Differential Equations</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Special functions</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="legendre.html">Legendre Polynomials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spherical-harmonics.html">Spherical Harmonics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spherical-harmonics.html#spherical-harmonics-and-the-schrodinger-equation">Spherical Harmonics and the Schrodinger Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bessel.html">Bessel Functions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Hermite Polynomials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../calculus/stirling.html">Stirling’s Approximation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../calculus/stirling.html#the-gamma-function">The Gamma Function</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Abstract algebra</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../abstract/sets.html">Sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../abstract/operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../abstract/functions.html">Mappings and Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../abstract/groups.html">Group Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../abstract/fields.html">Fields of Scalars</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Linear algebra</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../linear.html">Vector Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../linear.html#bases">Bases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../linear/inner-product-spaces.html">Inner Product Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../linear/coordinates.html">Lie Brackets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../linear/matrices.html">Matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../linear/transformations.html">Linear Mappings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multilinear.html">Multilinear Algebra and Tensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multilinear.html#tensor-rotations">Tensor Rotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multilinear.html#extensions-of-rotations-to-rank-2-tensors">Extensions of Rotations to rank-2 Tensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../linear/one-forms.html">One-forms</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Geometry</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../geometry/manifolds.html">Manifolds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geometry/differential-forms.html">Differential forms</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Probability</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../probability.html">Probability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../probability.html#information">Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../probability.html#prior-knowledge">Prior knowledge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../probability.html#feature-spaces-and-kernels">Feature spaces and Kernels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../probability.html#structured-probability-distributions">Structured probability distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../probability.html#inference">Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../probability.html#stochastic-processes">Stochastic processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../probability.html#approximate-inference-methods">Approximate inference methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../probability.html#hierarchical-modelling">Hierarchical modelling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prob-distributions/index.html">Atlas of Probability Distributions</a></li>
+</ul>
+
+
+</div>
+
+      
+    </div>
+
+    <div class="col-md-6 col-lg-2 order-2 order-xl-3 toc-right">
+      <div id="localtoc-wrapper">
+  <div class="tocsection onthispage pt-3">
+    <p class="toctitle"><i class="bi bi-list"></i> On this page</p>
+  </div>
+  
+  <div id="localtoc">
+    <ul>
+<li><a class="reference internal" href="#">Hermite Polynomials</a><ul>
+<li><a class="reference internal" href="#recurrence-relations-for-hermite-polynomials">Recurrence Relations for Hermite polynomials</a></li>
+<li><a class="reference internal" href="#properties-of-the-hermite-polynomials">Properties of the Hermite Polynomials</a></li>
+<li><a class="reference internal" href="#orthogonality-of-hermite-polynomials">Orthogonality of Hermite Polynomials</a></li>
+<li><a class="reference internal" href="#the-quantum-harmonic-oscillator">The Quantum Harmonic Oscillator</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+</div>
+      
+    </div>
+    
+    <div class="col-md-12 col-lg-8 content order-1 order-xl-2 col-xl-6 pt-3">
+
+      
+      
+      
+      
+  <section id="hermite-polynomials">
+<h1>Hermite Polynomials<a class="headerlink" href="#hermite-polynomials" title="Link to this heading">¶</a></h1>
+<p>Hermite polynomials are the solutions to the hermite equation,</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}  \label{eq:hermitede}
+    \dv[2]{y}{x} - 2x \dv{y}{x} + 2n y = 0\\Hermite polynomials are solutions to the radial part of the Schrodinger\end{aligned}\end{align} \]</div>
+<p>equation for the simple harmonic oscillator. Just like Legendre
+polynomials and Bessel functions we can define Hermite polynomials,
+<span class="math notranslate nohighlight">\(H_n (x)\)</span> via a generating function:</p>
+<div class="math notranslate nohighlight">
+\[\label{eq:hermite}
+  g(x,t) = e^{-t^2 + 2tx} = \sum^\infty_{n=0} H_n(x) \frac{t^n}{n!}\]</div>
+<section id="recurrence-relations-for-hermite-polynomials">
+<h2>Recurrence Relations for Hermite polynomials<a class="headerlink" href="#recurrence-relations-for-hermite-polynomials" title="Link to this heading">¶</a></h2>
+<p>First we diferentiate with respect to <span class="math notranslate nohighlight">\(t\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial}{\partial t} g(x,t) = (-2t+2x) e^{-t^2+2tx} =
+\sum^{\infty}_{n=1} H_n(x) \frac{t^{n-1}}{n!}\]</div>
+<p>Expanding, and putting into the generating function again,</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}  -2 \sum^{\infty}_{n=0} H_n(x) \frac{t^{n+1}}{n!} + 2x
+  \sum^{\infty}_{n=0} H_n(x) \frac{t^n}{n!} = \sum^{\infty}_{n=1}
+  H_n(x)\frac{t^{n-1}}{(n-1)!}\\Relabelling the indices,\end{aligned}\end{align} \]</div>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}  -2 \sum^{\infty}_{n=1} nH_{n-1}(x) \frac{t^{n}}{n!} + 2x
+  \sum^{\infty}_{n=0} H_n(x) \frac{t^n}{n!} = \sum^{\infty}_{n=1}
+  H_{n+1}(x)\frac{t^n}{n!}\\and finally equating coefficients of :math:`t^n`,\end{aligned}\end{align} \]</div>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}  \label{eq:recurrencehermite}
+    H_{n+1}(x) = 2x H_n(x) - 2n H_{n-1}(x) \qquad (n \ge 1)\\If we instead differentiate with respect to :math:`x`,\end{aligned}\end{align} \]</div>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\pdv{x}g(x,t) = 2t e^{-t^2+2tx} = \sum_{n=0}^{\infty} H^{\prime}_n(x) \frac{t^n}{n!}\\and substitute in :math:`g`,\end{aligned}\end{align} \]</div>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}2 \sum_{n=0}^{\infty} H_n(x) \frac{t^{n+1}}{n!} = \sum_{n=1}^{\infty} H^{\prime}_n(x) \frac{t^n}{n!}\\and relabelling,\end{aligned}\end{align} \]</div>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}2 \sum_{n=1}^{\infty} H_{n-1}(x) \frac{t^{n}}{(n-1)!} = \sum_{n=1}^{\infty} H^{\prime}_n(x) \frac{t^n}{n!}\\and then equating coeffients of :math:`t^n`,\end{aligned}\end{align} \]</div>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}  \label{eq:recurrencehermite2}
+    H_n^{\prime}(x) = 2n H_{n-1}(x)\\These can be used to derive the ordinary differential equation which\end{aligned}\end{align} \]</div>
+<p>motivates these polynomials, from the previous results we can find</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}H_{n+1}(x) = 2x H_n(x) - H^{\prime}_n(x)\\and then differentiate with respect to :math:`x`,\end{aligned}\end{align} \]</div>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\begin{split}  \begin{aligned}
+    H^{\prime}_{n+1}(x) &amp;= 2 H_n(x) + 2x H^{\prime}_n(x) - H^{\prime \prime}_n(x) \\
+    2(n+1)H_{n}(x) &amp;= 2 H_n(x) + 2x H^{\prime}_n(x) - H^{\prime \prime}_n(x) \end{aligned}\end{split}\\and so\end{aligned}\end{align} \]</div>
+<div class="math notranslate nohighlight">
+\[\dv[2]{H_n(x)}{x} - 2x \dv{H_n(x)} + 2n H_n(x) = 0\]</div>
+<p>It is possible to use the recurrence relations to find the Hermite
+polynomials, so</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+  H_0(x) &amp;=  1 \\
+  H_1(x) &amp;=  2x \\
+  H_2(x) &amp;=  4x^2 - 2 \\
+  H_3(x) &amp;=  8x^3 - 12x \\
+  H_4(x) &amp;=  16x^4 - 48x^2 + 12\end{aligned}\end{split}\]</div>
+<figure class="align-default" id="id1">
+<img alt="../_images/hermite-1.png" class="plot-directive" src="../_images/hermite-1.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">The Hermite polynomials of degrees 0 to 4.</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="properties-of-the-hermite-polynomials">
+<h2>Properties of the Hermite Polynomials<a class="headerlink" href="#properties-of-the-hermite-polynomials" title="Link to this heading">¶</a></h2>
+<p>The Hermite polynomials are symmetric about <span class="math notranslate nohighlight">\(x=0\)</span>, so</p>
+<div class="math notranslate nohighlight">
+\[\label{eq:parityhermite}
+  H_n(-x) = (-1)^n H_n(x)\]</div>
+<p>The Hermite polynomials can be described by a specific series of the
+form</p>
+<div class="math notranslate nohighlight">
+\[\label{eq:hermiteseriesspef}
+  H_n(x) = \sum_{m=0}^{\frac{n}{2}}(-1)^m (2x)^{n-2m} \frac{n!}{(n-2m)!m!}\]</div>
+<p>And Rodrigues’s equation for Hermite polynomials also exists <em>proof is
+an exercise</em></p>
+<div class="math notranslate nohighlight">
+\[\label{eq:rodrigueshermite}
+  H_n(x) = (-1)^n e^{x^2} \dv[n]{x} \qty(e^{-x^2})\]</div>
+</section>
+<section id="orthogonality-of-hermite-polynomials">
+<h2>Orthogonality of Hermite Polynomials<a class="headerlink" href="#orthogonality-of-hermite-polynomials" title="Link to this heading">¶</a></h2>
+<p>It is possible to show the orthogonality of the Hermite polynomials.
+Starting at Hermite’s equation,</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\begin{split}  \begin{aligned}
+    H_n^{\prime \prime}(x) - 2x H^\prime_n (x) + 2n H_n (x) &amp;= 0 \\
+  \dv{x} \qty( e^{-x^2} \dv{x} H_n (x) ) + 2n e^{-x^2} H_n(x) &amp;=0 \end{aligned}\end{split}\\then, proceeding in much the same way as with Legendre polynomials in\end{aligned}\end{align} \]</div>
+<p>section [sec:orthogonallegendre],</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+\begin{split}
+  H_m(x) \dv{x} \qty[ e^{-x^2} \dv{x} H_n(x) ] - H_n(x) \dv{x} \qty[ e^{-x^2} \dv{x} H_m(x)] \\= -H_m(x) \cdot 2 n e^{-x^2} H_n(x) + H_n(x) \cdot 2 m e^{-x^2} H_m(x)
+\end{split}\end{aligned}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+\begin{split}
+\int_{-\infty}^{\infty} H_m(x) \dv{x} \qty[ e^{-x^2} \dv{x} H_n(x)] \dd{x} \\= \qty[ H_m(x) e^{-x^2} \dv{x} H_n(x)]_{-\infty}^{\infty} - \int_{-\infty}^{\infty} \qty[ \dv{x} H_m(x)] e^{-x^2} \dv{x} H_n(x) \dd{x}
+\end{split}\end{aligned}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\begin{split}  \begin{aligned}
+    2(m-n) \int_{-\infty}^{\infty} H_n(x) H_m(x) e^{-x^2} \dd{x} &amp;= 0 \\
+  \therefore \int_{-\infty}^{\infty} H_n(x) H_m(x) e^{-x^2} \dd{x} &amp;= 0 \text{ iff } n \neq m\end{aligned}\end{split}\\Hermite polynomials are orthogonal on the interval\end{aligned}\end{align} \]</div>
+<p><span class="math notranslate nohighlight">\([-\infty, \infty]\)</span> with a weighting of <span class="math notranslate nohighlight">\(\exp(-x^2)\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\begin{split}  \begin{aligned}
+    \int_{-\infty}^{\infty} g^2(x,t) e^{(-x^2)} \dd{x} &amp;= \int_{-\infty}^{\infty} \exp(-2t^2+4tx-x^2) \dd{x} \\
+  &amp;= \sum_{n=0}^{\infty} \sum_{m=0}^{\infty} \frac{t^{n+m}}{n! m!} \int_{-\infty}^{\infty} H_n(x) H_m(x) e^{(-x^2)} \dd{x} \\
+  &amp;= e^{2t^2}\int_{-\infty}^{\infty} e^{-x^2} \dd{x}\\
+  &amp;= e^{2t^2} \sqrt{\pi} \\
+  &amp;= \sqrt{\pi} \sum_{n=0}^{\infty} \frac{2^n}{n!} t^{2n}\end{aligned}\end{split}\\Finally, equating powers of :math:`t^{2n}` gives\end{aligned}\end{align} \]</div>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\int_{-\infty}^{\infty} \qty[ H_n(x)]^2 \exp(-x^2) = 2^n \sqrt{\pi} n!\\so,\end{aligned}\end{align} \]</div>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}  \label{eq:hermiteorthoweight}
+  \int_{-\infty}^{\infty} H_n(x) H_m(x) \exp(-x^2) \dd{x} = 2^n \sqrt{\pi} n! \delta_{nm}\\it is also possible to remove the weighting by redefining the\end{aligned}\end{align} \]</div>
+<p>polynomial as</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\phi_n(x) := \exp(-x^2) H_n(x)\\in this case\end{aligned}\end{align} \]</div>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}  \label{eq:hermiteorthonoweight}
+    \int_{-\infty}^{\infty} \phi_n(x) \phi_m(x) \dd{x} = 2^n \sqrt{\pi} n! \delta_{nm}\\these, however, are solutions not of Hermite’s equation, but of a\end{aligned}\end{align} \]</div>
+<p>slightly variant equation,</p>
+<div class="math notranslate nohighlight">
+\[\label{eq:modhermiteequation}
+  \phi^{\prime \prime}_n(x) + (1-x^2+2n) \phi_n(x) = 0\]</div>
+</section>
+<section id="the-quantum-harmonic-oscillator">
+<h2>The Quantum Harmonic Oscillator<a class="headerlink" href="#the-quantum-harmonic-oscillator" title="Link to this heading">¶</a></h2>
+<p>Returning to the one-dimensional time-independent Schrödinger equation,</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}  \label{eq:1}
+    - \frac{\hbar^2}{2m} \dv[2]{x} \psi(x) + V(x) \psi(x) = E \psi(x)\\with :math:`m` the mass of the particle, and :math:`E` its energy. For\end{aligned}\end{align} \]</div>
+<p>the simple harmonic oscillator,</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}V(x) \half m \omega^2 x^2\\so\end{aligned}\end{align} \]</div>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}  \psi^{\prime \prime} (x) + \qty( - \frac{m^2 \omega^2}{\hbar^2} x^2
+  + \frac{2m E}{\hbar^2} ) \psi(x) = 0\\which has a form very similar to the modified Hermite equation of the\end{aligned}\end{align} \]</div>
+<p>previous section, and these describe the quantum harmonic oscillator.</p>
+<p>Let <span class="math notranslate nohighlight">\(y = ax\)</span> with <span class="math notranslate nohighlight">\(a = \sqrt{\frac{m \omega}{\hbar}}\)</span>, so</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}  \dv[2]{\psi}{y} + \qty( -y^2 + \frac{2mE}{\hbar^2 a^2} ) \psi =
+  0\\Comparing the two equations, we get the solutions\end{aligned}\end{align} \]</div>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}  \label{eq:2}
+    \psi_n (x) = \sqrt{\frac{a}{2^n \sqrt{\pi} n!}} \exp( - \frac{a^2 x^2}{2} ) H_n(ax)\\which includes a normalisation constant. The energy is then given by\end{aligned}\end{align} \]</div>
+<p>the equation</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\begin{split}  \begin{aligned}
+    \frac{2 m E}{\hbar^2 a^2} &amp;= 1 + 2n \nonumber\\
+  \frac{2E}{\hbar \omega} &amp;= 1 + 2n \nonumber\\
+  E &amp;= \hbar \omega \qty(n + \half)\end{aligned}\end{split}\\but why does :math:`n` need to be an integer? The oscillator must have\end{aligned}\end{align} \]</div>
+<p><span class="math notranslate nohighlight">\(\Psi
+\to 0\)</span> as <span class="math notranslate nohighlight">\(x \to \infty\)</span>. Taking solutions of the form</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\Psi \approx \exp( - \frac{x^2}{2} ) H_n(x)\\only guarantees this if :math:`n` is an integer; this can be\end{aligned}\end{align} \]</div>
+<p>demonstrated by returning to Hermite’s equation, equation
+([eq:hermitede]), and letting <span class="math notranslate nohighlight">\(y =
+\sum_{k=0}^{\infty} c_k x^k\)</span>, so that</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\sum_k c_k \qty( k(k-1) x^{k-2} - 2kx^k + 2nx^k ) = 0\\This must be true for each power of :math:`x` individually, so\end{aligned}\end{align} \]</div>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}c_{k+2} (k+2) (k+1) - c_k(2k-2n)=0\\and if the series in :math:`k` goes on *ad infinitum*, we have the\end{aligned}\end{align} \]</div>
+<p>behaviour</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\frac{c_{k+2}}{c_k} = \frac{2k - 2n}{(k+1)(k+2)} \to \frac{2}{k} \quad \text{as} \quad k \to \infty\\This has the power series behaviour of :math:`\exp(x^2)`, which would\end{aligned}\end{align} \]</div>
+<p>imply that <span class="math notranslate nohighlight">\(\Psi \approx e^{x^2} e^{-\frac{x^2}{2}} \approx
+e^{\frac{x^2}{2}}\)</span>, giving “bad” behaviour as <span class="math notranslate nohighlight">\(x \to \infty\)</span>. If
+the series truncates this behaviour will not occur. This happens if
+<span class="math notranslate nohighlight">\(2n=2k\)</span> for some <span class="math notranslate nohighlight">\(k\)</span>, that is, for <span class="math notranslate nohighlight">\(n \in \mathbb{Z}\)</span>.
+The solution of Hermite’s equation is a finite polynomial, and the
+solution for <span class="math notranslate nohighlight">\(\Psi\)</span> must be physical, so this forces <span class="math notranslate nohighlight">\(n\)</span> to
+be an integer.</p>
+<p>The harmonic oscillator can also be solved using ladder operators, these
+work due to the recurrence relation in equation
+([eq:recurrencehermite2]). Writing</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\psi_n(x) = \sqrt{\frac{1}{2^n \sqrt{\pi} n!}} \exp( - \frac{x^2}{2} ) H_n(x)\\and, for simplicity, letting :math:`a=1`, then\end{aligned}\end{align} \]</div>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\begin{split}  \begin{aligned}
+   \frac{1}{\sqrt{2}} \qty(x + \dv{x}) \psi_n(x) &amp;= \sqrt{\frac{1}{2^{n+1} \sqrt{\pi} n!}} \qty( x+ \dv{x}) \exp(- \frac{x^2}{2}) H_n(x) \\
+  %&amp;= \sqrt{\frac{1}{2^{n+1} \sqrt{\pi} n!}} \qty( x \exp( - \frac{x^2}{2} ) H_n(x) - x \exp( - \frac{x^2}{2} ) H_n(x) + \exp( - \frac{x^2}{2}) H^{\prime}_n(x) )
+  \\ &amp; = \sqrt{n} \psi_{n-1}(x)\end{aligned}\end{split}\\This is a lowering operator, it is also possible, using either\end{aligned}\end{align} \]</div>
+<p>recurrence relations or the Rodrigues’ formula, that</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\frac{1}{\sqrt{2}} \qty( x - \dv{x} )\\is a raising operator.\end{aligned}\end{align} \]</div>
+</section>
+</section>
+
+
+    </div>
+
+  </div>
+  <div class="container">
+<footer class="footer d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">  
+  <div class="container-fluid">
+    
+      <!-- <a href="#">Back to top</a> -->
+      
+      &copy; Copyright 2020-2022, Daniel Williams.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.1.0.<br/>
+    </p>
+  </div> 
+</footer>
+</div>
+    <script>
+    $(document).ready(function(){
+	$("#localtoc a").addClass("nav-link")
+	$('body').scrollspy({ target: '#localtoc' })
+    });
+  </script>
+  </body>
+</html>

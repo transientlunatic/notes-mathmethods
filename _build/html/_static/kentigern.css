@@ -1,0 +1,406 @@
+/*
+ * bootstrap-sphinx.css
+ * ~~~~~~~~~~~~~~~~~~~~
+ *
+ * Sphinx stylesheet -- Bootstrap theme.
+ */
+
+/*
+ * Imports to aggregate everything together.
+ */
+
+@import url("./basic.css");
+/* Import TOC-specific styling. */
+@import "toc.css";
+/* Import admonition-specific styling. */
+@import "admonitions.css";
+/* Import breadcrumb-specific styling. */
+@import "breadcrumbs.css";
+/* Import http-domain specific styling. */
+@import url("http.css");
+/* Code blocks */
+@import "code.css";
+
+/* Colors */
+
+
+/* $list_background: #1A1E26; */
+/* $row_background_dark: #343A40; */
+/* $dark_text: #A1A69C; */
+
+/* $white: #FFFFFF; */
+/* $list_background_light: #f2f2f2; */
+/* $light_text: #000000; */
+
+/* $kentigern_light_primary_color_old: #2a7ae2; */
+
+/* $kentigern_light_primary_color: #E24A33;  */
+/* $kentigern_light_primary_wash: #E24A33AA; */
+					 
+/* $kentigern_light_link_color: #2a7ae2; */
+/* $kentigern_light_visited_color: #205caa; */
+
+/* $kentigern_dark_primary_color: #BE81F0; */
+/* $kentigern_dark_primary_wash: #BE81F0AA; */
+
+/* $kentigern_dark_link_color: #BE81F0; */
+/* $kentigern_dark_visited_color: #A06DC9; */
+
+/* body[data-theme="dark"] { */
+/*     --color-text: #{$dark_text}; */
+/*     --kentigern-text: #{$dark_text}; */
+/*     --color-background: #{$list_background}; */
+/*     --color-row-background: #{$row_background_dark}; */
+/*     --kentigern-link: #{$kentigern_dark_link_color}; */
+/*     --kentigern-visited: #{$kentigern_dark_visited_color}; */
+/*     --kentigern-primary: #{$kentigern_dark_primary_color}; */
+/*     --bs-primary-rgb: #{$kentigern_dark_primary_color}; */
+/*     --kentigern-primary-translucent: #{$kentigern_dark_primary_wash}; */
+/* } */
+
+/* body { */
+/*     --color-text: #{$light_text}; */
+/*     --kentigern-text: #{$light_text}; */
+/*     --color-background: #{$list_background_light}; */
+/*     --color-row-background: #{$white}; */
+/*     --kentigern-link: #{$kentigern_light_link_color}; */
+/*     --kentigern-visited: #{$kentigern_light_visited_color}; */
+/*     --kentigern-primary: #{$kentigern_light_primary_color}; */
+/*     --kentigern-primary-translucent: #{$kentigern_light_primary_wash}; */
+/* } */
+
+
+
+body {
+    position: relative;
+}
+
+/*
+* Globals
+*/
+a {
+    color: #28a745;
+}
+
+ul li {
+    list-style: none;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+
+/* Basic Alignments */
+
+.align-default{
+    text-align: left;
+}
+
+/*
+ * Styles
+ */
+
+.navbar-inverse .brand {
+  color: #FFF;
+}
+
+/*
+ * Reset navbar styles from overrides in:
+ * https://bitbucket.org/birkenfeld/sphinx/commits/78d8ebf76b630ab4073a7328af9d91e8123b8d96
+ */
+.navbar .container {
+  padding-top: 0;
+}
+
+/*
+ * Reset the logo image dimensions. Sites like RTD can override with bad
+ * results on mobile (mega-huge logo...)
+ *
+ * https://github.com/ryan-roemer/sphinx-bootstrap-theme/issues/142
+ */
+.navbar-brand img {
+  width: auto;
+  height: 100%;
+}
+
+.page-top {
+  top: 0px;
+}
+
+
+.navbar-inner {
+  padding-left:  12px !important;
+  padding-right: 12px !important;
+}
+
+table {
+  border: 0;
+}
+
+.highlighttable .code pre {
+    font-size: 12px;
+}
+
+.highlighttable .linenos pre {
+    word-break: normal;
+    font-size: 12px;
+}
+
+div.highlight {
+  background: none;
+}
+
+a.headerlink {
+  margin-left: 0.25em;
+}
+
+a.footnote-reference {
+  vertical-align: super;
+  font-size: 75%;
+}
+
+table.footnote td.label {
+  color: inherit;
+  font-size: 100%;
+  display: block;
+  line-height: normal;
+  background: inherit;
+}
+
+table.footnote {
+  width: auto;
+  margin-bottom: 0px;
+}
+
+table.field-list {
+  width: auto;
+}
+
+.footer {
+  width: 100%;
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+}
+
+.bs-sidenav form, .bs-sidenav #sourcelink {
+  padding: 5px 20px;
+}
+
+
+
+a.headerlink { display: none;}
+h1:hover > a.headerlink {display: inline;}
+dl.method>dd { padding-left: 2rem; */
+margin-bottom: 3rem; }
+
+ul.dropdown-menu li { padding: .5rem;
+list-style: none;
+}
+ul.dropdown-menu li * { color: black;
+}
+ul.dropdown-menu li:hover { background: #f7f5fa;
+}
+ul.dropdown-menu li a:hover{ text-decoration: none;
+}
+.content ul, ol { margin-left:   .5rem; }
+.content ul  ul { margin-left: -1.5rem; }
+ul.dropdown-menu ul { margin-left: 0; }
+pre { margin-bottom: 3rem;
+border-left: 3px #E24A33 solid;
+padding: 1rem;
+background: #EEEEEE;
+}
+.highlight { margin-left: 0; }
+
+
+.section-nav { 
+position: fixed;
+margin-left: -50px;
+border-left: 1px solid #eee;
+}
+
+.content {
+    padding: 3%;
+    padding-top: 0;
+}
+
+
+
+a.dropdown-item { 
+    color: black; 
+}
+
+
+
+/* Navigation */
+
+.section-nav  li {
+    display: block;
+}
+
+.head {
+    margin-top: 2rem;
+}
+.navbar {
+    font-weight: 500;
+    
+}
+
+/* Tables */
+
+table.docutils {
+    margin-left: 2rem;
+    margin-bottom: 10px;
+}
+
+table.docutils * {
+    border: none;
+}
+
+table.docutils tr {
+    border-bottom: 1px #CCCCCC solid;
+}
+
+table.docutils td {
+    padding: 10px;
+}
+
+
+p {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+td code {
+    word-break: keep-all;
+}
+
+
+.toctree-wrapper > .caption{
+    display: none;
+}
+
+
+h1 {
+    border-bottom: 1px solid #EEE;
+    padding-bottom: 2rem;
+}
+
+.figure {
+    max-width: calc(100vw-2rem) !important;
+    margin: 2rem;
+}
+
+@media (max-width: 1199px) {
+    div.figure {
+	padding-left: 10%;
+	padding-right: 10%;
+    }
+}
+@media (min-width: 1200px) {
+    div.figure {
+	float: right;
+	clear: right;
+	margin-right: -30%;
+	position: relative;
+	padding: 1%;
+    }
+}
+
+
+.figure>.caption, .figure>.legend {
+    color: #444;
+}
+
+
+/* Table of contents */
+
+@media (min-width: 1200px) {
+#localtoc-wrapper {
+    height: calc(100vh - 10rem);
+    position: sticky;
+    top: 4rem;
+    overflow-y: auto;
+}
+}
+
+@media (min-width: 1200px) {
+    #dLabelGlobalToc {
+	display: none;
+    }
+    #globaltoc-wrapper {
+	overflow-y: auto;
+	position:   sticky;
+	top: 4rem;
+	height:     calc(100vh - 5rem);
+    }
+}
+
+@media (max-width: 1200px) {
+    #globaltoc-wrapper{
+	display: none;
+    }
+}
+
+
+/* Local TOC */
+
+#localtoc .nav-link {
+    padding: 0.1rem;
+}
+
+.nav-link.active {
+    font-weight: bold;
+    border-left: 0.2rem solid #28a745;
+    margin-left: -0.2rem;
+    padding-left: 0.3rem;
+}
+
+
+
+/* Margin notes */
+
+aside.sidebar p, div.sidebar {
+    color: #555555;
+    font-size: 80%;
+}
+
+aside.sidebar p, div.sidebar p {
+    margin-bottom: 0.3rem;
+}
+
+p.sidebar-title {
+    font-weight: bold;
+    font-size: 105%;
+}
+p.sidebar-subtitle {
+    font-style: italic;
+}
+
+@media (max-width: 1199px) {
+    aside.sidebar, div.sidebar {
+	padding-left: 10%;
+	padding-right: 10%;
+    }
+}
+@media (min-width: 1200px) {
+    aside.sidebar, div.sidebar {
+	float: right;
+	clear: right;
+	margin-right: -30%;
+	position: relative;
+	width: 30%;
+	padding: 1%;
+    }
+}
+
+
+/* Version number */
+a.version-link {
+    font-family: monospace;
+}
+a.version-link.nav-link {
+    color: white !important;
+}

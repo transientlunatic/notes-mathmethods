@@ -1,0 +1,55 @@
+dt {
+    font-weight: 400;
+}
+
+dl.class {
+}
+
+.py.exception > dt.sig {
+    background: #f8d7da;
+    padding: 5px;
+    color: black;
+    border-radius: 0.25rem;
+}
+
+.py.class > dt.sig {
+    background: #28a745;
+    padding: 5px;
+    color: white;
+    border-radius: 0.25rem;
+}
+
+.py.method > dt.sig {
+    background: #28a745;
+    padding: 5px;
+    color: white;
+    border-radius: 0.25rem;
+}
+
+
+dl.class dt code {
+    color: inherit;
+}
+
+dl.class dt .viewcode-link {
+    color: white;
+    float: right;
+}
+
+td.field-body dt {
+    background: white;
+    color: black;
+}
+
+
+
+span.classifier {
+    margin-left: 1rem;
+}
+
+span.classifier code{
+    margin-left: 0.5rem;
+    background: #366235;
+    border-radius: 1rem;
+    padding: 0.2rem;
+}

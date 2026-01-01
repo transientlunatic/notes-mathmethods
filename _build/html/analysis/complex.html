@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Complex Functions &#8212; Daniel&#39;s notes on mathematics v0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=7254e0c9" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=29da98fa" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <script src="../_static/documentation_options.js?v=34cd777e"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"loader": {"load": ["[tex]/physics", "[siunitx]/siunitx.js"], "paths": {"siunitx": "http://rawgit.com/burnpanck/MathJax-siunitx/master/"}}, "tex": {"packages": {"[+]": ["physics", "siuntix"]}, "macros": {"div": "\\nabla", "ld": ["\\unicode{xA3}_{#1}{#2}", 2], "rn": "\\mathbb{R}", "dinf": "\\mathrm{d}", "dd": ["\\,\\dinf #1", 1], "of": ["\\tilde{#1}", 1], "ten": ["\\mathsf{{#1}}", 1], "RR": "{\\bf R}", "bold": ["{\\bf #1}", 1]}}})</script>
+    <script async="async" src="../_static/mathjax/tex-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Coordinate Systems" href="../calculus/coordinates.html" />
+    <link rel="prev" title="Real Analysis" href="real.html" />
+<meta charset='utf-8'>
+
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script src="../_static/darkmode.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="../_static/kentigern.js"></script>
+
+  </head>
+  <body data-spy="scroll" data-target="#localtoc" data-offset="100">
+
+<nav class="navbar navbar-expand-lg navbar-dark kentigern-navbar kentigern-main-navbar">
+  <div class="container-fluid">
+    <!-- Navbar brand -->
+    <a class="navbar-brand" href="../index.html">
+      Daniel&#39;s notes on mathematics</a>
+    <!-- End navbar brand -->
+    <!-- Navbar toggler -->
+    <button class="navbar-toggler"
+	    type="button"
+	    data-toggle="collapse"
+	    data-target="#navbarSupportedContent"
+	    aria-controls="navbarSupportedContent"
+	    aria-expanded="false"
+	    aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>    
+    <!-- End navbar toggler -->
+    
+    <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+  
+  
+  
+  
+</ul>
+      
+<form class="d-flex" role="search" action="../search.html" method="get">
+  <div class="input-group">
+    <input class="form-control" name="q" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-light" type="submit">Search</button>
+  </div>
+</form>
+      
+<ul class="navbar-nav">v0.1</ul>
+
+      <!--  -->
+    </div>
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="arrow-right-short" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
+  </symbol>
+  <symbol id="book-half" viewBox="0 0 16 16">
+    <path d="M8.5 2.687c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"/>
+  </symbol>
+  <symbol id="box-seam" viewBox="0 0 16 16">
+    <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z"/>
+  </symbol>
+  <symbol id="braces" viewBox="0 0 16 16">
+    <path d="M2.114 8.063V7.9c1.005-.102 1.497-.615 1.497-1.6V4.503c0-1.094.39-1.538 1.354-1.538h.273V2h-.376C3.25 2 2.49 2.759 2.49 4.352v1.524c0 1.094-.376 1.456-1.49 1.456v1.299c1.114 0 1.49.362 1.49 1.456v1.524c0 1.593.759 2.352 2.372 2.352h.376v-.964h-.273c-.964 0-1.354-.444-1.354-1.538V9.663c0-.984-.492-1.497-1.497-1.6zM13.886 7.9v.163c-1.005.103-1.497.616-1.497 1.6v1.798c0 1.094-.39 1.538-1.354 1.538h-.273v.964h.376c1.613 0 2.372-.759 2.372-2.352v-1.524c0-1.094.376-1.456 1.49-1.456V7.332c-1.114 0-1.49-.362-1.49-1.456V4.352C13.51 2.759 12.75 2 11.138 2h-.376v.964h.273c.964 0 1.354.444 1.354 1.538V6.3c0 .984.492 1.497 1.497 1.6z"/>
+  </symbol>
+  <symbol id="braces-asterisk" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M1.114 8.063V7.9c1.005-.102 1.497-.615 1.497-1.6V4.503c0-1.094.39-1.538 1.354-1.538h.273V2h-.376C2.25 2 1.49 2.759 1.49 4.352v1.524c0 1.094-.376 1.456-1.49 1.456v1.299c1.114 0 1.49.362 1.49 1.456v1.524c0 1.593.759 2.352 2.372 2.352h.376v-.964h-.273c-.964 0-1.354-.444-1.354-1.538V9.663c0-.984-.492-1.497-1.497-1.6ZM14.886 7.9v.164c-1.005.103-1.497.616-1.497 1.6v1.798c0 1.094-.39 1.538-1.354 1.538h-.273v.964h.376c1.613 0 2.372-.759 2.372-2.352v-1.524c0-1.094.376-1.456 1.49-1.456v-1.3c-1.114 0-1.49-.362-1.49-1.456V4.352C14.51 2.759 13.75 2 12.138 2h-.376v.964h.273c.964 0 1.354.444 1.354 1.538V6.3c0 .984.492 1.497 1.497 1.6ZM7.5 11.5V9.207l-1.621 1.621-.707-.707L6.792 8.5H4.5v-1h2.293L5.172 5.879l.707-.707L7.5 6.792V4.5h1v2.293l1.621-1.621.707.707L9.208 7.5H11.5v1H9.207l1.621 1.621-.707.707L8.5 9.208V11.5h-1Z"/>
+  </symbol>
+  <symbol id="check2" viewBox="0 0 16 16">
+    <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+  </symbol>
+  <symbol id="chevron-expand" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M3.646 9.146a.5.5 0 0 1 .708 0L8 12.793l3.646-3.647a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 0-.708zm0-2.292a.5.5 0 0 0 .708 0L8 3.207l3.646 3.647a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 0 0 0 .708z"/>
+  </symbol>
+  <symbol id="circle-half" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+  </symbol>
+  <symbol id="clipboard" viewBox="0 0 16 16">
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+    <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+  </symbol>
+  <symbol id="code" viewBox="0 0 16 16">
+    <path d="M5.854 4.854a.5.5 0 1 0-.708-.708l-3.5 3.5a.5.5 0 0 0 0 .708l3.5 3.5a.5.5 0 0 0 .708-.708L2.707 8l3.147-3.146zm4.292 0a.5.5 0 0 1 .708-.708l3.5 3.5a.5.5 0 0 1 0 .708l-3.5 3.5a.5.5 0 0 1-.708-.708L13.293 8l-3.147-3.146z"/>
+  </symbol>
+  <symbol id="file-earmark-richtext" viewBox="0 0 16 16">
+    <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
+    <path d="M4.5 12.5A.5.5 0 0 1 5 12h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm0-2A.5.5 0 0 1 5 10h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm1.639-3.708 1.33.886 1.854-1.855a.25.25 0 0 1 .289-.047l1.888.974V8.5a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V8s1.54-1.274 1.639-1.208zM6.25 6a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5z"/>
+  </symbol>
+  <symbol id="globe2" viewBox="0 0 16 16">
+    <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855-.143.268-.276.56-.395.872.705.157 1.472.257 2.282.287V1.077zM4.249 3.539c.142-.384.304-.744.481-1.078a6.7 6.7 0 0 1 .597-.933A7.01 7.01 0 0 0 3.051 3.05c.362.184.763.349 1.198.49zM3.509 7.5c.036-1.07.188-2.087.436-3.008a9.124 9.124 0 0 1-1.565-.667A6.964 6.964 0 0 0 1.018 7.5h2.49zm1.4-2.741a12.344 12.344 0 0 0-.4 2.741H7.5V5.091c-.91-.03-1.783-.145-2.591-.332zM8.5 5.09V7.5h2.99a12.342 12.342 0 0 0-.399-2.741c-.808.187-1.681.301-2.591.332zM4.51 8.5c.035.987.176 1.914.399 2.741A13.612 13.612 0 0 1 7.5 10.91V8.5H4.51zm3.99 0v2.409c.91.03 1.783.145 2.591.332.223-.827.364-1.754.4-2.741H8.5zm-3.282 3.696c.12.312.252.604.395.872.552 1.035 1.218 1.65 1.887 1.855V11.91c-.81.03-1.577.13-2.282.287zm.11 2.276a6.696 6.696 0 0 1-.598-.933 8.853 8.853 0 0 1-.481-1.079 8.38 8.38 0 0 0-1.198.49 7.01 7.01 0 0 0 2.276 1.522zm-1.383-2.964A13.36 13.36 0 0 1 3.508 8.5h-2.49a6.963 6.963 0 0 0 1.362 3.675c.47-.258.995-.482 1.565-.667zm6.728 2.964a7.009 7.009 0 0 0 2.275-1.521 8.376 8.376 0 0 0-1.197-.49 8.853 8.853 0 0 1-.481 1.078 6.688 6.688 0 0 1-.597.933zM8.5 11.909v3.014c.67-.204 1.335-.82 1.887-1.855.143-.268.276-.56.395-.872A12.63 12.63 0 0 0 8.5 11.91zm3.555-.401c.57.185 1.095.409 1.565.667A6.963 6.963 0 0 0 14.982 8.5h-2.49a13.36 13.36 0 0 1-.437 3.008zM14.982 7.5a6.963 6.963 0 0 0-1.362-3.675c-.47.258-.995.482-1.565.667.248.92.4 1.938.437 3.008h2.49zM11.27 2.461c.177.334.339.694.482 1.078a8.368 8.368 0 0 0 1.196-.49 7.01 7.01 0 0 0-2.275-1.52c.218.283.418.597.597.932zm-.488 1.343a7.765 7.765 0 0 0-.395-.872C9.835 1.897 9.17 1.282 8.5 1.077V4.09c.81-.03 1.577-.13 2.282-.287z"/>
+  </symbol>
+  <symbol id="grid-fill" viewBox="0 0 16 16">
+    <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zm8 0A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm-8 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm8 0A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3z"/>
+  </symbol>
+  <symbol id="lightning-charge-fill" viewBox="0 0 16 16">
+    <path d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.09z"/>
+  </symbol>
+  <symbol id="list" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+  </symbol>
+  <symbol id="magic" viewBox="0 0 16 16">
+    <path d="M9.5 2.672a.5.5 0 1 0 1 0V.843a.5.5 0 0 0-1 0v1.829Zm4.5.035A.5.5 0 0 0 13.293 2L12 3.293a.5.5 0 1 0 .707.707L14 2.707ZM7.293 4A.5.5 0 1 0 8 3.293L6.707 2A.5.5 0 0 0 6 2.707L7.293 4Zm-.621 2.5a.5.5 0 1 0 0-1H4.843a.5.5 0 1 0 0 1h1.829Zm8.485 0a.5.5 0 1 0 0-1h-1.829a.5.5 0 0 0 0 1h1.829ZM13.293 10A.5.5 0 1 0 14 9.293L12.707 8a.5.5 0 1 0-.707.707L13.293 10ZM9.5 11.157a.5.5 0 0 0 1 0V9.328a.5.5 0 0 0-1 0v1.829Zm1.854-5.097a.5.5 0 0 0 0-.706l-.708-.708a.5.5 0 0 0-.707 0L8.646 5.94a.5.5 0 0 0 0 .707l.708.708a.5.5 0 0 0 .707 0l1.293-1.293Zm-3 3a.5.5 0 0 0 0-.706l-.708-.708a.5.5 0 0 0-.707 0L.646 13.94a.5.5 0 0 0 0 .707l.708.708a.5.5 0 0 0 .707 0L8.354 9.06Z"/>
+  </symbol>
+  <symbol id="menu-button-wide-fill" viewBox="0 0 16 16">
+    <path d="M1.5 0A1.5 1.5 0 0 0 0 1.5v2A1.5 1.5 0 0 0 1.5 5h13A1.5 1.5 0 0 0 16 3.5v-2A1.5 1.5 0 0 0 14.5 0h-13zm1 2h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1 0-1zm9.927.427A.25.25 0 0 1 12.604 2h.792a.25.25 0 0 1 .177.427l-.396.396a.25.25 0 0 1-.354 0l-.396-.396zM0 8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V8zm1 3v2a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2H1zm14-1V8a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2h14zM2 8.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0 4a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5z"/>
+  </symbol>
+  <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+    <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+    <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+  </symbol>
+  <symbol id="palette2" viewBox="0 0 16 16">
+    <path d="M0 .5A.5.5 0 0 1 .5 0h5a.5.5 0 0 1 .5.5v5.277l4.147-4.131a.5.5 0 0 1 .707 0l3.535 3.536a.5.5 0 0 1 0 .708L10.261 10H15.5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-.5.5H3a2.99 2.99 0 0 1-2.121-.879A2.99 2.99 0 0 1 0 13.044m6-.21 7.328-7.3-2.829-2.828L6 7.188v5.647zM4.5 13a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0zM15 15v-4H9.258l-4.015 4H15zM0 .5v12.495V.5z"/>
+    <path d="M0 12.995V13a3.07 3.07 0 0 0 0-.005z"/>
+  </symbol>
+  <symbol id="plugin" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M1 8a7 7 0 1 1 2.898 5.673c-.167-.121-.216-.406-.002-.62l1.8-1.8a3.5 3.5 0 0 0 4.572-.328l1.414-1.415a.5.5 0 0 0 0-.707l-.707-.707 1.559-1.563a.5.5 0 1 0-.708-.706l-1.559 1.562-1.414-1.414 1.56-1.562a.5.5 0 1 0-.707-.706l-1.56 1.56-.707-.706a.5.5 0 0 0-.707 0L5.318 5.975a3.5 3.5 0 0 0-.328 4.571l-1.8 1.8c-.58.58-.62 1.6.121 2.137A8 8 0 1 0 0 8a.5.5 0 0 0 1 0Z"/>
+  </symbol>
+  <symbol id="plus" viewBox="0 0 16 16">
+    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+  </symbol>
+  <symbol id="sun-fill" viewBox="0 0 16 16">
+    <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+  </symbol>
+  <symbol id="three-dots" viewBox="0 0 16 16">
+    <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+  </symbol>
+  <symbol id="tools" viewBox="0 0 16 16">
+    <path d="M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.356 3.356a1 1 0 0 0 1.414 0l1.586-1.586a1 1 0 0 0 0-1.414l-3.356-3.356a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3c0-.269-.035-.53-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814L1 0zm9.646 10.646a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708zM3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026L3 11z"/>
+  </symbol>
+  <symbol id="ui-radios" viewBox="0 0 16 16">
+    <path d="M7 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1zM0 12a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm7-1.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1zm0-5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 8a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zM3 1a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm0 4.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+  </symbol>
+</svg>
+<ul class="navbar-nav">
+<li class="nav-item dropdown">
+  <button class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle d-flex align-items-center"
+          id="bd-theme"
+          type="button"
+          aria-expanded="false"
+          data-bs-toggle="dropdown"
+          data-bs-display="static">
+    <svg class="bi my-1 theme-icon-active"><use href="#circle-half"></use></svg>
+    <span class="d-lg-none ms-2">Toggle theme</span>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme" style="--bs-dropdown-min-width: 8rem;">
+    <li>
+      <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light">
+        <svg class="bi me-2 opacity-50 theme-icon"><use href="#sun-fill"></use></svg>
+        Light
+        <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+      </button>
+    </li>
+    <li>
+      <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark">
+        <svg class="bi me-2 opacity-50 theme-icon"><use href="#moon-stars-fill"></use></svg>
+        Dark
+        <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+      </button>
+    </li>
+    <li>
+      <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto">
+        <svg class="bi me-2 opacity-50 theme-icon"><use href="#circle-half"></use></svg>
+        Auto
+        <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+      </button>
+    </li>
+  </ul>
+</li>
+</ul>
+    
+</nav>
+
+
+
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+  
+  
+
+<ul class="navbar-nav mr-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="real.html" title="Previous Chapter: Real Analysis">
+      <span class="glyphicon glyphicon-chevron-left visible-sm"></span>
+      <span class="hidden-sm hidden-tablet">&laquo; Real Analysis</span>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../calculus/coordinates.html" title="Next Chapter: Coordinate Systems">
+      <span class="glyphicon glyphicon-chevron-right visible-sm"></span>
+      <span class="hidden-sm hidden-tablet">Coordinate Systems &raquo;</span>
+    </a>
+  </li>
+</ul>
+  
+  
+  
+<div id="sourcelink navbar-nav mr-auto hidden-sm">
+  <a href="../_sources/analysis/complex.rst.txt"
+     class="nav-link"
+     rel="nofollow"><i class="bi bi-file-binary-fill"></i>Source</a>
+</div>
+
+  
+  </div>
+</nav>
+
+
+<div class="container-fluid" id="docs-container">
+  
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-2 order-3 order-xl-1 toc-left">
+      <!-- 
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form> -->
+      <div id="globaltoc-wrapper" class="pt-3">
+
+<p class="caption" role="heading"><span class="caption-text">Analysis</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="real.html">Real Analysis</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Complex Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#limits-and-continuity">Limits and Continuity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#complex-differentiation">Complex Differentiation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#complex-integration">Complex Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#infinite-taylor-and-laurent-series">Infinite, Taylor, and Laurent Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#residues">Residues</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Calculus</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../calculus/coordinates.html">Coordinate Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../calculus/vector.html">Vector Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../calculus/sturm.html">Operator theory</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Differential equations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../calculus/odes.html">Ordinary Differential Equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../calculus/pdes.html">Partial Differential Equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../calculus/solving-pdes.html">Solving Partial Differential Equations</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Special functions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../special/legendre.html">Legendre Polynomials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../special/spherical-harmonics.html">Spherical Harmonics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../special/spherical-harmonics.html#spherical-harmonics-and-the-schrodinger-equation">Spherical Harmonics and the Schrodinger Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../special/bessel.html">Bessel Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../special/hermite.html">Hermite Polynomials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../calculus/stirling.html">Stirling’s Approximation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../calculus/stirling.html#the-gamma-function">The Gamma Function</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Abstract algebra</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../abstract/sets.html">Sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../abstract/operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../abstract/functions.html">Mappings and Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../abstract/groups.html">Group Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../abstract/fields.html">Fields of Scalars</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Linear algebra</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../linear.html">Vector Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../linear.html#bases">Bases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../linear/inner-product-spaces.html">Inner Product Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../linear/coordinates.html">Lie Brackets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../linear/matrices.html">Matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../linear/transformations.html">Linear Mappings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multilinear.html">Multilinear Algebra and Tensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multilinear.html#tensor-rotations">Tensor Rotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multilinear.html#extensions-of-rotations-to-rank-2-tensors">Extensions of Rotations to rank-2 Tensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../linear/one-forms.html">One-forms</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Geometry</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../geometry/manifolds.html">Manifolds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geometry/differential-forms.html">Differential forms</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Probability</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../probability.html">Probability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../probability.html#information">Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../probability.html#prior-knowledge">Prior knowledge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../probability.html#feature-spaces-and-kernels">Feature spaces and Kernels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../probability.html#structured-probability-distributions">Structured probability distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../probability.html#inference">Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../probability.html#stochastic-processes">Stochastic processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../probability.html#approximate-inference-methods">Approximate inference methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../probability.html#hierarchical-modelling">Hierarchical modelling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prob-distributions/index.html">Atlas of Probability Distributions</a></li>
+</ul>
+
+
+</div>
+
+      
+    </div>
+
+    <div class="col-md-6 col-lg-2 order-2 order-xl-3 toc-right">
+      <div id="localtoc-wrapper">
+  <div class="tocsection onthispage pt-3">
+    <p class="toctitle"><i class="bi bi-list"></i> On this page</p>
+  </div>
+  
+  <div id="localtoc">
+    <ul>
+<li><a class="reference internal" href="#">Complex Functions</a></li>
+<li><a class="reference internal" href="#limits-and-continuity">Limits and Continuity</a></li>
+<li><a class="reference internal" href="#complex-differentiation">Complex Differentiation</a></li>
+<li><a class="reference internal" href="#complex-integration">Complex Integration</a></li>
+<li><a class="reference internal" href="#infinite-taylor-and-laurent-series">Infinite, Taylor, and Laurent Series</a><ul>
+<li><a class="reference internal" href="#laurents-theorem">Laurent’s Theorem</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#residues">Residues</a></li>
+</ul>
+
+  </div>
+
+</div>
+      
+    </div>
+    
+    <div class="col-md-12 col-lg-8 content order-1 order-xl-2 col-xl-6 pt-3">
+
+      
+      
+      
+      
+  <p>Complex analysis is the study of functions of complex variables.</p>
+<section id="complex-functions">
+<h1>Complex Functions<a class="headerlink" href="#complex-functions" title="Link to this heading">¶</a></h1>
+<div class="proof definition admonition" id="definition-0">
+<p class="admonition-title"><span class="caption-number">Definition 1 </span> (Complex function)</p>
+<section class="definition-content" id="proof-content">
+<p>A complex function is a function which maps a complex number to another complex number.</p>
+</section>
+</div><p>Any complex function, like a complex number, can be split into real and imaginary components, so, a function <span class="math notranslate nohighlight">\(w: \mathbb{C} \to
+\mathbb{C}\)</span> can be composed of two functions, <span class="math notranslate nohighlight">\(u: \mathbb{R} \to \mathbb{R}\)</span>, and <span class="math notranslate nohighlight">\(v: \mathbb{R} \to \mathbb{R}\)</span>, so</p>
+<div class="math notranslate nohighlight">
+\[\require{physics}
+w(z) = u(x,y) + i v(x,y)\]</div>
+<div class="proof definition admonition" id="definition-1">
+<p class="admonition-title"><span class="caption-number">Definition 2 </span> (Multi-valued Function)</p>
+<section class="definition-content" id="proof-content">
+<p>A multi-valued function is a left-total relation, such that each member in the domain of the relation corresponds to at least one member in the co-domain.</p>
+</section>
+</div><p>The name “function” for these objects is a misnomer, and they are in fact relations, since functions must always map to only a single value.</p>
+<p>The relation <span class="math notranslate nohighlight">\(w^2 = z\)</span> is multi-valued, because, for example, both <span class="math notranslate nohighlight">\(w=\pm 1\)</span> map to the same value; in fact every output value greater than 0 is mapped to by two numbers.</p>
+<p>Dealing with multi-valued functions requires a new framework compared to normal functions.
+One approach is to consider the <em>branching</em> of a function.</p>
+<div class="proof definition admonition" id="definition-2">
+<p class="admonition-title"><span class="caption-number">Definition 3 </span> (Branch Point)</p>
+<section class="definition-content" id="proof-content">
+<p>The branch points of a multi-valued function are the points in the complex plane where the complex argument can be mapped from a single point in the domain to multiple points in the range of the relation.</p>
+</section>
+</div><div class="proof definition admonition" id="definition-3">
+<p class="admonition-title"><span class="caption-number">Definition 4 </span> (Winding Number)</p>
+<section class="definition-content" id="proof-content">
+<p>The winding number for a closed curve on a plane around a point is an integer which represents the number of closed circuits the curve makes around the point.</p>
+</section>
+</div><p>Let <span class="math notranslate nohighlight">\(w(\theta) = z(\theta)^{\half}\)</span>, with <span class="math notranslate nohighlight">\(z \in \mathbb{C}\)</span>, such that <span class="math notranslate nohighlight">\(z = e^{i \theta}\)</span>.
+Taking the value of <span class="math notranslate nohighlight">\(w\)</span> at two points, <span class="math notranslate nohighlight">\(0\)</span>, and <span class="math notranslate nohighlight">\(2 \pi\)</span>, we find</p>
+<div class="math notranslate nohighlight">
+\[w(0) = e^0 = 1\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}w(2\pi) = e^{2 \pi i} ( \neq 1)\\each corresponds to the same point in the domain, but to different\end{aligned}\end{align} \]</div>
+<p>points in the range.</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}w(4 \pi) = 1\\so the function returns to its original value after two circuits about\end{aligned}\end{align} \]</div>
+<p>the complex plane, so this point has a winding number of two.</p>
+<p>The existence of branch points splits multi-valued functions into
+“sheets” in which the function is single valued. It can be useful, in
+order to work with these functions, to consider a multi-valued function
+as the “glueing together” of such single value functions. These gluings
+happen along “branch cuts.”</p>
+<p>[Branch Cut] A branch cut is a curve in the complex plane, such that a
+multi-valued function could be represented as a single valued function
+as a branch minus the curve.</p>
+<p>Returning to the example of <span class="math notranslate nohighlight">\(w = z^{\half}\)</span>, a branch cut would
+exist as the line where <span class="math notranslate nohighlight">\(\theta = 2 \pi\)</span>. All the values on the
+branch below this are single valued.</p>
+<p>There is an alternative way of considering multi-valued functions, and
+one which is easier to visualise. The different “sheets” of a
+multivalued function can be considered as being superimposed ontop of
+each other. If we were able to seperate the two superimposed sheets, we
+would need to leave them somehow connected along the branch cuts. The
+resulting surface is a Riemann Surface.</p>
+<p>Again, in the case <span class="math notranslate nohighlight">\(w = z^{\half}\)</span>, the Riemann surface consists
+of two surfaces. The lower surface is joined to the upper surface at
+<span class="math notranslate nohighlight">\(\theta=2 \pi\)</span>, and the upper surface is joined back to the lower
+surface along <span class="math notranslate nohighlight">\(\theta=4 \pi\)</span> and <span class="math notranslate nohighlight">\(\theta=0\)</span>.</p>
+</section>
+<section id="limits-and-continuity">
+<h1>Limits and Continuity<a class="headerlink" href="#limits-and-continuity" title="Link to this heading">¶</a></h1>
+<p>[Limit (Complex)] Let <span class="math notranslate nohighlight">\(f\)</span> be a function of a complex variable,
+<span class="math notranslate nohighlight">\(z\)</span>, which is defined and single-valued in a neighbourhood about a
+point <span class="math notranslate nohighlight">\(z=z_0\)</span> in the complex plane, with the possible exception of
+<span class="math notranslate nohighlight">\(z = z_0\)</span>, thus a deleted neighbourhood of <span class="math notranslate nohighlight">\(z_0\)</span>. The number
+<span class="math notranslate nohighlight">\(l\)</span> is the limit of <span class="math notranslate nohighlight">\(f(z)\)</span> as <span class="math notranslate nohighlight">\(z\)</span> approaches
+<span class="math notranslate nohighlight">\(z_0\)</span>, if, for any small positive number <span class="math notranslate nohighlight">\(\epsilon\)</span> there
+exists a <span class="math notranslate nohighlight">\(\delta\)</span>, such that</p>
+<div class="math notranslate nohighlight">
+\[| f(z) - l | &lt;
+  \epsilon \qquad \text{when} \qquad 0 &lt; |z - z_0 | &lt;
+  \delta\]</div>
+<p>Then</p>
+<div class="math notranslate nohighlight">
+\[\lim_{z \to z_0} f(z) = l\]</div>
+<p>[Continuity] Let <span class="math notranslate nohighlight">\(f\)</span> be a function of a complex variable,
+<span class="math notranslate nohighlight">\(z\)</span>, which is single-valued in the neighbourhood of <span class="math notranslate nohighlight">\(z=z_0\)</span>
+and at the point <span class="math notranslate nohighlight">\(z=z_0\)</span>. The function <span class="math notranslate nohighlight">\(f\)</span> is continuous at
+<span class="math notranslate nohighlight">\(z=z_0\)</span> if :math:<a href="#id1"><span class="problematic" id="id2">`</span></a>lim_{z to</p>
+<blockquote>
+<div><p>z_0} f(z) = f(z_0)`. This implies three conditions,</p>
+</div></blockquote>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\lim_{z \to z_0} f(z) = l\)</span> must exist</p></li>
+<li><p><span class="math notranslate nohighlight">\(f(z_0)\)</span> must exist</p></li>
+<li><p><span class="math notranslate nohighlight">\(l = f(z_0)\)</span></p></li>
+</ul>
+<p>[Continuity over a region] A function is said to be continuous over a
+region if it is continuous at all points in that region.</p>
+<p>[Uniform Continuity] Let <span class="math notranslate nohighlight">\(f\)</span> be a function of a complex variable
+which is continuous in a region. At each point, <span class="math notranslate nohighlight">\(z_0\)</span> of the
+region, and for any :math:<a href="#id3"><span class="problematic" id="id4">`</span></a>epsilon</p>
+<blockquote>
+<div><p>&gt;0` there is a <span class="math notranslate nohighlight">\(\delta &gt;0\)</span> such that</p>
+</div></blockquote>
+<p><span class="math notranslate nohighlight">\(|f(z) - f(z_0)| &lt; \epsilon\)</span> when <span class="math notranslate nohighlight">\(|z - z_0| &lt; \delta\)</span>. If
+there is a <span class="math notranslate nohighlight">\(\delta\)</span> depending on <span class="math notranslate nohighlight">\(\epsilon\)</span> but not on
+<span class="math notranslate nohighlight">\(z_0\)</span> <span class="math notranslate nohighlight">\(f(z)\)</span> is uniformly continuous in the region.</p>
+</section>
+<section id="complex-differentiation">
+<h1>Complex Differentiation<a class="headerlink" href="#complex-differentiation" title="Link to this heading">¶</a></h1>
+<p>[Differentiation] Let <span class="math notranslate nohighlight">\(f\)</span> be a function of a complex variable,
+<span class="math notranslate nohighlight">\(z\)</span>, which is single-valued over some region <span class="math notranslate nohighlight">\({\cal R}\)</span> of
+the <span class="math notranslate nohighlight">\(z\)</span> plane, then the derivative of <span class="math notranslate nohighlight">\(f\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[\dv{f}{z} = \lim_{\Delta z \to 0} \frac{f(z + \Delta z) -
+    f(z)}{\Delta z}\]</div>
+<p>provided that the limit exists independent of the way in which
+<span class="math notranslate nohighlight">\(\Delta z \to 0\)</span>. In such a case <span class="math notranslate nohighlight">\(f\)</span> is differentiable at
+<span class="math notranslate nohighlight">\(z\)</span>.</p>
+<p>[Holomorphic Function] Let <span class="math notranslate nohighlight">\(f\)</span> be a function of a complex variable
+<span class="math notranslate nohighlight">\(z\)</span> which has a derivative, <span class="math notranslate nohighlight">\(f^{\prime}\)</span>, which exists at
+every point in a region <span class="math notranslate nohighlight">\({\cal R}\)</span>, the <span class="math notranslate nohighlight">\(f\)</span> is a holomorphic
+function in <span class="math notranslate nohighlight">\({\cal R}\)</span>.</p>
+<p>The function <span class="math notranslate nohighlight">\(f(z) = \bar{z}\)</span> is not holomorphic, because
+approaching <span class="math notranslate nohighlight">\(0\)</span> from different directions, the limit in the
+definition of the complex derivative is different.</p>
+<p>The condition that a function is holomorphic is given by the
+Cauchy-Riemann equations.</p>
+<p>[Cauchy-Riemann Equations] Consider a function, <span class="math notranslate nohighlight">\(f\)</span> of a complex
+variable, <span class="math notranslate nohighlight">\(z\)</span>, such that</p>
+<div class="math notranslate nohighlight">
+\[w = f(z) = u(x,y) + i v(x,y)\]</div>
+<p>for <span class="math notranslate nohighlight">\(x,y \in \mathbb{R}\)</span>. If the function satisfies the relations</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\pdv{u}{x} = \pdv{u}{y}\\and\end{aligned}\end{align} \]</div>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\pdv{u}{y} = - \pdv{v}{x}\\which are the *Cauchy-Riemann equations*, the function is holomorphic.\end{aligned}\end{align} \]</div>
+<p>An important property of holomorphic functions relates to the existence
+of higher derivatives.</p>
+<p>[Higher Derivatives] Suppose <span class="math notranslate nohighlight">\(f\)</span> is a holomorphic function over a
+region <span class="math notranslate nohighlight">\({\cal R}\)</span>. The derivatives
+<span class="math notranslate nohighlight">\(f^{\prime}, f^{\prime \prime}, \dots\)</span> are all holomorphic over
+<span class="math notranslate nohighlight">\({\cal R}\)</span>.</p>
+<p>It is possible for functions to have points where they fail to be
+analytic.</p>
+<div class="line-block">
+<div class="line">[Singularity] A singularity is a point where a function on the complex
+plane ceases to be analytic.</div>
+<div class="line"><strong>Isolated singularities</strong> exist at a point <span class="math notranslate nohighlight">\(z=z_0\)</span> where it is
+possible to find a circle <span class="math notranslate nohighlight">\(|z-z_0|=\delta\)</span> for <span class="math notranslate nohighlight">\(\delta&gt;0\)</span>
+encloses no singular point other than <span class="math notranslate nohighlight">\(z_0\)</span>. If no such
+<span class="math notranslate nohighlight">\(\delta\)</span> exists the singularity is non-isolated.</div>
+<div class="line"><strong>Poles</strong> are isolated singularities where there exists an integer
+<span class="math notranslate nohighlight">\(n\)</span> such that
+<span class="math notranslate nohighlight">\(\lim_{z \to z_0} (z -z_0)^n f(z) = A \neq 0\)</span>; such a pole is of
+order <span class="math notranslate nohighlight">\(n\)</span>. If <span class="math notranslate nohighlight">\(n=1\)</span> the pole is a simple pole.</div>
+<div class="line"><strong>Branch Points</strong> are non-isolated singular points since a
+multi-valued function is not continuous, and thus is not holomorphic
+in the deleted neighbourhood of the branch point.</div>
+<div class="line"><strong>Removable Singularities</strong> are isolated singular points, <span class="math notranslate nohighlight">\(z_0\)</span>
+where <span class="math notranslate nohighlight">\(\lim_{z \to z_0} f(z)\)</span> exists. Defining
+<span class="math notranslate nohighlight">\(z_0 = \lim_{z \to
+    z_0} f(z)\)</span> the function becomes continuous and holomorphic at
+<span class="math notranslate nohighlight">\(z_0\)</span>.</div>
+<div class="line"><strong>Essential Singularities</strong> are singularities which are neither poles
+nor removable singularities.</div>
+</div>
+</section>
+<section id="complex-integration">
+<h1>Complex Integration<a class="headerlink" href="#complex-integration" title="Link to this heading">¶</a></h1>
+<p>[Complex Line Integral] Let <span class="math notranslate nohighlight">\(f(z)\)</span> be a function of a complex
+variable which is continuous at all points of a curve, <span class="math notranslate nohighlight">\(C\)</span>, which
+has a finite length. The line integral along the curve can be found by
+dividing the curve into <span class="math notranslate nohighlight">\(n\)</span> sections by means of the points
+<span class="math notranslate nohighlight">\(z_1, z_2, \dots, z_{n-1}\)</span> which are chosen arbitrarily. Let
+<span class="math notranslate nohighlight">\(a = z_0\)</span> and <span class="math notranslate nohighlight">\(b=z_n\)</span> be the beginning and end points
+respectively of the curve. On each arc joining points <span class="math notranslate nohighlight">\(z_{k-1}\)</span> to
+<span class="math notranslate nohighlight">\(z_k\)</span>, for <span class="math notranslate nohighlight">\(k = 1, 2, \dots, n\)</span>, choose a point
+<span class="math notranslate nohighlight">\(\xi_k\)</span>. A sum can then be formed, letting
+<span class="math notranslate nohighlight">\(\Delta z_k = z_k - z_{k-1}\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[S_n = \Delta z_1 f(\xi_1) + \Delta z_2 f(\xi_2) + \cdots + \Delta
+  z_n f(\xi_n)\]</div>
+<p>As <span class="math notranslate nohighlight">\(|\Delta z_k| \to 0\)</span>, we have the integral,</p>
+<div class="math notranslate nohighlight">
+\[\int_a^b f(z) \dd{z} = \int_C f(z)\]</div>
+<p>[Simply and Mulitply Connected Regions] A region <span class="math notranslate nohighlight">\({\cal R}\)</span> can be
+described as simply connected if any closed curve which lies in
+<span class="math notranslate nohighlight">\({\cal R}\)</span> can be shrunk to a point without leaving
+<span class="math notranslate nohighlight">\({\cal R}\)</span>. Otherwise the region is multiply connected.</p>
+<p>[Jordan Curve] A curve <span class="math notranslate nohighlight">\(C\)</span> is a Jordan curve if it is continuous,
+closed, and does not intersect itself.</p>
+<p>[Jordan Curve Theorem] A Jordan curve on the complex plane divides the
+plane into two regions, having the curve as a common boundary. The
+region which is bounded (where points do not lie on the boundary) is the
+interior of the curve, while the other region os the exterior of the
+curve.</p>
+</section>
+<section id="infinite-taylor-and-laurent-series">
+<h1>Infinite, Taylor, and Laurent Series<a class="headerlink" href="#infinite-taylor-and-laurent-series" title="Link to this heading">¶</a></h1>
+<p>It is possible to extend the concept of sequences and series of
+constants to functions. The concepts of limits can then be extended to
+them as well.</p>
+<div class="line-block">
+<div class="line">[Convergence of a sequence of functions] Let
+<span class="math notranslate nohighlight">\(u_1(z), u_2(z), \dots, u_n(z)\)</span>, in short, <span class="math notranslate nohighlight">\(\{ u_n(z) \}\)</span>
+be a sequence of functions of <span class="math notranslate nohighlight">\(z \in \mathbb{C}\)</span>, which are all
+defined and single-valued in some region of the <span class="math notranslate nohighlight">\(z\)</span>-plane. Let
+<span class="math notranslate nohighlight">\(U(z)\)</span> be the limit of <span class="math notranslate nohighlight">\(u_n(z)\)</span> as <span class="math notranslate nohighlight">\(u \to \infty\)</span>,
+such that, <span class="math notranslate nohighlight">\(\lim_{n \to \infty}
+  u_n(z) = U(z)\)</span>. If, given any positive number <span class="math notranslate nohighlight">\(\epsilon\)</span>,
+there exists an <span class="math notranslate nohighlight">\(N\)</span> (which in general depends on
+<span class="math notranslate nohighlight">\(\epsilon\)</span> and <span class="math notranslate nohighlight">\(z\)</span>) such that</div>
+</div>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[| u_n (z) - U(z) | &lt; \epsilon \qquad \forall n &gt; N\]</div>
+<p>In such a case the sequence converges to <span class="math notranslate nohighlight">\(U(z)\)</span>.</p>
+</div></blockquote>
+<div class="line-block">
+<div class="line">If such a sequnce converges for all the points in a region,
+<span class="math notranslate nohighlight">\({\cal R}\)</span>, then <span class="math notranslate nohighlight">\({\cal
+    R}\)</span> is a region of convergence of the sequence.</div>
+<div class="line">If the sequence is not convergent at a point, <span class="math notranslate nohighlight">\(z\)</span>, it is
+described as being divergent at that point.</div>
+</div>
+<p>[Series of Functions] Let <span class="math notranslate nohighlight">\(\{ u_n(z) \}\)</span> be a sequence of
+functions of <span class="math notranslate nohighlight">\(z \in \mathbb{C}\)</span>. Let <span class="math notranslate nohighlight">\(\{ S_n(z) \}\)</span> be a new
+sequence which is defined by</p>
+<div class="math notranslate nohighlight">
+\[S_n(z) = \sum_{k=1}^n u_n(z)\]</div>
+<p>Then <span class="math notranslate nohighlight">\(S_n(z)\)</span> is the <span class="math notranslate nohighlight">\(n\)</span>th partial sum. The sequence
+<span class="math notranslate nohighlight">\(\{ S_n(z) \}\)</span> is an infinite series. If
+<span class="math notranslate nohighlight">\(\lim_{n \to \infty} S_n(z) = S(z)\)</span> the series is convergent, and
+<span class="math notranslate nohighlight">\(S(z)\)</span> is the sum of the series. Otherwise it is divergent.</p>
+<section id="laurents-theorem">
+<h2>Laurent’s Theorem<a class="headerlink" href="#laurents-theorem" title="Link to this heading">¶</a></h2>
+<div class="proof theorem admonition" id="theorem-4">
+<p class="admonition-title"><span class="caption-number">Theorem 1 </span> (Laurent’s Theorem)</p>
+<section class="theorem-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(C_1\)</span> and <span class="math notranslate nohighlight">\(C_2\)</span> be concentric circles of radii <span class="math notranslate nohighlight">\(R_1\)</span> and <span class="math notranslate nohighlight">\(R_2\)</span> respectively, which are centred on a point <span class="math notranslate nohighlight">\(a\)</span>.
+Suppose <span class="math notranslate nohighlight">\(f(z)\)</span> is single-valued and analytic on both circles, and in the annulus, <span class="math notranslate nohighlight">\({\cal R}\)</span>, bounded by each.
+Let <span class="math notranslate nohighlight">\(a+h\)</span> be any point in <span class="math notranslate nohighlight">\({\cal R}\)</span>, then</p>
+<div class="math notranslate nohighlight">
+\[f(a+h) = a_0 + a_1 h + a_2 h^2 + \cdots + \frac{a_{-1}}{h} +
+\frac{a_{-2}}{h^2} + \cdots\]</div>
+<p>with</p>
+<div class="math notranslate nohighlight">
+\[a_n = \frac{1}{2 \pi i}
+\oint_{C_1} \frac{f(z)}{(z-a)^{n+1}} \dd{z} \quad n=0,1,2, \dots\]</div>
+<div class="math notranslate nohighlight">
+\[a_{-n} = \frac{1}{2 \pi i} \oint_{C_1} (z-a)^{n-1} f(z) \dd{z}
+\quad n = 1,2, 3,\dots\]</div>
+<p>If circles <span class="math notranslate nohighlight">\(C_1\)</span> and <span class="math notranslate nohighlight">\(C_2\)</span> represent the same circle, <span class="math notranslate nohighlight">\(C\)</span>, we can write</p>
+<div class="math notranslate nohighlight">
+\[a_n = \frac{1}{2 \pi i} \oint_C \frac{f(z)}{(z-a)^{n+1}} \dd{z}
+\quad n = 0, \pm 1, \pm 2,\dots\]</div>
+<p>With a change of notation,</p>
+<div class="math notranslate nohighlight">
+\[f(z) = a_0 + a_1(z-a) + a_2 (z-a)^2 + \cdots + \frac{a_{-1}}{z-a}
++ \frac{a_{-2}}{(z-a)^2} + \cdots\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[a_n = \frac{1}{2 \pi i} \oint_C \frac{f(\zeta)}{(\zeta -
+a)^{n+1}} \dd{\zeta} \quad n = 0, \pm 1, \pm 2, \dots\]</div>
+<p>This is Laurent’s theorem, and the sequence <span class="math notranslate nohighlight">\(\{ a_n \}\)</span> is a Laurent series expansion of <span class="math notranslate nohighlight">\(f\)</span>.</p>
+<p>The positive subscript components of the series form the analytic part of the series, while the rest is the principle part.</p>
+</section>
+</div></section>
+</section>
+<section id="residues">
+<h1>Residues<a class="headerlink" href="#residues" title="Link to this heading">¶</a></h1>
+<div class="proof definition admonition" id="definition-5">
+<p class="admonition-title"><span class="caption-number">Definition 5 </span> (Residue)</p>
+<section class="definition-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(f(z)\)</span> be a single-valued function of <span class="math notranslate nohighlight">\(z \in \mathbb{C}\)</span> which is analytic in and on a circle, <span class="math notranslate nohighlight">\(C\)</span>, except at the point <span class="math notranslate nohighlight">\(z=a\)</span> at the centre of <span class="math notranslate nohighlight">\(C\)</span>.
+Then, the Laurent series of <span class="math notranslate nohighlight">\(f(z)\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[f(z) = \sum_{n= - \infty}^{\infty} a_n (z-a)^n\]</div>
+<p>with</p>
+<div class="math notranslate nohighlight">
+\[a_n =
+  \frac{1}{2 \pi i} \oint_C \frac{f(z)}{(z-a)^{n+1}} \dd{z} \quad n =
+  0, \pm 1, \pm 2, \dots\]</div>
+<p>In the case <span class="math notranslate nohighlight">\(n=-1\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\oint_C f(z) \dd{z} = 2 \pi i a_{-1}\]</div>
+<p>This can be obtained by integrating the Laurent series term by term.
+In the case of <span class="math notranslate nohighlight">\(n=-1\)</span> only <span class="math notranslate nohighlight">\(a_1\)</span> is involved, so <span class="math notranslate nohighlight">\(a_1\)</span> is called the residue of <span class="math notranslate nohighlight">\(f(z)\)</span> at <span class="math notranslate nohighlight">\(z=a\)</span>.</p>
+</section>
+</div></section>
+
+
+    </div>
+
+  </div>
+  <div class="container">
+<footer class="footer d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">  
+  <div class="container-fluid">
+    
+      <!-- <a href="#">Back to top</a> -->
+      
+      &copy; Copyright 2020-2022, Daniel Williams.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.1.0.<br/>
+    </p>
+  </div> 
+</footer>
+</div>
+    <script>
+    $(document).ready(function(){
+	$("#localtoc a").addClass("nav-link")
+	$('body').scrollspy({ target: '#localtoc' })
+    });
+  </script>
+  </body>
+</html>

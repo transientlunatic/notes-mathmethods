@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Probability &#8212; Daniel&#39;s notes on mathematics v0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=7254e0c9" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=29da98fa" />
+    <link rel="stylesheet" type="text/css" href="_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <script src="_static/documentation_options.js?v=34cd777e"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"loader": {"load": ["[tex]/physics", "[siunitx]/siunitx.js"], "paths": {"siunitx": "http://rawgit.com/burnpanck/MathJax-siunitx/master/"}}, "tex": {"packages": {"[+]": ["physics", "siuntix"]}, "macros": {"div": "\\nabla", "ld": ["\\unicode{xA3}_{#1}{#2}", 2], "rn": "\\mathbb{R}", "dinf": "\\mathrm{d}", "dd": ["\\,\\dinf #1", 1], "of": ["\\tilde{#1}", 1], "ten": ["\\mathsf{{#1}}", 1], "RR": "{\\bf R}", "bold": ["{\\bf #1}", 1]}}})</script>
+    <script async="async" src="_static/mathjax/tex-chtml.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Atlas of Probability Distributions" href="prob-distributions/index.html" />
+    <link rel="prev" title="Differential forms" href="geometry/differential-forms.html" />
+<meta charset='utf-8'>
+
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script src="_static/darkmode.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="_static/kentigern.js"></script>
+
+  </head>
+  <body data-spy="scroll" data-target="#localtoc" data-offset="100">
+
+<nav class="navbar navbar-expand-lg navbar-dark kentigern-navbar kentigern-main-navbar">
+  <div class="container-fluid">
+    <!-- Navbar brand -->
+    <a class="navbar-brand" href="index.html">
+      Daniel&#39;s notes on mathematics</a>
+    <!-- End navbar brand -->
+    <!-- Navbar toggler -->
+    <button class="navbar-toggler"
+	    type="button"
+	    data-toggle="collapse"
+	    data-target="#navbarSupportedContent"
+	    aria-controls="navbarSupportedContent"
+	    aria-expanded="false"
+	    aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>    
+    <!-- End navbar toggler -->
+    
+    <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+  
+  
+  
+  
+</ul>
+      
+<form class="d-flex" role="search" action="search.html" method="get">
+  <div class="input-group">
+    <input class="form-control" name="q" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-light" type="submit">Search</button>
+  </div>
+</form>
+      
+<ul class="navbar-nav">v0.1</ul>
+
+      <!--  -->
+    </div>
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="arrow-right-short" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
+  </symbol>
+  <symbol id="book-half" viewBox="0 0 16 16">
+    <path d="M8.5 2.687c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"/>
+  </symbol>
+  <symbol id="box-seam" viewBox="0 0 16 16">
+    <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z"/>
+  </symbol>
+  <symbol id="braces" viewBox="0 0 16 16">
+    <path d="M2.114 8.063V7.9c1.005-.102 1.497-.615 1.497-1.6V4.503c0-1.094.39-1.538 1.354-1.538h.273V2h-.376C3.25 2 2.49 2.759 2.49 4.352v1.524c0 1.094-.376 1.456-1.49 1.456v1.299c1.114 0 1.49.362 1.49 1.456v1.524c0 1.593.759 2.352 2.372 2.352h.376v-.964h-.273c-.964 0-1.354-.444-1.354-1.538V9.663c0-.984-.492-1.497-1.497-1.6zM13.886 7.9v.163c-1.005.103-1.497.616-1.497 1.6v1.798c0 1.094-.39 1.538-1.354 1.538h-.273v.964h.376c1.613 0 2.372-.759 2.372-2.352v-1.524c0-1.094.376-1.456 1.49-1.456V7.332c-1.114 0-1.49-.362-1.49-1.456V4.352C13.51 2.759 12.75 2 11.138 2h-.376v.964h.273c.964 0 1.354.444 1.354 1.538V6.3c0 .984.492 1.497 1.497 1.6z"/>
+  </symbol>
+  <symbol id="braces-asterisk" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M1.114 8.063V7.9c1.005-.102 1.497-.615 1.497-1.6V4.503c0-1.094.39-1.538 1.354-1.538h.273V2h-.376C2.25 2 1.49 2.759 1.49 4.352v1.524c0 1.094-.376 1.456-1.49 1.456v1.299c1.114 0 1.49.362 1.49 1.456v1.524c0 1.593.759 2.352 2.372 2.352h.376v-.964h-.273c-.964 0-1.354-.444-1.354-1.538V9.663c0-.984-.492-1.497-1.497-1.6ZM14.886 7.9v.164c-1.005.103-1.497.616-1.497 1.6v1.798c0 1.094-.39 1.538-1.354 1.538h-.273v.964h.376c1.613 0 2.372-.759 2.372-2.352v-1.524c0-1.094.376-1.456 1.49-1.456v-1.3c-1.114 0-1.49-.362-1.49-1.456V4.352C14.51 2.759 13.75 2 12.138 2h-.376v.964h.273c.964 0 1.354.444 1.354 1.538V6.3c0 .984.492 1.497 1.497 1.6ZM7.5 11.5V9.207l-1.621 1.621-.707-.707L6.792 8.5H4.5v-1h2.293L5.172 5.879l.707-.707L7.5 6.792V4.5h1v2.293l1.621-1.621.707.707L9.208 7.5H11.5v1H9.207l1.621 1.621-.707.707L8.5 9.208V11.5h-1Z"/>
+  </symbol>
+  <symbol id="check2" viewBox="0 0 16 16">
+    <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+  </symbol>
+  <symbol id="chevron-expand" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M3.646 9.146a.5.5 0 0 1 .708 0L8 12.793l3.646-3.647a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 0-.708zm0-2.292a.5.5 0 0 0 .708 0L8 3.207l3.646 3.647a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 0 0 0 .708z"/>
+  </symbol>
+  <symbol id="circle-half" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+  </symbol>
+  <symbol id="clipboard" viewBox="0 0 16 16">
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+    <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+  </symbol>
+  <symbol id="code" viewBox="0 0 16 16">
+    <path d="M5.854 4.854a.5.5 0 1 0-.708-.708l-3.5 3.5a.5.5 0 0 0 0 .708l3.5 3.5a.5.5 0 0 0 .708-.708L2.707 8l3.147-3.146zm4.292 0a.5.5 0 0 1 .708-.708l3.5 3.5a.5.5 0 0 1 0 .708l-3.5 3.5a.5.5 0 0 1-.708-.708L13.293 8l-3.147-3.146z"/>
+  </symbol>
+  <symbol id="file-earmark-richtext" viewBox="0 0 16 16">
+    <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
+    <path d="M4.5 12.5A.5.5 0 0 1 5 12h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm0-2A.5.5 0 0 1 5 10h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm1.639-3.708 1.33.886 1.854-1.855a.25.25 0 0 1 .289-.047l1.888.974V8.5a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V8s1.54-1.274 1.639-1.208zM6.25 6a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5z"/>
+  </symbol>
+  <symbol id="globe2" viewBox="0 0 16 16">
+    <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855-.143.268-.276.56-.395.872.705.157 1.472.257 2.282.287V1.077zM4.249 3.539c.142-.384.304-.744.481-1.078a6.7 6.7 0 0 1 .597-.933A7.01 7.01 0 0 0 3.051 3.05c.362.184.763.349 1.198.49zM3.509 7.5c.036-1.07.188-2.087.436-3.008a9.124 9.124 0 0 1-1.565-.667A6.964 6.964 0 0 0 1.018 7.5h2.49zm1.4-2.741a12.344 12.344 0 0 0-.4 2.741H7.5V5.091c-.91-.03-1.783-.145-2.591-.332zM8.5 5.09V7.5h2.99a12.342 12.342 0 0 0-.399-2.741c-.808.187-1.681.301-2.591.332zM4.51 8.5c.035.987.176 1.914.399 2.741A13.612 13.612 0 0 1 7.5 10.91V8.5H4.51zm3.99 0v2.409c.91.03 1.783.145 2.591.332.223-.827.364-1.754.4-2.741H8.5zm-3.282 3.696c.12.312.252.604.395.872.552 1.035 1.218 1.65 1.887 1.855V11.91c-.81.03-1.577.13-2.282.287zm.11 2.276a6.696 6.696 0 0 1-.598-.933 8.853 8.853 0 0 1-.481-1.079 8.38 8.38 0 0 0-1.198.49 7.01 7.01 0 0 0 2.276 1.522zm-1.383-2.964A13.36 13.36 0 0 1 3.508 8.5h-2.49a6.963 6.963 0 0 0 1.362 3.675c.47-.258.995-.482 1.565-.667zm6.728 2.964a7.009 7.009 0 0 0 2.275-1.521 8.376 8.376 0 0 0-1.197-.49 8.853 8.853 0 0 1-.481 1.078 6.688 6.688 0 0 1-.597.933zM8.5 11.909v3.014c.67-.204 1.335-.82 1.887-1.855.143-.268.276-.56.395-.872A12.63 12.63 0 0 0 8.5 11.91zm3.555-.401c.57.185 1.095.409 1.565.667A6.963 6.963 0 0 0 14.982 8.5h-2.49a13.36 13.36 0 0 1-.437 3.008zM14.982 7.5a6.963 6.963 0 0 0-1.362-3.675c-.47.258-.995.482-1.565.667.248.92.4 1.938.437 3.008h2.49zM11.27 2.461c.177.334.339.694.482 1.078a8.368 8.368 0 0 0 1.196-.49 7.01 7.01 0 0 0-2.275-1.52c.218.283.418.597.597.932zm-.488 1.343a7.765 7.765 0 0 0-.395-.872C9.835 1.897 9.17 1.282 8.5 1.077V4.09c.81-.03 1.577-.13 2.282-.287z"/>
+  </symbol>
+  <symbol id="grid-fill" viewBox="0 0 16 16">
+    <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zm8 0A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm-8 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm8 0A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3z"/>
+  </symbol>
+  <symbol id="lightning-charge-fill" viewBox="0 0 16 16">
+    <path d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.09z"/>
+  </symbol>
+  <symbol id="list" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+  </symbol>
+  <symbol id="magic" viewBox="0 0 16 16">
+    <path d="M9.5 2.672a.5.5 0 1 0 1 0V.843a.5.5 0 0 0-1 0v1.829Zm4.5.035A.5.5 0 0 0 13.293 2L12 3.293a.5.5 0 1 0 .707.707L14 2.707ZM7.293 4A.5.5 0 1 0 8 3.293L6.707 2A.5.5 0 0 0 6 2.707L7.293 4Zm-.621 2.5a.5.5 0 1 0 0-1H4.843a.5.5 0 1 0 0 1h1.829Zm8.485 0a.5.5 0 1 0 0-1h-1.829a.5.5 0 0 0 0 1h1.829ZM13.293 10A.5.5 0 1 0 14 9.293L12.707 8a.5.5 0 1 0-.707.707L13.293 10ZM9.5 11.157a.5.5 0 0 0 1 0V9.328a.5.5 0 0 0-1 0v1.829Zm1.854-5.097a.5.5 0 0 0 0-.706l-.708-.708a.5.5 0 0 0-.707 0L8.646 5.94a.5.5 0 0 0 0 .707l.708.708a.5.5 0 0 0 .707 0l1.293-1.293Zm-3 3a.5.5 0 0 0 0-.706l-.708-.708a.5.5 0 0 0-.707 0L.646 13.94a.5.5 0 0 0 0 .707l.708.708a.5.5 0 0 0 .707 0L8.354 9.06Z"/>
+  </symbol>
+  <symbol id="menu-button-wide-fill" viewBox="0 0 16 16">
+    <path d="M1.5 0A1.5 1.5 0 0 0 0 1.5v2A1.5 1.5 0 0 0 1.5 5h13A1.5 1.5 0 0 0 16 3.5v-2A1.5 1.5 0 0 0 14.5 0h-13zm1 2h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1 0-1zm9.927.427A.25.25 0 0 1 12.604 2h.792a.25.25 0 0 1 .177.427l-.396.396a.25.25 0 0 1-.354 0l-.396-.396zM0 8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V8zm1 3v2a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2H1zm14-1V8a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2h14zM2 8.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0 4a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5z"/>
+  </symbol>
+  <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+    <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+    <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+  </symbol>
+  <symbol id="palette2" viewBox="0 0 16 16">
+    <path d="M0 .5A.5.5 0 0 1 .5 0h5a.5.5 0 0 1 .5.5v5.277l4.147-4.131a.5.5 0 0 1 .707 0l3.535 3.536a.5.5 0 0 1 0 .708L10.261 10H15.5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-.5.5H3a2.99 2.99 0 0 1-2.121-.879A2.99 2.99 0 0 1 0 13.044m6-.21 7.328-7.3-2.829-2.828L6 7.188v5.647zM4.5 13a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0zM15 15v-4H9.258l-4.015 4H15zM0 .5v12.495V.5z"/>
+    <path d="M0 12.995V13a3.07 3.07 0 0 0 0-.005z"/>
+  </symbol>
+  <symbol id="plugin" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M1 8a7 7 0 1 1 2.898 5.673c-.167-.121-.216-.406-.002-.62l1.8-1.8a3.5 3.5 0 0 0 4.572-.328l1.414-1.415a.5.5 0 0 0 0-.707l-.707-.707 1.559-1.563a.5.5 0 1 0-.708-.706l-1.559 1.562-1.414-1.414 1.56-1.562a.5.5 0 1 0-.707-.706l-1.56 1.56-.707-.706a.5.5 0 0 0-.707 0L5.318 5.975a3.5 3.5 0 0 0-.328 4.571l-1.8 1.8c-.58.58-.62 1.6.121 2.137A8 8 0 1 0 0 8a.5.5 0 0 0 1 0Z"/>
+  </symbol>
+  <symbol id="plus" viewBox="0 0 16 16">
+    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+  </symbol>
+  <symbol id="sun-fill" viewBox="0 0 16 16">
+    <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+  </symbol>
+  <symbol id="three-dots" viewBox="0 0 16 16">
+    <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+  </symbol>
+  <symbol id="tools" viewBox="0 0 16 16">
+    <path d="M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.356 3.356a1 1 0 0 0 1.414 0l1.586-1.586a1 1 0 0 0 0-1.414l-3.356-3.356a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3c0-.269-.035-.53-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814L1 0zm9.646 10.646a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708zM3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026L3 11z"/>
+  </symbol>
+  <symbol id="ui-radios" viewBox="0 0 16 16">
+    <path d="M7 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1zM0 12a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm7-1.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1zm0-5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 8a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zM3 1a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm0 4.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+  </symbol>
+</svg>
+<ul class="navbar-nav">
+<li class="nav-item dropdown">
+  <button class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle d-flex align-items-center"
+          id="bd-theme"
+          type="button"
+          aria-expanded="false"
+          data-bs-toggle="dropdown"
+          data-bs-display="static">
+    <svg class="bi my-1 theme-icon-active"><use href="#circle-half"></use></svg>
+    <span class="d-lg-none ms-2">Toggle theme</span>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme" style="--bs-dropdown-min-width: 8rem;">
+    <li>
+      <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light">
+        <svg class="bi me-2 opacity-50 theme-icon"><use href="#sun-fill"></use></svg>
+        Light
+        <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+      </button>
+    </li>
+    <li>
+      <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark">
+        <svg class="bi me-2 opacity-50 theme-icon"><use href="#moon-stars-fill"></use></svg>
+        Dark
+        <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+      </button>
+    </li>
+    <li>
+      <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto">
+        <svg class="bi me-2 opacity-50 theme-icon"><use href="#circle-half"></use></svg>
+        Auto
+        <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+      </button>
+    </li>
+  </ul>
+</li>
+</ul>
+    
+</nav>
+
+
+
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+  
+  
+
+<ul class="navbar-nav mr-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="geometry/differential-forms.html" title="Previous Chapter: Differential forms">
+      <span class="glyphicon glyphicon-chevron-left visible-sm"></span>
+      <span class="hidden-sm hidden-tablet">&laquo; Differential forms</span>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="prob-distributions/index.html" title="Next Chapter: Atlas of Probability Distributions">
+      <span class="glyphicon glyphicon-chevron-right visible-sm"></span>
+      <span class="hidden-sm hidden-tablet">Atlas of Probability Distributions &raquo;</span>
+    </a>
+  </li>
+</ul>
+  
+  
+  
+<div id="sourcelink navbar-nav mr-auto hidden-sm">
+  <a href="_sources/probability.rst.txt"
+     class="nav-link"
+     rel="nofollow"><i class="bi bi-file-binary-fill"></i>Source</a>
+</div>
+
+  
+  </div>
+</nav>
+
+
+<div class="container-fluid" id="docs-container">
+  
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-2 order-3 order-xl-1 toc-left">
+      <!-- 
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form> -->
+      <div id="globaltoc-wrapper" class="pt-3">
+
+<p class="caption" role="heading"><span class="caption-text">Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="analysis/real.html">Real Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analysis/complex.html">Complex Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analysis/complex.html#limits-and-continuity">Limits and Continuity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analysis/complex.html#complex-differentiation">Complex Differentiation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analysis/complex.html#complex-integration">Complex Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analysis/complex.html#infinite-taylor-and-laurent-series">Infinite, Taylor, and Laurent Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analysis/complex.html#residues">Residues</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Calculus</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="calculus/coordinates.html">Coordinate Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calculus/vector.html">Vector Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calculus/sturm.html">Operator theory</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Differential equations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="calculus/odes.html">Ordinary Differential Equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calculus/pdes.html">Partial Differential Equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calculus/solving-pdes.html">Solving Partial Differential Equations</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Special functions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="special/legendre.html">Legendre Polynomials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="special/spherical-harmonics.html">Spherical Harmonics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="special/spherical-harmonics.html#spherical-harmonics-and-the-schrodinger-equation">Spherical Harmonics and the Schrodinger Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="special/bessel.html">Bessel Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="special/hermite.html">Hermite Polynomials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calculus/stirling.html">Stirling’s Approximation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calculus/stirling.html#the-gamma-function">The Gamma Function</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Abstract algebra</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="abstract/sets.html">Sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="abstract/operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="abstract/functions.html">Mappings and Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="abstract/groups.html">Group Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="abstract/fields.html">Fields of Scalars</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Linear algebra</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="linear.html">Vector Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear.html#bases">Bases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear/inner-product-spaces.html">Inner Product Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear/coordinates.html">Lie Brackets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear/matrices.html">Matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear/transformations.html">Linear Mappings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multilinear.html">Multilinear Algebra and Tensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multilinear.html#tensor-rotations">Tensor Rotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multilinear.html#extensions-of-rotations-to-rank-2-tensors">Extensions of Rotations to rank-2 Tensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear/one-forms.html">One-forms</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Geometry</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="geometry/manifolds.html">Manifolds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geometry/differential-forms.html">Differential forms</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Probability</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Probability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#information">Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#prior-knowledge">Prior knowledge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#feature-spaces-and-kernels">Feature spaces and Kernels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#structured-probability-distributions">Structured probability distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#inference">Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#stochastic-processes">Stochastic processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#approximate-inference-methods">Approximate inference methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#hierarchical-modelling">Hierarchical modelling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prob-distributions/index.html">Atlas of Probability Distributions</a></li>
+</ul>
+
+
+</div>
+
+      
+    </div>
+
+    <div class="col-md-6 col-lg-2 order-2 order-xl-3 toc-right">
+      <div id="localtoc-wrapper">
+  <div class="tocsection onthispage pt-3">
+    <p class="toctitle"><i class="bi bi-list"></i> On this page</p>
+  </div>
+  
+  <div id="localtoc">
+    <ul>
+<li><a class="reference internal" href="#">Probability</a></li>
+<li><a class="reference internal" href="#information">Information</a><ul>
+<li><a class="reference internal" href="#comparing-probability-distributions">Comparing probability distributions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#prior-knowledge">Prior knowledge</a><ul>
+<li><a class="reference internal" href="#the-least-informative-priors">The least informative priors</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#feature-spaces-and-kernels">Feature spaces and Kernels</a></li>
+<li><a class="reference internal" href="#structured-probability-distributions">Structured probability distributions</a><ul>
+<li><a class="reference internal" href="#equivalence-of-graphical-models">Equivalence of graphical models</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inference">Inference</a></li>
+<li><a class="reference internal" href="#stochastic-processes">Stochastic processes</a></li>
+<li><a class="reference internal" href="#approximate-inference-methods">Approximate inference methods</a><ul>
+<li><a class="reference internal" href="#markov-chain-monte-carlo">Markov-Chain Monte Carlo</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#hierarchical-modelling">Hierarchical modelling</a></li>
+</ul>
+
+  </div>
+
+</div>
+      
+    </div>
+    
+    <div class="col-md-12 col-lg-8 content order-1 order-xl-2 col-xl-6 pt-3">
+
+      
+      
+      
+      
+  <section id="probability">
+<h1>Probability<a class="headerlink" href="#probability" title="Link to this heading">¶</a></h1>
+<p>In this work I consider ``probability’’ as a measure of evidential
+support for a given outcome or event (this is the so-called
+<em>quasi-logical</em> interpretation). For example, a coin, when tossed, can
+take one of two states when it lands, which I call <em>heads</em> or <em>tails</em>; I
+denote these two states <span class="math notranslate nohighlight">\(H\)</span> and <span class="math notranslate nohighlight">\(T\)</span>. Assuming that I have no
+knowledge of a reason why the coin would fall one way rather than the
+other, I am forced to conclude that I have no more evidence to suggest
+that the coin will fall heads, compared to it falling tails.</p>
+<p>With this philosophy, it is possible to construct an axiomatic
+mathematical model of probability. Here I will follow the approach taken
+by Kolmogorov cite:kolmogorov, approaching from set theory principles.
+By making some additional demands on this model, one of which is that an
+event which is considered ``certain’’ should have a probability of
+<span class="math notranslate nohighlight">\(1\)</span>, it is possible to maintain consistency with boolean logic.
+Likewise, if an event is certain not to occur, it is assigned a
+probability <span class="math notranslate nohighlight">\(0\)</span>.</p>
+<p>In order to make future discussions more concise I define two concepts
+related to the configuration of a probabilistic system: <em>sample space</em>
+and <em>state</em>.</p>
+<div class="definition"><p>If a variable can take on a number of different values, then the set of
+all its possible values is called the sample space. In any given
+problem, the sample space composes the universe set, and is often
+denoted <span class="math notranslate nohighlight">\(\Omega\)</span>.</p>
+</div><p>The sample space is analogous to the <em>configuration space</em> of a
+(classical) physical system, or the <em>state space</em> of a quantum
+mechanical one.</p>
+<div class="definition"><p>A state is any subset of zero or more elements from the sample space. A
+state containing one element is a simple state, while one containing
+more than one element is a compound state. The states form a
+<span class="math notranslate nohighlight">\(\sigma\)</span>-algebra on the sample space.</p>
+</div><p>Since the configuration of a probabilistic system is often
+time-dependent it is often natural to refer to a given state as an
+<em>event</em>.</p>
+<p>Kolmogrov then postulates three axioms for probability
+cite:sepprobabilityinterpret.</p>
+<div class="definition"><p>Let <span class="math notranslate nohighlight">\(x\)</span> be some variable which is capable of having a state
+<span class="math notranslate nohighlight">\(E \in \Omega\)</span> for <span class="math notranslate nohighlight">\(\Omega\)</span> the <em>sample space</em> of the
+variable. Probability <span class="math notranslate nohighlight">\(P\)</span> is a mapping <span class="math notranslate nohighlight">\(P: E \to [0,1]\)</span>
+which assigns a real value between <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(1\)</span> to every
+<span class="math notranslate nohighlight">\(E \in \Omega\)</span>. We place three constraints on the form of this
+mapping:</p>
+<ol class="arabic simple">
+<li><p>For every <span class="math notranslate nohighlight">\(E \in \Omega\)</span>, <span class="math notranslate nohighlight">\(P(E) \geq 0\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(P(\Omega) = \sum_{E \in \Omega} P(E) = 1\)</span>.</p></li>
+<li><p>For two states, <span class="math notranslate nohighlight">\(A, B \in \Omega\)</span> which are disjoint, such that
+<span class="math notranslate nohighlight">\(A \cap B = \emptyset\)</span>, then <span class="math notranslate nohighlight">\(P(A \cup B) = P(A) + P(B)\)</span></p></li>
+</ol>
+</div><p>The first axiom ensures that all probabilities are positive, and that if
+a state exists within the sample space it has a probability greater than
+zero. It follows that states which do not exist (i.e. events which
+cannot occur) have zero probability.</p>
+<p>The second axiom fulfils the requirement that the total probability of
+all possible states should be <span class="math notranslate nohighlight">\(1\)</span>, and that the probability of the
+system having taking one state from the sample space (i.e. of one of the
+possible events occurring) is <span class="math notranslate nohighlight">\(1\)</span>.</p>
+<p>Finally, the third axiom defines how the probability of subsets within
+the sample space should be calculated. Provided a set of states are
+<em>mutually exclusive</em> (i.e. that they are disjoint in the sample space),
+the probability of the states together is equal to the sum of their
+individual probabilities.</p>
+<p>Alternative axioms for probability also exist which do not attempt to
+define the theory so strongly in terms of measure theory, for example,
+<em>Cox’s axioms</em> cite:2003prth.book…..J.</p>
+<p>The basic logical operations can be extended to probabilities; the
+equivalent of the <strong>AND</strong> operation becomes the probability of the
+conjunction of two subsets of the sample space:</p>
+<div class="definition"><p>Given two states, <span class="math notranslate nohighlight">\(A,B \in \Omega\)</span>, the probability of both
+states, <span class="math notranslate nohighlight">\(P(A \cap B)\)</span> is termed their ``joint probability’’. In
+the case that these states are independent it is computed as</p>
+<div class="math notranslate nohighlight">
+\[P(A \cap B) = P(A) P(B).\]</div>
+</div><p>Equally, the <strong>OR</strong> operation becomes the probability of the union of
+subsets of sample space:</p>
+<div class="definition"><p>Given two states <span class="math notranslate nohighlight">\(A,B \in \Omega\)</span>, the probability of either
+<span class="math notranslate nohighlight">\(A\)</span> or <span class="math notranslate nohighlight">\(B\)</span> is
+<span class="math notranslate nohighlight">\(P(A \cup B) = P(A) + P(B) - P(A \cap B)\)</span>.</p>
+</div><p>In the case that of two events which occur with some dependence between
+them, we can form a ``conditional probability’’, for example, if there
+can be no smoke without fire, then the probability of smoke can be
+conditional on the probability of fire.</p>
+<div class="definition"><p>Given two events, <span class="math notranslate nohighlight">\(A,B \in \Omega\)</span>, then the probability of
+<span class="math notranslate nohighlight">\(A\)</span> <em>given</em> <span class="math notranslate nohighlight">\(B\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}P(A | B) = \frac{ P(A,B) }{ P(B) }.\\If :math:`P(B) = 0` then :math:`P(A)` is undefined.\end{aligned}\end{align} \]</div>
+</div><p>Given that <span class="math notranslate nohighlight">\(P(A,B) = P(B,A)\)</span>, we have
+<span class="math notranslate nohighlight">\(P(A,B) = P(B,A) = P(B|A)P(A)\)</span>, which leads us to a powerful
+result in probability: <strong>Bayes Theorem</strong> cite:bayesessay.</p>
+<div class="theorem"><p>Given two events, <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>, we may represent the
+probability of <span class="math notranslate nohighlight">\(A\)</span> given <span class="math notranslate nohighlight">\(B\)</span> in terms of the probability of
+<span class="math notranslate nohighlight">\(B\)</span> given <span class="math notranslate nohighlight">\(A\)</span>:</p>
+</div><p>A useful corollary in the case of two independent states <span class="math notranslate nohighlight">\(A,B\)</span>
+(i.e. states which are disjoint in the sample space),</p>
+<div class="math notranslate nohighlight">
+\[P(A|B) = \frac{P(A,B)}{P(B)} = \frac{(P(A)P(B))}{P(B)} = P(A).\]</div>
+<p>There may also be situations where two variables become independent if
+the state of a third variable is known, providing conditional
+independence.</p>
+<div class="definition"><p>Two states, <span class="math notranslate nohighlight">\(A,B\)</span> are said to be conditionally independent given a
+third state, <span class="math notranslate nohighlight">\(C\)</span>, if</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}P(A,B | C) = P(A|C)P(B|C).\\We can denote conditional independence as\end{aligned}\end{align} \]</div>
+<p><span class="math notranslate nohighlight">\(A\!\perp\!\!\!\perp\!B\,|\,C\)</span>.</p>
+</div><p>From here on I will start to substitute the concept of a state or event
+for a variable which represents that state, so the notation <span class="math notranslate nohighlight">\(P(x)\)</span>
+will represent the probability of a variable state <span class="math notranslate nohighlight">\(x\)</span>. Since a
+variable can represent a set of potential states, we can introduce a
+function which maps from the variable to the probability.</p>
+<p>In the case of a discrete sample space this function is the probability
+mass function.</p>
+<div class="definition"><p>For a discrete variable <span class="math notranslate nohighlight">\(x\)</span>, the probability mass function,
+<span class="math notranslate nohighlight">\(p\)</span>, of the variable is the mapping <span class="math notranslate nohighlight">\(p(x) = P(X=x)\)</span></p>
+</div><p>In the case of a continuous sample space the mapping <span class="math notranslate nohighlight">\(p\)</span> is known
+as a abbr:pdf, which is defined</p>
+<div class="definition"><p>For a continuous variable <span class="math notranslate nohighlight">\(x\)</span>, the probability density function
+<span class="math notranslate nohighlight">\(p\)</span> of the variable is the mapping <span class="math notranslate nohighlight">\(p_X\)</span> such that the
+probability of a state between <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> is</p>
+</div><p>It is normal to use the short-hand notation <span class="math notranslate nohighlight">\(p(x)\)</span> for the
+probability of a value <span class="math notranslate nohighlight">\(x\)</span> to represent
+<span class="math notranslate nohighlight">\(\int_{-\epsilon}^{\epsilon} p(x) \dd{x}\)</span> for a small value of
+<span class="math notranslate nohighlight">\(\epsilon\)</span>.</p>
+</section>
+<section id="information">
+<h1>Information<a class="headerlink" href="#information" title="Link to this heading">¶</a></h1>
+<p>Understanding how informative an random variable, <span class="math notranslate nohighlight">\(X\)</span> is can
+provide insight into how well observations of that variable will inform
+our knowledge of the probability distribution from which it is drawn.</p>
+<div class="definition"><p>Given a abbr:pdf, <span class="math notranslate nohighlight">\(p\)</span>, for a random variable, <span class="math notranslate nohighlight">\(X\)</span>, which is
+parameterised by a variable <span class="math notranslate nohighlight">\(\theta\)</span>, the <em>score</em>, <span class="math notranslate nohighlight">\(V\)</span> of
+the abbr:pdf is defined</p>
+<p>The variance of the score is the <em>Fisher information</em> of the
+distribution:</p>
+</div><p>Knowledge of the Fisher information for a given distribution is
+particularly valuable in selecting an <em>uninformative prior</em> (see section
+ref:sec:probability:priors:uninformative) when designing a Bayesian
+analysis, where it can be valuable for the prior probability
+distribution to contribute no information to the inference.</p>
+<div class="definition"><p>Given a abbr:pdf, <span class="math notranslate nohighlight">\(p\)</span>, for a random variable <span class="math notranslate nohighlight">\(X\)</span> the
+<em>Shannon information content</em> of a given value <span class="math notranslate nohighlight">\(x\)</span> of <span class="math notranslate nohighlight">\(X\)</span> is
+defined as</p>
+<p>where the information is measured in <em>bits</em> (assuming that a base-2
+logarithm is used; if the natural logarithm is used the units are
+<em>nats</em>, and the base-10 gives rise to the <em>dit</em>).</p>
+</div><div class="definition"><p>The entropy of a random variable <span class="math notranslate nohighlight">\(X\)</span> with a abbr:pdf, <span class="math notranslate nohighlight">\(p\)</span> is
+the average Shannon information of the random variable across all its
+possible values:</p>
+<p>taking <span class="math notranslate nohighlight">\(0 \log (1/0) \equiv 0\)</span>.</p>
+</div><section id="comparing-probability-distributions">
+<h2>Comparing probability distributions<a class="headerlink" href="#comparing-probability-distributions" title="Link to this heading">¶</a></h2>
+<p>The information difference between two probability distributions, or
+indeed the information gain of one relative to another can be an
+important metric when producing inferential models.</p>
+<p>\begin{definition} [Kullback-Lieblier Divergence] For two probability
+distributions, <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(Q\)</span> the Kullback-Liebler Divergence
+characterises the relative information content of the two, and is
+defined as</p>
+<p>\end{definition}</p>
+<p>A related metric, the Shannon-Jensen divergence is symmetric and always
+finite.</p>
+<div class="definition"><p>For two probability distributions, <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(Q\)</span> the
+Shannon-Jensen Divergence characterises the relative information content
+of the two, and is defined as</p>
+</div></section>
+</section>
+<section id="prior-knowledge">
+<h1>Prior knowledge<a class="headerlink" href="#prior-knowledge" title="Link to this heading">¶</a></h1>
+<p>The <em>prior</em> probability distribution is perhaps the characterising
+feature of the Bayesian approach to statistics, whereby the state of
+belief prior to any observation being made is encoded in a probability
+distribution. Bayes Theorem allows the <em>updating</em> of our state of
+belief, with the prior distribution being updated by data collected from
+observation or experiment.</p>
+<section id="the-least-informative-priors">
+<h2>The least informative priors<a class="headerlink" href="#the-least-informative-priors" title="Link to this heading">¶</a></h2>
+<p>While the ability to incorporate prior knowledge into an inference is
+valuable, there are clearly times when we have <em>no</em> prior knowledge of a
+situation. In these situations we must turn to <em>least informative</em>
+priors, which place the same probability on any possible event in the
+sample space. The simplest approach to constructing such a prior is
+through the <em>principle of indifference</em>, whereby equal probability is
+assigned to every possible state. For example, if we wished to conduct
+an experiment to determine the fairness of a 20-sided die, but had no
+prior knowledge to assume that one side was more likely to be rolled
+(which is the desirable state for a fair die) then we would assume each
+side had a probability of <span class="math notranslate nohighlight">\(1/20\)</span> of being rolled. In a continuous
+system such an arrangement is represented as a uniform distribution.
+Such an approach must be taken with care, however.</p>
+<p>Consider the situation in which cube is hidden behind a curtain. We are
+told that each edge of the cube is between 3 and 5 metres long. We have
+no further information to indicate which length is most likely, so
+assign uniform probability to each possibility. The mid-point of this
+uniform distribution is then <span class="math notranslate nohighlight">\(\SI{4}{\meter}\)</span>, so we might
+conclude that to be the most likely length of each side, giving a cube
+with <span class="math notranslate nohighlight">\(\SI{16}{\meter^2}\)</span> faces, and a volume of
+<span class="math notranslate nohighlight">\(\SI{64}{\meter^3}\)</span>. We are then told that the surface area of
+each face is between <span class="math notranslate nohighlight">\(\SI{5}{\meter^2}\)</span> and
+<span class="math notranslate nohighlight">\(\SI{25}{\meter^2}\)</span>. Making similar assumptions we’d reach the
+conclusion that the surface area of each face was
+<span class="math notranslate nohighlight">\(\SI{15}{\meter^2}\)</span>. This is clearly in tension with our estimate
+from the edge lengths; clearly the choice of a uniform prior in one set
+of variables implies a non-uniform one in another.</p>
+<p>It is therefore desirable to work with a prior distribution which will
+vary appropriately under a change of variables  <a class="footnote-reference brackets" href="#id4" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>; such a prior is
+known as a <em>Jeffreys Prior</em>. A <em>Jeffreys Prior</em> which will be invariant
+under reparameterisation of parameters <span class="math notranslate nohighlight">\(\vec{\theta}\)</span> can be
+determined from the Fisher information, <span class="math notranslate nohighlight">\(I\)</span>:</p>
+</section>
+</section>
+<section id="feature-spaces-and-kernels">
+<h1>Feature spaces and Kernels<a class="headerlink" href="#feature-spaces-and-kernels" title="Link to this heading">¶</a></h1>
+<p>A feature map is a projection from a lower-dimensional data space to a
+higher-dimensional one, which can be represented by a mapping,
+<span class="math notranslate nohighlight">\(\phi\)</span>.</p>
+<div class="definition"><p>For a <span class="math notranslate nohighlight">\(D\)</span>-dimensional vector <span class="math notranslate nohighlight">\(\vec{x}\)</span>, a feature map,
+<span class="math notranslate nohighlight">\(\phi : \mathbb{R}^{D} \to \mathbb{R}^{N}\)</span> is a mapping which
+projects <span class="math notranslate nohighlight">\(\vec{x}\)</span> into an <span class="math notranslate nohighlight">\(N\)</span>-dimensional space, the
+<em>feature space</em>.</p>
+</div><p>This can be a valuable technique in statistical regression and
+classification, where data may become linearly separable in a higher
+dimensional space, or can be described by a simpler function than in the
+original data space. An example of such a mapping is
+<span class="math notranslate nohighlight">\(\phi : \mathbb{R} \to \mathbb{R}^{3}, \quad \phi(x) = (1, x, x^2)^{\transpose}\)</span>,
+(where <span class="math notranslate nohighlight">\(\cdot^{\transpose}\)</span> is the transpose operator) which can
+be used to implement quadratic regression, as</p>
+<p>which remains linear (and therefore analytically solvable) provided
+<span class="math notranslate nohighlight">\(\phi\)</span> is independent of <span class="math notranslate nohighlight">\(\vec{w}\)</span>.</p>
+<p>Once data is mapped from the data space into the feature space it is
+desirable to have some notion of distance between the features (which we
+might interpret as the <em>similarity</em> between pairs of data). We define a
+function which computes such a quantity as a <em>kernel</em>:</p>
+<div class="definition"><p>For all variables <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(x'\)</span> in the input space,
+<span class="math notranslate nohighlight">\(\set{X}\)</span> of a probability distribution, a mapping
+<span class="math notranslate nohighlight">\(k:  \set{X} \times \set{X} \to \mathbb{R}\)</span> is a kernel function.</p>
+</div><p>If the kernel function can be written in the form of a dot-product
+between two <em>feature maps</em>, <span class="math notranslate nohighlight">\(\phi: \set{X} \to \set{V}\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}k(x, x') = \langle \phi(x), \phi(x') \rangle v,\\for :math:`\set{V}` some inner product space, then we can perform the\end{aligned}\end{align} \]</div>
+<p>``kernel trick’’, allowing us to define the kernel in terms of the
+inner products within the data, without resorting to an external
+coordinate system.</p>
+</section>
+<section id="structured-probability-distributions">
+<h1>Structured probability distributions<a class="headerlink" href="#structured-probability-distributions" title="Link to this heading">¶</a></h1>
+<p>A complicated joint probability distribution can often be factorised
+into lower-dimensional factor distributions if there are conditional
+independences within the model which that distribution describes. For
+example,</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}  p(a,b,c) = p(a | b , c) p(b, c) = p(a | b, c) p (b | c) p(c).\\We can then represent these factorisations in the form of a directed\end{aligned}\end{align} \]</div>
+<p>graph, with</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}c \to b \to a\\representing :math:`p(a,b,c)`. In such a graph we use the direction of\end{aligned}\end{align} \]</div>
+<p>an arrow to imply a conditional relationship. When expressed in this
+form we can call the probability distribution a belief network, or a
+graphical model.</p>
+<p>As a concrete (if rather naive) example, consider a situation in which
+observations are made continuously over the whole sky with two
+detectors. One is sensitive to abbr:gw emission, and the other to gamma
+ray emission. An observing program is established to analyse transient
+signals detected with one or both of these telescopes, with the belief
+that abbr:gw bursts can be produced by either a abbr:bns coalescence, or
+a abbr:bbh coalescence.</p>
+<p>A simple model is constructed which contains four variables</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(\Gamma \in \{ 0, 1 \}\)</span> which takes the value <span class="math notranslate nohighlight">\(1\)</span> iff a
+abbr:sgrb is detected,</p></li>
+<li><p><span class="math notranslate nohighlight">\(G \in \{ 0, 1 \}\)</span> which takes the value <span class="math notranslate nohighlight">\(1\)</span> iff a
+abbr:gw burst is detected,</p></li>
+<li><p><span class="math notranslate nohighlight">\(B \in \{ 0, 1 \}\)</span> which takes the value <span class="math notranslate nohighlight">\(1\)</span> iff a
+abbr:bbh coalescence has occurred, and</p></li>
+<li><p><span class="math notranslate nohighlight">\(N \in \{ 0, 1 \}\)</span> which takes the value <span class="math notranslate nohighlight">\(1\)</span> iff a
+abbr:bns coalescence has occurred.</p></li>
+</ol>
+<p>The joint probability distribution of this model is then
+<span class="math notranslate nohighlight">\(p(\Gamma, G, B, N)\)</span>, however we can break this down into a
+structured form by applying the definition of conditional probability
+(definition ref:def:probability:conditional),</p>
+<p>We can represent this model as a graph</p>
+<p>Our observers have access to a number of up to date astrophysical
+theories which they can use to further develop the model; these place
+<em>conditional independence</em> constraints on the model.</p>
+<ul class="simple">
+<li><p>abbr:bbh coalescences and abbr:bns coalescences are independent (one
+does not cause the other)</p></li>
+</ul>
+<p>This statement implies that <span class="math notranslate nohighlight">\(p(B | N) = p(B)\)</span>, and
+<span class="math notranslate nohighlight">\(p(N | B) = p(N)\)</span>, which we can represent in the graphical form of
+the model by removing the edge connecting <span class="math notranslate nohighlight">\(B\)</span> and <span class="math notranslate nohighlight">\(N\)</span>.</p>
+<ul class="simple">
+<li><p>A abbr:bbh coalescence does not produce any electromagnetic emission
+(and therefore cannot produce a abbr:sgrb)</p></li>
+</ul>
+<p>This statement implies that <span class="math notranslate nohighlight">\(p(\Gamma | B) = p(\Gamma)\)</span>, which can
+be represented in the graphical form of the model by removing the edge
+connecting <span class="math notranslate nohighlight">\(\Gamma\)</span> and <span class="math notranslate nohighlight">\(B\)</span>.</p>
+<p>These two constraints considerably simplify the model, and we are now
+left with the distribution in the form</p>
+<p>which is easily interpreted from the graphical form of the model, but
+could have been tedious to derive algebraically.</p>
+<p>We can define a belief network more generally as follows.</p>
+<div class="definition"><p>A belief network is a probability distribution of the form</p>
+<p>where <span class="math notranslate nohighlight">\(\mathrm{pa}(x)\)</span> represents the parental set of the variable
+<span class="math notranslate nohighlight">\(x\)</span>; that is, the set of all variables in the graph which have a
+directed edge ending at <span class="math notranslate nohighlight">\(x\)</span>, or the set of all variables on which
+<span class="math notranslate nohighlight">\(x\)</span> is directly conditional.</p>
+</div><section id="equivalence-of-graphical-models">
+<h2>Equivalence of graphical models<a class="headerlink" href="#equivalence-of-graphical-models" title="Link to this heading">¶</a></h2>
+<p>An important caveat with the use of graphical models is that two
+graphically distinct models may be mathematically equivalent. The reason
+for this becomes clear when considering the procedure used to factorise
+the probability distribution starting at equation
+ref:probability:structured:example:breakdown. If we had chosen to
+re-arrange the variables such that the joint distribution was
+<span class="math notranslate nohighlight">\(p(N,B,G, \Gamma)\)</span> we would have been left with a factorised
+distribution in which the arrows of the graph pointed in opposite
+directions, yet this is clearly still the same probability distribution,
+since probabilities are commutative. To overcome this problem we need to
+have a definition of equivalence in the graph. A suitable definition is
+that of <em>Markov equivalence</em> cite:barberBRML2012:</p>
+<div class="definition"><p>Two graphs are Markov equivalent if they both represent the same set of
+conditional independence statements.</p>
+</div><p>Clearly some method to determine this graphically is warranted. To do so
+it is helpful to define a (rather judgmentally-named) property:</p>
+<div class="definition"><p>Consider three nodes, <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(B\)</span>, and <span class="math notranslate nohighlight">\(C\)</span> in a abbr:dag.
+If <span class="math notranslate nohighlight">\(C\)</span> is a child of both <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>, but <span class="math notranslate nohighlight">\(A\)</span>
+and <span class="math notranslate nohighlight">\(B\)</span> are not directly connected, then the configuration
+<span class="math notranslate nohighlight">\(A \rightarrow C \leftarrow B\)</span> is denoted an immorality.</p>
+</div><p>In order to determine Markov equivalence we remove all of the
+directionality from the edges of the graph, producing the skeleton
+graph. Two graphs are Markov equivalent if they share the same skeleton,
+and if they share the same set of immoralities.</p>
+</section>
+</section>
+<section id="inference">
+<h1>Inference<a class="headerlink" href="#inference" title="Link to this heading">¶</a></h1>
+<p>In section ref:sec:probability:structured I introduced a probabilistic
+model which consisted of the joint probability of all of the model
+parameters. Taking the example of joint abbr:gw and gamma ray
+observations, if we know the probability that at any given time there
+will be a abbr:bns event, we can infer the probability that a abbr:sgrb
+and a abbr:gw burst will occur. A model of this form is often considered
+a “forward model”, in that it predicts the probability of an observable,
+and calculation through the graph follows the arrows. While such forward
+models are of considerable utility when attempting to make predictions
+about unknown variables, often with pre-existing data, they are unable
+to answer a question such as “given that I have seen a abbr:gw, but no
+abbr:sgrb, what is the probability that I have observed a abbr:bbh
+event?”. In order to answer such a question we must traverse the
+graphical model <em>backwards</em>, against the direction of the arrows. This
+process is known as <em>inference</em>.</p>
+<p>In order to produce the <em>reverse model</em> we can turn to Bayes Theorem
+(theorem ref:the:probability:bayes-theorem). This allows us to derive an
+expression for <span class="math notranslate nohighlight">\(p(B = 1 | G = 1, \Gamma = 0)\)</span>, that is, the
+probability that we observe a abbr:bbh given that we’ve observed a
+abbr:gw but no abbr:sgrb.</p>
+<p>the probability <span class="math notranslate nohighlight">\(p(B = 1 | G = 1, \Gamma = 0)\)</span> is called the
+<em>posterior probability of $B$</em>.</p>
+<p>Inference which is based on Bayes Theorem, is a method of statistical
+inference which is well-suited to situations where a body of evidence
+grows over time, with new results updating previous understanding of
+some phenomenon, and as such is well suited to the analysis of
+experimental data. It is well suited to the analysis of abbr:gw data,
+where measurements are frequently made at different sensitivities during
+different observing runs.</p>
+<p>If we have some hypothesis, some parameters of the hypothesis, <span class="math notranslate nohighlight">\(I\)</span>
+(also called hyperparameters), and some experimental data, we can
+determine the probability of the hypothesis via</p>
+<p>where <span class="math notranslate nohighlight">\(p(\text{data} | \text{hypothesis})\)</span> represents the
+likelihood; the probability that a given datum would be observed given
+the hypothesis, and <span class="math notranslate nohighlight">\(p(\text{hypothesis}|I)\)</span> represents the
+<em>prior</em> probability, which represents the understanding of the
+probability of the hypothesis before the experiment was conducted.
+<span class="math notranslate nohighlight">\(p(\text{hypothesis} | \text{data}, I)\)</span> is the <em>posterior</em>
+probability of the hypothesis cite:Sivia2006.</p>
+<p>Bayesian inference can then be used as a powerful method for <em>model
+selection</em>, where the posterior probabilities of two competing models
+are compared, with a greater posterior probability indicating greater
+support for a given model.</p>
+</section>
+<section id="stochastic-processes">
+<h1>Stochastic processes<a class="headerlink" href="#stochastic-processes" title="Link to this heading">¶</a></h1>
+<p>A stochastic process is some collection of random variables which can be
+indexed by a set, the <em>index set</em>. When a stochastic process is used to
+describe a physical system the indexing set is often taken to be time
+(represented as either a real or natural number), for example for
+Brownian motion. Each random variable takes values from its own sample
+space, <span class="math notranslate nohighlight">\(\Omega\)</span>. Since each random variable will have a different
+value each time the process is evaluated, the value of the process as a
+whole, across all indices, will be different each time. An individual
+draw from such a process is a <em>realisation</em>, or a sample function.</p>
+<p>A stochastic process is represented as the set
+<span class="math notranslate nohighlight">\(\setbuilder{X(t) | t \in \mathsf{T}}\)</span> for <span class="math notranslate nohighlight">\(X(t)\)</span> the random
+variable drawn indexed by the value <span class="math notranslate nohighlight">\(t\)</span> from the index set
+<span class="math notranslate nohighlight">\(T\)</span>.</p>
+<p>A simple example of a stochastic process is the <strong>Bernoulli process</strong>,
+in which each random variable is the result of a Bernoulli test, for
+example, flipping a (potentially biased) coin. In such a process each
+<span class="math notranslate nohighlight">\(X(t) \in \{0,1\}\)</span>, and <span class="math notranslate nohighlight">\(P(X(t) = 1) = p\)</span>, with <span class="math notranslate nohighlight">\(p\)</span>
+taking the same value for all <span class="math notranslate nohighlight">\(t\)</span>. Because each Bernoulli trial is
+independent, and all of the trials are equally distributed, the process
+is abbr:iid.</p>
+<p>The <strong>Poisson process</strong> extends the concept of a Bernoulli process to
+the continuous case. Where the Bernoulli process models a discrete state
+of a system at some given index, the Poisson process models the number
+of times the system has taken that state in the interval between two
+indices.</p>
+<p>A <strong>Markov process</strong> can be either a discrete or continuous stochastic
+process where the probability of moving to the next state depends only
+on the current state of the process, and none of the previous ones.
+These processes are of considerable importance in Bayesian statistics
+thanks to their use in various sampling algorithms.</p>
+</section>
+<section id="approximate-inference-methods">
+<h1>Approximate inference methods<a class="headerlink" href="#approximate-inference-methods" title="Link to this heading">¶</a></h1>
+<p>In many problems the posterior probability distribution which we need to
+evaluate will not be analytical. As a result identifying regions of the
+distribution where the probabilities are large (therefore the areas of
+interest within the distribution) is likely to require evaluating the
+function over its entire parameter space, which may be large. This
+problem is further complicated if the distribution is multi-modal, or
+contains narrow peaks which may be difficult to find. Further, the
+evidence term for the posterior is not normally known. The combination
+of these issues for many distributions makes drawing samples from an
+arbitrary posterior probability distribution difficult.</p>
+<p>For inference, we have two problems which must be solved: how to
+generate independent samples from a given probability distribution, and
+how to estimate the expectation of functions under the distribution.</p>
+<p>If we are able to solve the first problem the second can be estimated by
+using <span class="math notranslate nohighlight">\(R\)</span> random samples,
+<span class="math notranslate nohighlight">\(\setbuilder{\vec{x}_r | r \in 1, \dots, R}\)</span>, drawn from the
+distribution, giving an estimator for the expectation,
+<span class="math notranslate nohighlight">\(\hat{\expect}(\phi)\)</span> for the function <span class="math notranslate nohighlight">\(\phi\)</span>,</p>
+<p>Given that evaluating a continuous system at every location in its state
+space is not possible we need a means of producing samples from the
+distribution which are representative of the distribution. A
+straight-forward approach is to uniformly sample the state space (one
+strategy to do this would be to devise a grid and take samples at each
+grid point), however such an approach will work only for the simplest
+distributions (see chapters 4 and 29 of cite:2003itil.book…..M for a
+detailed information theoretic discussion on this).</p>
+<p>If sampling from the distribution is difficult, but evaluating it at a
+specific location in its parameter space is possible, a number of
+sampling methods are possible. The simplest of these, <em>importance
+sampling</em>, and <em>rejection sampling</em> rely on sampling from a tractable
+distribution, such as a Gaussian distribution, and then correcting the
+samples in some way based on the evaluation of the target distribution.</p>
+<p>With <em>importance sampling</em>, rather than sampling from the complicated
+distribution, <span class="math notranslate nohighlight">\(P\)</span>, (the <em>target distribution</em>), we instead sample
+from a distribution, <span class="math notranslate nohighlight">\(Q\)</span>, which we do know how to sample from,
+such as a normal or a uniform distribution (see figure
+ref:fig:probability:importance-sampling for a cartoon illustrating this
+arrangement). Since we do not necessarily know the normalisation of
+<span class="math notranslate nohighlight">\(P\)</span> or <span class="math notranslate nohighlight">\(Q\)</span> we can instead sample and evaluate within a
+scalar multiple, <span class="math notranslate nohighlight">\(Z\)</span>, such that <span class="math notranslate nohighlight">\(ZP^*(x) = P(x)\)</span>. We then
+draw the samples <span class="math notranslate nohighlight">\(\setbuilder{\vec{x}_r | r \in 1, \dots, R}\)</span> from
+<span class="math notranslate nohighlight">\(Q\)</span>, and evaluate <span class="math notranslate nohighlight">\(Q(x)\)</span> and <span class="math notranslate nohighlight">\(P(x)\)</span> for each sample.
+In regions where <span class="math notranslate nohighlight">\(Q(x)\)</span> is greater than <span class="math notranslate nohighlight">\(P(x)\)</span> the samples
+will over-represent <span class="math notranslate nohighlight">\(P(x)\)</span> (and vice versa when <span class="math notranslate nohighlight">\(Q(x)\)</span> is
+smaller than <span class="math notranslate nohighlight">\(P(x)\)</span>). To account for this each sample is
+re-weighted to adjust its importance by the ratio</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}w_r = \frac{P^*(x_r)}{Q^*(x_r)}\\so then equation ref:eq:probability:mcmc:expectation becomes\end{aligned}\end{align} \]</div>
+<div class="math notranslate nohighlight">
+\[\hat{\expect}(\phi) = \frac{ \sum_r w_r \phi(x_r) }{\sum_r w_r}\]</div>
+<p>While importance sampling is an improvement over uniform sampling, it
+will fail to converge in situations where the target distribution
+contains many separated peaks, and will struggle to explore a
+high-dimensional space efficiently.</p>
+<p><em>Rejection sampling</em> uses a similar principle to importance sampling,
+using a <em>proposal distribution</em>, <span class="math notranslate nohighlight">\(Q(x)\)</span>, which can be sampled
+directly, to generate the samples (see figure
+ref:fig:probability:rejection-sampling for an illustration of how
+<span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(Q\)</span> relate). The method assumes we know the value of
+a constant, <span class="math notranslate nohighlight">\(c\)</span> such that <span class="math notranslate nohighlight">\(cQ^*(x) &gt; P^*(x) \forall x\)</span>.</p>
+<p>This method requires two random numbers to be generated: a sample
+<span class="math notranslate nohighlight">\(x\)</span> is drawn from <span class="math notranslate nohighlight">\(Q(x)\)</span>, and <span class="math notranslate nohighlight">\(cQ(x)\)</span> is calculated.
+Then a variable <span class="math notranslate nohighlight">\(u\)</span> is drawn from the uniform distribution
+<span class="math notranslate nohighlight">\(U(0, cQ^*(x))\)</span>. If <span class="math notranslate nohighlight">\(u &gt; P^*(x)\)</span> — that is, it lies in the
+region between <span class="math notranslate nohighlight">\(P^*(x)\)</span> and <span class="math notranslate nohighlight">\(Q^*(x)\)</span>—it is rejected, and
+discarded. Otherwise, it is accepted, and kept. This method ensures that
+only points which lie within <span class="math notranslate nohighlight">\(P^*(x)\)</span> are retained, preventing
+over-representation, and also that the density of samples is
+proportional to <span class="math notranslate nohighlight">\(P^*(x)\)</span> thanks to the uniform distribution of
+samples under <span class="math notranslate nohighlight">\(P^*(x)\)</span>.</p>
+<p>Rejection sampling is fundamentally similar to <em>Buffon’s Needle
+Problem</em>, in which needles dropped on floorboards can be used to
+estimate the value of <span class="math notranslate nohighlight">\(\pi\)</span>, and can be used to evaluate complex
+integrals outwith probability problems.</p>
+<p>Rejection sampling will struggle to converge if the target and proposal
+distributions are not similar, as the region <span class="math notranslate nohighlight">\([P^*(x), Q^*(x)]\)</span>
+between the two functions will be large, so the probability of
+generating samples with <span class="math notranslate nohighlight">\(u&lt;P^*(x)\)</span> will be small. The method is
+also impractical in more than one-dimension, as similarly, the
+probability of generating a point within the volume described by
+<span class="math notranslate nohighlight">\(P^*(x)\)</span> will diminish with growing dimensionality.</p>
+<p>The deficiencies of these two methods lead to the development of a more
+sophisticated approach: abbr:mcmc.</p>
+<section id="markov-chain-monte-carlo">
+<h2>Markov-Chain Monte Carlo<a class="headerlink" href="#markov-chain-monte-carlo" title="Link to this heading">¶</a></h2>
+<p>As noted previously, rejection sampling struggles to efficiently sample
+a distribution if the proposal and target distributions are not similar.
+In order to address this failing, the <em>Metropolis-Hastings</em> algorithm
+constructs a proposal distribution which depends on the sampling
+location (or more precisely, the current <em>state</em> of the sampler). This
+proposal distribution will often be something simple, like a Normal
+distribution centred on the current <span class="math notranslate nohighlight">\(x_t\)</span> being considered.</p>
+<p>As with rejection sampling, a tentative state, <span class="math notranslate nohighlight">\(x'\)</span> is drawn from
+a proposal distribution, <span class="math notranslate nohighlight">\(Q^*(x', x_t)\)</span>, given the current state,
+<span class="math notranslate nohighlight">\(x_t\)</span>. The ratio</p>
+<p>is evaluated. If <span class="math notranslate nohighlight">\(a \geq 1\)</span> the new state is accepted; otherwise
+the new state is accepted with a probability <span class="math notranslate nohighlight">\(a\)</span>. If the new state
+is accepted it becomes the current state (i.e. <span class="math notranslate nohighlight">\(x_{t+1} = x'\)</span>); if
+it is rejected the current state is retained, so <span class="math notranslate nohighlight">\(x_{t+1} = x_t\)</span>.</p>
+<p>In the case that a symmetrical proposal distribution is chosen, such as
+a normal distribution, the second ratio in equation
+ref:eq:probability:metropolis:acceptance will always be equal to
+<span class="math notranslate nohighlight">\(1\)</span>, providing a simpler expression for <span class="math notranslate nohighlight">\(a\)</span>, which will be
+consequently faster to evaluate. The behaviour of the
+Metropolis-Hastings algorithm produces a stochastic process with the
+Markov property.</p>
+<p>In order to improve the computational efficiency of an abbr:mcmc
+algorithm the gradient information of the problem can be taken into
+account, which will guide the process to the regions of high
+probability. These methods, known as <em>Hamiltonian</em> MCMC methods can
+allow faster convergence, and therefore reduce the number of
+computations required to perform Bayesian inference. The No-U-Turns
+sampler cite:2011arXiv1111.4246H is an example of such a method which
+includes various algorithmic refinements to allow the sampler to work
+efficiently in hierarchical models (see section
+ref:sec:probability:hierarchical) without requiring manual tuning.</p>
+</section>
+</section>
+<section id="hierarchical-modelling">
+<h1>Hierarchical modelling<a class="headerlink" href="#hierarchical-modelling" title="Link to this heading">¶</a></h1>
+<p>Structured probability distributions, as introduced in section
+ref:sec:probability:structured have the useful property that the
+posterior distribution can be constructed as the product of a set of
+independent probability distributions. This structure is frequently
+useful when describing physical systems, where, for example, we wish to
+infer the properties of an underlying physical system from a set of
+individual observations.</p>
+<p>An example of such a hierarchical model, used to determine the mean jet
+opening angle (beaming angle) of abpl:sgrb is presented in chapter
+<a href="#id2"><span class="problematic" id="id3">:raw-latex:`\ref{cha:gamma-ray-burst}`</span></a> and in Williams <em>et al.</em>
+cite:dwsgrbbayesianconstraint, in which a hierarchical approach is taken
+to determining the probability distribution of the beaming angle via the
+rates at which observations of abpl:sgrb and abbr:bns events are
+observed. These are themselves determined from observed quantities, such
+as the number of observed events, the time over which detections were
+made, and the false alarm rate of the detection process. A model such as
+this, which has two layers of inference, is comparatively easy to
+extend; the inferred beaming angle could, for example, be used as part
+of the inference of the generating phenomenon.</p>
+<p>Hierarchical models are gaining popularity in other areas of abbr:gw
+research, principally black hole population inference
+cite:2017MNRAS.471.2801S,2012PhRvD..86l4032A.</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id4" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>It is worth noting that in probability and statistics this property
+is known as <em>invariance</em>, but in other areas of mathematics and
+physics is more likely to be called <em>covariance</em>, for example in
+general relativity.</p>
+</aside>
+</aside>
+</section>
+
+
+    </div>
+
+  </div>
+  <div class="container">
+<footer class="footer d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">  
+  <div class="container-fluid">
+    
+      <!-- <a href="#">Back to top</a> -->
+      
+      &copy; Copyright 2020-2022, Daniel Williams.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.1.0.<br/>
+    </p>
+  </div> 
+</footer>
+</div>
+    <script>
+    $(document).ready(function(){
+	$("#localtoc a").addClass("nav-link")
+	$('body').scrollspy({ target: '#localtoc' })
+    });
+  </script>
+  </body>
+</html>
