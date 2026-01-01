@@ -99,6 +99,21 @@ polynomials, so
      H_3(x) &=  8x^3 - 12x \\
      H_4(x) &=  16x^4 - 48x^2 + 12\end{aligned}
 
+.. plot::
+   :caption: The Hermite polynomials of degrees 0 to 4.
+
+   import matplotlib.pyplot as plt
+   import numpy as np
+   from scipy.special import hermite
+
+   x = np.linspace(-3, 3, 601)
+
+   for n in [0, 1, 2, 3, 4]:
+      plt.plot(x, hermite(n)(x), label=f'$H_{n}(x)$')
+   plt.ylim([-40, 50])
+   plt.legend()
+   plt.tight_layout()
+
 Properties of the Hermite Polynomials
 -------------------------------------
 

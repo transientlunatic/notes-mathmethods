@@ -38,6 +38,21 @@ Laguerre polynomials,
    L_1(x) &= 1-x \\
    L_2(x) &= \half \qty(x^2 - 4x + 2)\end{aligned}
 
+.. plot::
+   :caption: The Laguerre polynomials of degrees 0 to 4.
+
+   import matplotlib.pyplot as plt
+   import numpy as np
+   from scipy.special import genlaguerre
+
+   x = np.linspace(-1, 5, 601)
+
+   for n in [0, 1, 2, 3, 4]:
+      plt.plot(x, genlaguerre(n, 0)(x), label=f'$L_{n}(x)$')
+   plt.ylim([-4, 4])
+   plt.legend()
+   plt.tight_layout()
+
 Orthogonality
 -------------
 
